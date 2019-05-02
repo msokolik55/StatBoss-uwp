@@ -1,0 +1,133 @@
+﻿<Page
+    x:Class="App1.Pages.PagePlayersStats"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+	<Grid x:Name="GridMain">
+		<VisualStateManager.VisualStateGroups>
+			<VisualStateGroup>
+				<VisualState x:Name="Narrow">
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="0" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="GridEditableElements.(Grid.Column)" Value="0"/>
+						<Setter Target="GridEditableElements.(Grid.Row)" Value="1"/>
+						<Setter Target="GridMain.ColumnDefinitions[1].Width" Value="auto"/>
+						<Setter Target="GridEditableElements.ColumnDefinitions[0].Width" Value="*"/>
+						<Setter Target="GridEditableElements.ColumnDefinitions[3].Width" Value="*"/>
+					</VisualState.Setters>
+				</VisualState>
+
+				<VisualState x:Name="Compact">
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="720" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="GridEditableElements.(Grid.Column)" Value="1"/>
+						<Setter Target="GridEditableElements.(Grid.Row)" Value="0"/>
+						<Setter Target="GridMain.ColumnDefinitions[1].Width" Value="*"/>
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Column="0" Grid.Row="0" x:Name="GridMenu" Margin="10,0,10,0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="12*"/>
+			</Grid.RowDefinitions>
+
+			<Grid Grid.Row="0" BorderBrush="#FFF2F2F2" BorderThickness="1" Padding="10" Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBox Grid.Column="0" x:Name="TextBoxFindName" HorizontalAlignment="Left" VerticalAlignment="Center" TextChanged="TextBoxFindName_TextChanged" PlaceholderText="Find Name" Margin="5,0,5,0"/>
+
+				<StackPanel Grid.Column="2" Orientation="Horizontal" Margin="5,0,5,0">
+					<TextBlock Text="Goals" Margin="0,0,10,0" VerticalAlignment="Center"/>
+					<Button Grid.Column="0" x:Name="ButtSortGoals" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" Click="ButtSortGoals_Click">
+						<SymbolIcon Symbol="Sort"/>
+					</Button>
+				</StackPanel>
+
+				<StackPanel Grid.Column="3" Orientation="Horizontal" Margin="5,0,0,0">
+					<TextBlock Text="Assists" Margin="0,0,10,0" VerticalAlignment="Center"/>
+					<Button Grid.Column="0" x:Name="ButtSortAssists" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtSortAssists_Click">
+						<SymbolIcon Symbol="Sort"/>
+					</Button>
+				</StackPanel>
+			</Grid>
+
+			<ListView Grid.Row="1" x:Name="ListViewItems" HorizontalAlignment="Stretch" SelectionChanged="ListViewItems_SelectionChanged" Margin="10,10,10,10" Width="auto" Height="300" VerticalAlignment="Top"/>
+		</Grid>
+
+		<Grid Grid.Column="1" Grid.Row="0" x:Name="GridEditableElements" VerticalAlignment="Stretch" Background="#FFF2F2F2" Margin="10, 10, 10, 10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="10"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="10"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="First Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxFirstName" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText=""/>
+
+			<TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Surname:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="3" Grid.Column="2" x:Name="TextBoxSurname" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText=""/>
+
+			<TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Minutes:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="4" Grid.Column="2" x:Name="TextBoxMinutes" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+
+			<TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Goals:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="5" Grid.Column="2" x:Name="TextBoxGoals" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+
+			<TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Assists:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="6" Grid.Column="2" x:Name="TextBoxAssists" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+
+			<TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Penalties:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="7" Grid.Column="2" x:Name="TextBoxPenalties" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+
+			<TextBlock Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Red Cards:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="8" Grid.Column="2" x:Name="TextBoxRedCards" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+
+			<TextBox Grid.Row="9" Grid.Column="1" x:Name="testText" HorizontalAlignment="Left" Margin="0,5,0,5" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
+			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5"/>
+		</Grid>
+	</Grid>
+</Page>
