@@ -29,6 +29,9 @@ namespace App1
         List<Classes.DBClasses.Position> ListAllPositions;
 
         private string toRemove = "position_";
+
+        string[] tables = { "tbl_stats" };
+
         bool bSortBirthdayASC;
 
         public PagePlayers()
@@ -152,7 +155,7 @@ namespace App1
 
         private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
         {
-            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage, DataAccess.NIDActualSeason);
+            DataAccess.RemoveItem(tables, "nIDPlayer", int.Parse(TextBoxID.Text), sTableName, ResetPage);
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)

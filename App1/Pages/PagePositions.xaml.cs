@@ -26,6 +26,8 @@ namespace App1.Pages
         private string sTableName = "tbl_positions";
         List<Classes.DBClasses.Position> ListAllItems;
 
+        string[] tables = { "tbl_players", "tbl_stats" };
+
         public PagePositions()
         {
             this.InitializeComponent();
@@ -114,7 +116,7 @@ namespace App1.Pages
 
         private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
         {
-            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage);
+            DataAccess.RemoveItem(tables, "nIDPosition", int.Parse(TextBoxID.Text), sTableName, ResetPage);
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)

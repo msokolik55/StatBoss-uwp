@@ -304,5 +304,32 @@ namespace App1
 
             ContentDialogResult result = await dialogException.ShowAsync();
         }
+
+        public static void RemoveItem(string[] tables, string columnNameInDB, int id, string tableName, Action resetPage, bool isItemSeason=false)
+        {
+            if (IsAppearance(tables, columnNameInDB, id, isItemSeason))
+            {
+                Classes.PageHandling.DialogsHandling.DisplayAreAppearances();
+            }
+            else
+            {
+                Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(tableName, id, resetPage, NIDActualSeason);
+            }
+        }
+
+        private static bool IsAppearance(string[] tables, string columnNameInDB, int id, bool isItemSeason = false)
+        {
+            bool appearance = false;
+            foreach (string table in tables)
+            {
+                string sCommand = "SELECT * FROM " + table + " WHERE " + columnNameInDB + "='" + id + "'";
+                if (!isItemSeason) { sCommand += " AND nIDSeason='" + NIDActualSeason + "'"; }
+
+                SqliteDataReader query = QueryDB(sCommand);
+                if (query.HasRows) { appearance = true; };
+            }
+
+            return appearance;
+        }
     }
 }

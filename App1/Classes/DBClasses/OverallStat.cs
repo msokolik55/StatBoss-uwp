@@ -73,7 +73,7 @@ namespace App1.Classes.DBClasses
                     id++;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }

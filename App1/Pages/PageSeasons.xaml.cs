@@ -27,6 +27,8 @@ namespace App1.Pages
         private string sTableName = "tbl_seasons";
         List<Classes.DBClasses.Season> ListAllItems;
 
+        string[] tables = { "tbl_matches", "tbl_opponents", "tbl_players", "tbl_stats", "tbl_teams" };
+
         bool bSortNameASC;
 
         public PageSeasons()
@@ -123,7 +125,7 @@ namespace App1.Pages
 
         private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
         {
-            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage);
+            DataAccess.RemoveItem(tables, "nIDSeason", int.Parse(TextBoxID.Text), sTableName, ResetPage, true);
         }
 
         private void ButtSelect_Click(object sender, RoutedEventArgs e)

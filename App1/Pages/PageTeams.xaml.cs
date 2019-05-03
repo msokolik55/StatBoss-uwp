@@ -26,6 +26,8 @@ namespace App1.Pages
         private string sTableName = "tbl_teams";
         List<Classes.DBClasses.Team> ListAllItems;
 
+        string[] tables = { "tbl_matches", "tbl_players", "tbl_stats" };
+
         bool bSortShortNameASC;
 
         public PageTeams()
@@ -134,7 +136,7 @@ namespace App1.Pages
 
         private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
         {
-            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage, DataAccess.NIDActualSeason);
+            DataAccess.RemoveItem(tables, "nIDVSTeam", int.Parse(TextBoxID.Text), sTableName, ResetPage);
         }
 
         private void ButtSelect_Click(object sender, RoutedEventArgs e)

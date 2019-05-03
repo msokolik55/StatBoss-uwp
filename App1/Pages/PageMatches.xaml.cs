@@ -29,6 +29,8 @@ namespace App1.Pages
         private string toRemove = "opponent_";
         List<Classes.DBClasses.Opponent> ListAllOpponents;
 
+        string[] tables = { "tbl_stats" };
+
         private bool bSortDateASC = true;
 
         public PageMatches()
@@ -200,7 +202,7 @@ namespace App1.Pages
 
         private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
         {
-            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage, DataAccess.NIDActualSeason);
+            DataAccess.RemoveItem(tables, "nIDMatch", int.Parse(TextBoxID.Text), sTableName, ResetPage);
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)

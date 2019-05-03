@@ -51,5 +51,17 @@ namespace App1.Classes.PageHandling
 
             ContentDialogResult result = await noAllFieldsDialog.ShowAsync();
         }
+
+        public static async void DisplayAreAppearances()
+        {
+            ContentDialog areAppearancesDialog = new ContentDialog
+            {
+                Title = "Can't delete this item.",
+                Content = "Firstly delete all appearances of this item in other tables.",
+                CloseButtonText = "OK"
+            };
+
+            ContentDialogResult result = await areAppearancesDialog.ShowAsync();
+        }
     }
 }

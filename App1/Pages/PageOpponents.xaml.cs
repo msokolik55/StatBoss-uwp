@@ -26,6 +26,8 @@ namespace App1.Pages
         private string sTableName = "tbl_opponents";
         List<Classes.DBClasses.Opponent> ListAllItems;
 
+        string[] tables = { "tbl_matches" };
+
         bool bSortNameASC;
 
         public PageOpponents()
@@ -119,7 +121,7 @@ namespace App1.Pages
 
         private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
         {
-            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage, DataAccess.NIDActualSeason);
+            DataAccess.RemoveItem(tables, "nIDOpponent", int.Parse(TextBoxID.Text), sTableName, ResetPage);
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)

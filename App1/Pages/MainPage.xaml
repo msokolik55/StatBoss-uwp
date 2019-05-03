@@ -154,9 +154,9 @@
 
 					<NavigationViewItemHeader Content="Administration"/>
 					<NavigationViewItem Content="Seasons" Tag="Seasons" Icon="Calendar"/>
-					<NavigationViewItem Content="Teams" Tag="Teams" Icon="People"/>
-					<NavigationViewItem Content="Positions" Tag="Positions" Icon="ContactPresence"/>
-					<NavigationViewItem Content="Opponents" Tag="Opponents" Icon="LikeDislike"/>
+				<NavigationViewItem Content="Teams" Tag="Teams" Icon="People"/>
+				<NavigationViewItem Content="Opponents" Tag="Opponents" Icon="LikeDislike"/>
+				<NavigationViewItem Content="Positions" Tag="Positions" Icon="ContactPresence"/>
 					<NavigationViewItemSeparator/>
 				</NavigationView.MenuItems>
 				<NavigationView.PaneFooter>
