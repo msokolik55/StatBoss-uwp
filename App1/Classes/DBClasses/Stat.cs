@@ -132,9 +132,48 @@ namespace App1.Classes.DBClasses
             return selectedItem;
         }
 
-        public void AddToDB()
+        //public void AddToDB()
+        //{
+        //    string sCommand = "INSERT INTO tbl_stats (nID, nIDSeason, nIDMatch, nIDPosition, nNumber, nIDPlayer, nIDVSTeam, nMinutes, nGoals, nAssistance, nPenalties, nRedCards, dInserted, dUpdated)" +
+        //                                " VALUES('" + nID + "', " +
+        //                                "'" + nIDSeason + "', " +
+        //                                "'" + nIDMatch + "', " +
+        //                                "'" + nIDPosition + "', " +
+        //                                "'" + nNumber + "', " +
+        //                                "'" + nIDPlayer + "', " +
+        //                                "'" + nIDUserTeam + "', " +
+        //                                "'" + nMinutes + "', " +
+        //                                "'" + nGoals + "', " +
+        //                                "'" + nAssists + "', " +
+        //                                "'" + nPenalties + "', " +
+        //                                "'" + nRedCards + "', " +
+        //                                "datetime('now'), " +
+        //                                "datetime('now'))";
+        //    DataAccess.ExecDB(sCommand);
+        //}
+
+        //public void EditDB()
+        //{
+        //    string sCommand = "UPDATE tbl_stats SET nIDPosition='" + nIDPosition + "', " +
+        //                                                    "nNumber='" + nNumber + "', " +
+        //                                                    "nMinutes='" + nMinutes + "', " +
+        //                                                    "nGoals='" + nGoals + "', " +
+        //                                                    "nAssistance='" + nAssists + "', " +
+        //                                                    "nPenalties='" + nPenalties + "', " +
+        //                                                    "nRedCards='" + nRedCards + "', " +
+        //                                                    "dUpdated=datetime('now')" +
+        //                        "WHERE nID = '" + nID + "' AND nIDSeason = '" + DataAccess.NIDActualSeason + "'";
+        //    DataAccess.ExecDB(sCommand);
+        //}
+
+        public void ChangeDB(string action)
         {
-            string sCommand = "INSERT INTO tbl_stats (nID, nIDSeason, nIDMatch, nIDPosition, nNumber, nIDPlayer, nIDVSTeam, nMinutes, nGoals, nAssistance, nPenalties, nRedCards, dInserted, dUpdated)" +
+            string sCommand = "";
+
+            switch (action)
+            {
+                case "add":
+                    sCommand = "INSERT INTO tbl_stats (nID, nIDSeason, nIDMatch, nIDPosition, nNumber, nIDPlayer, nIDVSTeam, nMinutes, nGoals, nAssistance, nPenalties, nRedCards, dInserted, dUpdated)" +
                                         " VALUES('" + nID + "', " +
                                         "'" + nIDSeason + "', " +
                                         "'" + nIDMatch + "', " +
@@ -149,20 +188,21 @@ namespace App1.Classes.DBClasses
                                         "'" + nRedCards + "', " +
                                         "datetime('now'), " +
                                         "datetime('now'))";
-            DataAccess.ExecDB(sCommand);
-        }
+                    break;
 
-        public void EditDB()
-        {
-            string sCommand = "UPDATE tbl_stats SET nIDPosition='" + nIDPosition + "', " +
-                                                            "nNumber='" + nNumber + "', " +
-                                                            "nMinutes='" + nMinutes + "', " +
-                                                            "nGoals='" + nGoals + "', " +
-                                                            "nAssistance='" + nAssists + "', " +
-                                                            "nPenalties='" + nPenalties + "', " +
-                                                            "nRedCards='" + nRedCards + "', " +
-                                                            "dUpdated=datetime('now')" +
+                case "edit":
+                    sCommand = "UPDATE tbl_stats SET nIDPosition='" + nIDPosition + "', " +
+                                                    "nNumber='" + nNumber + "', " +
+                                                    "nMinutes='" + nMinutes + "', " +
+                                                    "nGoals='" + nGoals + "', " +
+                                                    "nAssistance='" + nAssists + "', " +
+                                                    "nPenalties='" + nPenalties + "', " +
+                                                    "nRedCards='" + nRedCards + "', " +
+                                                    "dUpdated=datetime('now')" +
                                 "WHERE nID = '" + nID + "' AND nIDSeason = '" + DataAccess.NIDActualSeason + "'";
+                    break;
+            }
+
             DataAccess.ExecDB(sCommand);
         }
     }

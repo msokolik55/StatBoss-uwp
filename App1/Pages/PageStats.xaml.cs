@@ -51,6 +51,13 @@ namespace App1.Pages
             ShowPositions();
 
             TextBoxID.IsEnabled = false;
+
+            TextBlock block = new TextBlock
+            {
+                Text = "Select match from ComboBox under top buttons pane."
+            };
+            ListViewItems.Items.Add(block);
+            ListViewItems.IsEnabled = false;
         }
 
         // ---------------------------
@@ -90,6 +97,14 @@ namespace App1.Pages
             TextBoxAssists.IsEnabled = enabled;
             TextBoxPenalties.IsEnabled = enabled;
             TextBoxRedCards.IsEnabled = enabled;
+            ButtGoalsPlus.IsEnabled = enabled;
+            ButtGoalsMinus.IsEnabled = enabled;
+            ButtAssistsPlus.IsEnabled = enabled;
+            ButtAssistsMinus.IsEnabled = enabled;
+            ButtPenaltiesPlus.IsEnabled = enabled;
+            ButtPenaltiesMinus.IsEnabled = enabled;
+            ButtRedCardsPlus.IsEnabled = enabled;
+            ButtRedCardsMinus.IsEnabled = enabled;
         }
 
         // ---------------------------
@@ -163,14 +178,9 @@ namespace App1.Pages
             ButtEditSelected.IsEnabled = false;
             ButtRemoveDB.IsEnabled = false;
 
-            try
-            {
-                actualMatch = new Classes.DBClasses.Match().GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
-                ShowItemsInListView();
-            }
-            catch (Exception)
-            {
-            }
+            actualMatch = new Classes.DBClasses.Match().GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
+            ShowItemsInListView();
+            ListViewItems.IsEnabled = true;
         }
 
         // ---------------------------
@@ -215,6 +225,16 @@ namespace App1.Pages
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)
         {
+            ChangeDB("add");
+        }
+
+        private void ButtEditDB_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeDB("edit");
+        }
+
+        private void ChangeDB(string action)
+        {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
                 var stat = new Classes.DBClasses.Stat
@@ -233,8 +253,8 @@ namespace App1.Pages
                     nRedCards = int.Parse(TextBoxRedCards.Text)
                 };
 
-                stat.AddToDB();
-                ResetPage(); 
+                stat.ChangeDB(action);
+                ResetPage();
             }
             else
             {
@@ -242,28 +262,55 @@ namespace App1.Pages
             }
         }
 
-        private void ButtEditDB_Click(object sender, RoutedEventArgs e)
+        private void ButtGoalsPlus_Click(object sender, RoutedEventArgs e)
         {
-            if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
-            {
-                var stat = new Classes.DBClasses.Stat
-                {
-                    nID = int.Parse(TextBoxID.Text),
-                    nIDPosition = Classes.PageHandling.ComboBoxHandling.GetIDFromComboBox(ComboBoxPosition.SelectedItem, toRemovePos),
-                    nNumber = int.Parse(TextBoxNumber.Text),
-                    nMinutes = int.Parse(TextBoxMinutes.Text),
-                    nGoals = int.Parse(TextBoxGoals.Text),
-                    nAssists = int.Parse(TextBoxAssists.Text),
-                    nPenalties = int.Parse(TextBoxPenalties.Text),
-                    nRedCards = int.Parse(TextBoxRedCards.Text)
-                };
+            UpdateNumberValue(TextBoxGoals, true);
+        }
 
-                stat.EditDB();
-                ResetPage();
-            }
-            else
+        private void ButtGoalsMinus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxGoals, false);
+        }
+
+        private void ButtAssistsPlus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxAssists, true);
+        }
+
+        private void ButtAssistsMinus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxAssists, false);
+        }
+
+        private void ButtPenaltiesPlus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxPenalties, true);
+        }
+
+        private void ButtPenaltiesMinus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxPenalties, false);
+        }
+
+        private void ButtRedCardsPlus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxRedCards, true);
+        }
+
+        private void ButtRedCardsMinus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxRedCards, false);
+        }
+
+        private void UpdateNumberValue(TextBox box, bool bPlus)
+        {
+            if (int.TryParse(box.Text, out int code))
             {
-                Classes.PageHandling.DialogsHandling.DisplayNoCorrectFields();
+                int number = int.Parse(box.Text);
+                number = bPlus ? number + 1 : number - 1;
+                number = (number < 0) ? 0 : number;
+
+                box.Text = number.ToString();
             }
         }
 

@@ -107,7 +107,7 @@ namespace App1.Classes.DBClasses
                     TextBlock block = new TextBlock
                     {
                         Name = item.nID.ToString(),
-                        Text = item.dDateTime.ToString("dd.MM.yyyy") + " " + DataAccess.GetOpponent(item.nIDOpponent)
+                        Text = item.dDateTime.ToString("dd.MM.yyyy HH:mm") + " " + DataAccess.GetOpponent(item.nIDOpponent)
                     };
 
                     ListViewItems.Items.Add(block);
@@ -205,7 +205,7 @@ namespace App1.Classes.DBClasses
                 TextBlock block = new TextBlock
                 {
                     Name = toRemove + imatch.nID.ToString(),
-                    Text = imatch.dDateTime.ToString("dd.MM.yyyy") + " " + DataAccess.GetOpponent(imatch.nIDOpponent)
+                    Text = imatch.dDateTime.ToString("dd.MM.yyyy HH:mm") + " " + DataAccess.GetOpponent(imatch.nIDOpponent)
                 };
 
                 comboBox.Items.Add(block);
