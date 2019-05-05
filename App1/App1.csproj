@@ -7,8 +7,8 @@
     <ProjectGuid>{3B92EF6F-21F2-40B1-B273-47786CFE42C3}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>App1</RootNamespace>
-    <AssemblyName>App1</AssemblyName>
+    <RootNamespace>StatBoss</RootNamespace>
+    <AssemblyName>StatBoss</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
