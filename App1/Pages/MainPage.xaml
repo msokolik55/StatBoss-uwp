@@ -140,7 +140,7 @@
 		</StackPanel>
 		-->
 
-			<NavigationView ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" PaneTitle="My App Name">
+			<NavigationView ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" PaneTitle="StatBoss">
 				<NavigationView.MenuItems>
 					<NavigationViewItemHeader Content="Main"/>
 					<NavigationViewItem Content="Players Stats" Icon="Contact2"/>
