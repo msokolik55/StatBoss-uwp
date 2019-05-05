@@ -104,25 +104,25 @@
 			</Grid.RowDefinitions>
 
 			<TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="First Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxFirstName" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText=""/>
+			<TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxFirstName" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="" IsReadOnly="True"/>
 
 			<TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Surname:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="3" Grid.Column="2" x:Name="TextBoxSurname" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText=""/>
+			<TextBox Grid.Row="3" Grid.Column="2" x:Name="TextBoxSurname" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="" IsReadOnly="True"/>
 
 			<TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Minutes:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="4" Grid.Column="2" x:Name="TextBoxMinutes" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+			<TextBox Grid.Row="4" Grid.Column="2" x:Name="TextBoxMinutes" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29" IsReadOnly="True"/>
 
 			<TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Goals:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="5" Grid.Column="2" x:Name="TextBoxGoals" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+			<TextBox Grid.Row="5" Grid.Column="2" x:Name="TextBoxGoals" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29" IsReadOnly="True"/>
 
 			<TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Assists:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="6" Grid.Column="2" x:Name="TextBoxAssists" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+			<TextBox Grid.Row="6" Grid.Column="2" x:Name="TextBoxAssists" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29" IsReadOnly="True"/>
 
 			<TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Penalties:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="7" Grid.Column="2" x:Name="TextBoxPenalties" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+			<TextBox Grid.Row="7" Grid.Column="2" x:Name="TextBoxPenalties" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29" IsReadOnly="True"/>
 
 			<TextBlock Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Red Cards:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="8" Grid.Column="2" x:Name="TextBoxRedCards" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29"/>
+			<TextBox Grid.Row="8" Grid.Column="2" x:Name="TextBoxRedCards" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="29" IsReadOnly="True"/>
 
 			<TextBox Grid.Row="9" Grid.Column="1" x:Name="testText" HorizontalAlignment="Left" Margin="0,5,0,5" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
