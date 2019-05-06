@@ -10,165 +10,40 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Grid>
-			<!--
-		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup>
-				<VisualState x:Name="Narrow">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="0" />
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="MySplitView.DisplayMode"
-                                Value="Overlay" />
-						<Setter Target="MySplitView.IsPaneOpen"
-                                Value="False" />
-					</VisualState.Setters>
-				</VisualState>
+		<NavigationView ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" PaneTitle="StatBoss">
+		<NavigationView.MenuItems>
+			<NavigationViewItemHeader Content="Main"/>
+			<NavigationViewItem Content="Instructions" Icon="Home"/>
+			<NavigationViewItem Content="Players Stats" Icon="Contact2"/>
+			<NavigationViewItemSeparator/>
 
-				<VisualState x:Name="Compact">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="720" />
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="MySplitView.DisplayMode"
-                                Value="CompactOverlay" />
-						<Setter Target="MySplitView.IsPaneOpen"
-                                Value="False" />
-					</VisualState.Setters>
-				</VisualState>
+			<NavigationViewItemHeader Content="Edit"/>
+			<NavigationViewItem Content="Players" Tag="Players" Icon="AddFriend"/>
+			<NavigationViewItem Content="Matches" Tag="Matches" Icon="Paste"/>
+			<NavigationViewItem Content="Stats in Matches" Tag="StatsMatches" Icon="ContactInfo"/>
+			<NavigationViewItemSeparator/>
 
-				<VisualState x:Name="Wide">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="1920"/>
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="MySplitView.DisplayMode"
-                                Value="CompactInline" />
-						<Setter Target="MySplitView.IsPaneOpen"
-                                Value="True" />
-					</VisualState.Setters>
-				</VisualState>
-			</VisualStateGroup>
-		</VisualStateManager.VisualStateGroups>
+			<NavigationViewItemHeader Content="Administration"/>
+			<NavigationViewItem Content="Seasons" Tag="Seasons" Icon="Calendar"/>
+			<NavigationViewItem Content="Teams" Tag="Teams" Icon="People"/>
+			<NavigationViewItem Content="Opponents" Tag="Opponents" Icon="LikeDislike"/>
+			<NavigationViewItem Content="Positions" Tag="Positions" Icon="ContactPresence"/>
+			<NavigationViewItemSeparator/>
 
-		<SplitView x:Name="MySplitView" DisplayMode="Inline" IsPaneOpen="True">
-			<SplitView.Pane>
-				<StackPanel Margin="0,30,0,0">
-					<RadioButton Tag="Map" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="Map" />
-							<TextBlock Text="Map" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="Mail" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="Mail" />
-							<TextBlock Text="Mail" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="AddPlayer" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="AddFriend" />
-							<TextBlock Text="Add a Player" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="PlayerDetails" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="Filter" />
-							<TextBlock Text="Player Details" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="AddMatch" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="Add" />
-							<TextBlock Text="Add a Match" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="Stats" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="Cut" />
-							<TextBlock Text="Edit Stats" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="Season" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="Play" />
-							<TextBlock Text="Change Season" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="Team" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="Accept" />
-							<TextBlock Text="Change Team" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="Position" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="ContactPresence" />
-							<TextBlock Text="Positions" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>
-
-					<RadioButton Tag="Opponent" Click="RadioButtonPaneItem_Click">
-						<StackPanel Orientation="Horizontal">
-							<SymbolIcon Symbol="ContactPresence" />
-							<TextBlock Text="Opponents" Margin="15,0,0,0" />
-						</StackPanel>
-					</RadioButton>					
-				</StackPanel>
-			</SplitView.Pane>
-		</SplitView>
+		<NavigationViewItem Content="Credits" Icon="Link"/>
+		</NavigationView.MenuItems>
 		
-		<StackPanel Orientation="Horizontal">
-			<Button x:Name="HamburgerButton" Width="{Binding ElementName=MySplitView, Path=CompactPaneLength}" VerticalAlignment="Top" Click="HamburgerButton_Click">
-				<StackPanel>
-					<Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-					<Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-					<Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-				</StackPanel>
-			</Button>
-			<TextBlock x:Name="ActualSeason" Text="yyyy-yyyy" Height="30" Margin="30,0,1,0" VerticalAlignment="Top" TextAlignment="Center" FontSize="20"/>
-			<TextBlock x:Name="ActualTeam" Text="U.." Height="30" VerticalAlignment="Top" FontSize="20" Margin="50,0,2,0"/>
-		</StackPanel>
-		-->
+			<NavigationView.PaneFooter>
+			<StackPanel>
+				<NavigationViewItem x:Name="ActualSeason" Content="Season: " Icon="GoToToday"/>
+				<NavigationViewItem x:Name="ActualTeam" Content="Team: " Icon="WebCam"/>
+			</StackPanel>
+		</NavigationView.PaneFooter>
 
-			<NavigationView ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" PaneTitle="StatBoss">
-				<NavigationView.MenuItems>
-					<NavigationViewItemHeader Content="Main"/>
-					<NavigationViewItem Content="Players Stats" Icon="Contact2"/>
-					<NavigationViewItemSeparator/>
-
-					<NavigationViewItemHeader Content="Edit"/>
-					<NavigationViewItem Content="Players" Tag="Players" Icon="AddFriend"/>
-					<NavigationViewItem Content="Matches" Tag="Matches" Icon="Paste"/>
-					<NavigationViewItem Content="Stats in Matches" Tag="StatsMatches" Icon="ContactInfo"/>
-					<NavigationViewItemSeparator/>
-
-					<NavigationViewItemHeader Content="Administration"/>
-					<NavigationViewItem Content="Seasons" Tag="Seasons" Icon="Calendar"/>
-				<NavigationViewItem Content="Teams" Tag="Teams" Icon="People"/>
-				<NavigationViewItem Content="Opponents" Tag="Opponents" Icon="LikeDislike"/>
-				<NavigationViewItem Content="Positions" Tag="Positions" Icon="ContactPresence"/>
-					<NavigationViewItemSeparator/>
-				</NavigationView.MenuItems>
-				<NavigationView.PaneFooter>
-					<StackPanel>
-						<NavigationViewItem x:Name="ActualSeason" Content="Season: " Icon="GoToToday"/>
-						<NavigationViewItem x:Name="ActualTeam" Content="Team: " Icon="WebCam"/>
-					</StackPanel>
-				</NavigationView.PaneFooter>
-
-				<ScrollViewer>
-					<Frame x:Name="ContentFrame" VerticalAlignment="Stretch"/>
-				</ScrollViewer>
-			</NavigationView>
-		</Grid>
+		<ScrollViewer>
+			<Frame x:Name="ContentFrame" VerticalAlignment="Stretch"/>
+		</ScrollViewer>
+		
+		</NavigationView>
+	</Grid>
 </Page>
