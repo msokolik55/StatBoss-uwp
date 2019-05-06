@@ -96,6 +96,7 @@ namespace App1
             ButtRemoveDB.IsEnabled = true;
 
             ButtAddToDB.Visibility = Visibility.Collapsed;
+            ButtEditDB.Visibility = Visibility.Collapsed;
 
             EnableEditableElements(false);
 

@@ -109,6 +109,9 @@
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
 			</Grid.RowDefinitions>
 
 			<TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5"/>
@@ -142,23 +145,27 @@
 				<TextBox x:Name="TextBoxGive1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="1"/>
 				<TextBlock HorizontalAlignment="Left" Margin="0,5,0,5" Text=":" TextWrapping="Wrap" VerticalAlignment="Top"/>
 				<TextBox x:Name="TextBoxReceived1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="2"/>
+			</StackPanel>
 
+			<StackPanel Grid.Row="10" Grid.Column="2" Orientation="Horizontal">
 				<TextBox x:Name="TextBoxGive2" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="3"/>
 				<TextBlock HorizontalAlignment="Left" Margin="0,5,0,5" Text=":" TextWrapping="Wrap" VerticalAlignment="Top"/>
 				<TextBox x:Name="TextBoxReceived2" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="0"/>
+			</StackPanel>
 
+			<StackPanel Grid.Row="11" Grid.Column="2" Orientation="Horizontal">
 				<TextBox x:Name="TextBoxGive3" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="2"/>
 				<TextBlock HorizontalAlignment="Left" Margin="0,5,0,5" Text=":" TextWrapping="Wrap" VerticalAlignment="Top"/>
 				<TextBox x:Name="TextBoxReceived3" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="3"/>
 			</StackPanel>
 
-			<TextBlock Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Description:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="10" Grid.Column="2" x:Name="TextBoxDescription" HorizontalAlignment="Left" Margin="0,5,0,5" Text="TextBox" VerticalAlignment="Top" TextWrapping="NoWrap"/>
+			<TextBlock Grid.Row="12" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Description:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="12" Grid.Column="2" x:Name="TextBoxDescription" HorizontalAlignment="Left" Margin="0,5,0,5" Text="TextBox" VerticalAlignment="Top" TextWrapping="NoWrap"/>
 
-			<Button Grid.Row="11" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
-			<Button Grid.Row="11" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
+			<Button Grid.Row="13" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
+			<Button Grid.Row="13" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
 
-			<TextBox Grid.Row="12" Grid.Column="1" x:Name="testText" HorizontalAlignment="Left" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Center" Height="29"/>
+			<TextBox Grid.Row="14" Grid.Column="1" x:Name="testText" HorizontalAlignment="Left" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Center" Height="29"/>
 		</Grid>
 	</Grid>
 </Page>

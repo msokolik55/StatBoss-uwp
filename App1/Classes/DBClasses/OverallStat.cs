@@ -49,10 +49,11 @@ namespace App1.Classes.DBClasses
                                   "FROM tbl_stats AS s " +
                                   "JOIN tbl_players AS p " +
                                   "ON p.nID = s.nIDPlayer " +
-                                  "WHERE s.nIDSeason='" + DataAccess.NIDActualSeason + "' AND s.nIDVSTeam='" + DataAccess.NIDActualTeam + "' " +
-                                  "GROUP BY s.nIDPlayer" + sWhere + sOrder;
-
+                                  "WHERE s.nIDSeason='" + DataAccess.NIDActualSeason + "' AND s.nIDVSTeam='" + DataAccess.NIDActualTeam + "' " + sWhere +
+                                  "GROUP BY s.nIDPlayer" + sOrder;
                 SqliteDataReader query = DataAccess.QueryDB(sCommand);
+
+                Debug.WriteLine(sCommand);
 
                 int id = 0;
                 while (query.Read())

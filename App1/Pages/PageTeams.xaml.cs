@@ -85,6 +85,9 @@ namespace App1.Pages
             ButtRemoveDB.IsEnabled = true;
             ButtSelect.IsEnabled = true;
 
+            ButtAddToDB.Visibility = Visibility.Collapsed;
+            ButtEditDB.Visibility = Visibility.Collapsed;
+
             EnableEditableElements(false);
 
             try
