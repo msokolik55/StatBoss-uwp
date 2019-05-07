@@ -30,7 +30,7 @@
 			<NavigationViewItem Content="Positions" Tag="Positions" Icon="ContactPresence"/>
 			<NavigationViewItemSeparator/>
 
-			<NavigationViewItem Content="Credits" Tag="Credits" Icon="Link"/>
+			<NavigationViewItem Content="About" Tag="About" Icon="Link"/>
 		</NavigationView.MenuItems>
 		
 			<NavigationView.PaneFooter>

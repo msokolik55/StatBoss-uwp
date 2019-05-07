@@ -106,8 +106,8 @@ namespace App1
                         ContentFrame.Navigate(typeof(Pages.PageOpponents));
                         break;
 
-                    case "Credits":
-                        Classes.PageHandling.DialogsHandling.DisplayCredits();
+                    case "About":
+                        Classes.PageHandling.DialogsHandling.DisplayAbout();
                         break;
                 }
             }

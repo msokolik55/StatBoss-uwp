@@ -64,18 +64,18 @@ namespace App1.Classes.PageHandling
             ContentDialogResult result = await areAppearancesDialog.ShowAsync();
         }
 
-        public static async void DisplayCredits()
+        public static async void DisplayAbout()
         {
-            ContentDialog showCredits = new ContentDialog
+            ContentDialog showAbout = new ContentDialog
             {
-                Title = "Credits",
+                Title = "About",
                 Content = "Copyright © 2019 Michal Sokolik\n" +
                           "All rights reserved\n\n" +
                           "E-mail: michal.sokolik@studentstc.sk",
                 CloseButtonText = "OK"
             };
 
-            ContentDialogResult result = await showCredits.ShowAsync();
+            ContentDialogResult result = await showAbout.ShowAsync();
         }
     }
 }
