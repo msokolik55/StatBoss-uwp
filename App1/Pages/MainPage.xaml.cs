@@ -29,64 +29,8 @@ namespace App1
             this.InitializeComponent();
 
             InitializeGlobalVariables();
-            ContentFrame.Navigate(typeof(Pages.Page1));
+            ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
         }
-
-        //private void HamburgerButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
-        //}
-
-        //private void RadioButtonPaneItem_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var radioButton = sender as RadioButton;
-
-        //    if (radioButton != null)
-        //    {
-        //        switch (radioButton.Tag.ToString())
-        //        {
-        //            case "Map":
-        //                MainFrame.Navigate(typeof(Page2));
-        //                break;
-
-        //            case "Mail":
-        //                MainFrame.Navigate(typeof(Pages.Page1));
-        //                break;
-
-        //            case "AddMatch":
-        //                MainFrame.Navigate(typeof(Pages.PageMatches));
-        //                break;
-
-        //            case "Stats":
-        //                MainFrame.Navigate(typeof(Pages.PageMatchesEdit));
-        //                break;
-
-        //            case "AddPlayer":
-        //                MainFrame.Navigate(typeof(Page3));
-        //                break;
-
-        //            case "PlayerDetails":
-        //                MainFrame.Navigate(typeof(Pages.PagePlayersShow));
-        //                break;
-
-        //            case "Season":
-        //                MainFrame.Navigate(typeof(Pages.Page4), MainFrame);
-        //                break;
-
-        //            case "Team":
-        //                MainFrame.Navigate(typeof(Pages.Page5));
-        //                break;
-
-        //            case "Position":
-        //                MainFrame.Navigate(typeof(Pages.PagePositions));
-        //                break;
-
-        //            case "Opponent":
-        //                MainFrame.Navigate(typeof(Pages.PageOpponents));
-        //                break;
-        //        }
-        //    }
-        //}
 
         public void InitializeGlobalVariables()
         {
@@ -126,6 +70,10 @@ namespace App1
             {
                 switch (args.InvokedItem)
                 {
+                    case "Instructions":
+                        ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
+                        break;
+
                     case "Players Stats":
                         ContentFrame.Navigate(typeof(Pages.PagePlayersStats));
                         break;
@@ -156,6 +104,10 @@ namespace App1
 
                     case "Opponents":
                         ContentFrame.Navigate(typeof(Pages.PageOpponents));
+                        break;
+
+                    case "Credits":
+                        Classes.PageHandling.DialogsHandling.DisplayCredits();
                         break;
                 }
             }

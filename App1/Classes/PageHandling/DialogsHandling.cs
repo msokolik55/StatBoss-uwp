@@ -63,5 +63,19 @@ namespace App1.Classes.PageHandling
 
             ContentDialogResult result = await areAppearancesDialog.ShowAsync();
         }
+
+        public static async void DisplayCredits()
+        {
+            ContentDialog showCredits = new ContentDialog
+            {
+                Title = "Credits",
+                Content = "Copyright © 2019 Michal Sokolik\n" +
+                          "All rights reserved\n\n" +
+                          "E-mail: michal.sokolik@studentstc.sk",
+                CloseButtonText = "OK"
+            };
+
+            ContentDialogResult result = await showCredits.ShowAsync();
+        }
     }
 }

@@ -8,7 +8,38 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+	<Grid>
+		<StackPanel Margin="10,0,0,20">
+			<TextBlock Text="Order of adding items" FontWeight="Normal" FontSize="20"/>
+			<ListView>
+				<TextBlock Text="1. Add SEASONS (every items are depended on selected season - only positions not)." TextWrapping="Wrap"/>
+				<TextBlock Text="2. Add TEAMS in the selected season (matches, players, stats are depended on selected season and team)." TextWrapping="Wrap"/>
+				<TextBlock Text="3. Add POSITIONS in your sport (positions are assigned in section players and stats)." TextWrapping="Wrap"/>
+				<TextBlock Text="4. Add OPPONENTS in the selected season and team (opponents are assigned in section matches and stats)." TextWrapping="Wrap"/>
+				<TextBlock Text="5. Add MATCHES, PLAYERS in the selected season and team." TextWrapping="Wrap"/>
+				<TextBlock Text="6. Add STATS in the selected match." TextWrapping="Wrap"/>
+			</ListView>
 
-    </Grid>
+			<TextBlock Text="Page handling" FontWeight="Normal" FontSize="20" Margin="0,20,0,0"/>
+
+			<TextBlock Text="Adding item" FontWeight="Normal" Margin="0,25,0,10" FontSize="18"/>
+			<TextBlock Text="Adding new item is performed by clicking on button 'Add new' in the buttons top pane." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="After clicking, editable fields enable and there you can set your values." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="All fields must be set. If any field is empty, dialog with a message appers" TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="Then by clicking on button 'Add' you add new item with your values into list." TextWrapping="Wrap" Margin="0,0,0,5"/>
+
+			<TextBlock Text="Editing item" FontWeight="Normal" Margin="0,25,0,10" FontSize="18"/>
+			<TextBlock Text="Editing selected item is performed by clicking on button 'Edit' in the buttons top pane." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="After clicking, editable fields enable and there you can set new values for specific field." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="All fields must be set. If any field is empty, dialog with a message appers" TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="Then by clicking on button 'Edit' you edit selected item with new values." TextWrapping="Wrap" Margin="0,0,0,5"/>
+
+			<TextBlock Text="Removing item" FontWeight="Normal" Margin="0,25,0,10" FontSize="18"/>
+			<TextBlock Text="Removing selected item is performed by clicking on button 'Remove' in the buttons top pane." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="After clicking, there are two options that can happen:" TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="1) if the selected item DOESN'T occur in any other items, removing dialog appears to confirm remove" TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="2) if the selected item DOES occur in any other items, you have to remove it from the other items and then you'll be able to remove selected item." TextWrapping="Wrap" Margin="0,0,0,5"/>
+
+		</StackPanel>
+	</Grid>
 </Page>
