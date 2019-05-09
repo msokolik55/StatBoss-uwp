@@ -63,7 +63,7 @@
 
 				<Button Grid.Column="0" Grid.Row="0" x:Name="ButtAdd" Content="Add new" VerticalAlignment="Center" Click="ButtAdd_Click" IsEnabled="False" HorizontalAlignment="Center" Margin="0,0,10,0"/>
 				<Button Grid.Column="1" Grid.Row="0" x:Name="ButtEditSelected" Content="Edit" VerticalAlignment="Center" Click="ButtEditSelected_Click" HorizontalAlignment="Center" Margin="0,0,10,0"/>
-				<Button Grid.Column="2" Grid.Row="0" x:Name="ButtRemoveDB" Content="Remove" VerticalAlignment="Center" Click="ButtRemoveDB_Click" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+				<Button Grid.Column="2" Grid.Row="0" x:Name="ButtDeleteDB" Content="Delete" VerticalAlignment="Center" Click="ButtDeleteDB_Click" HorizontalAlignment="Center" Margin="0,0,10,0"/>
 				<Button Grid.Column="3" Grid.Row="0" x:Name="ButtSelect" Content="Select" VerticalAlignment="Center" Click="ButtSelect_Click" HorizontalAlignment="Center" Margin="0,0,10,0"/>
 			</Grid>
 

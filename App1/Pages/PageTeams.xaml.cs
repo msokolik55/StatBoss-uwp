@@ -45,7 +45,7 @@ namespace App1.Pages
         {
             ButtAdd.IsEnabled = true;
             ButtEditSelected.IsEnabled = false;
-            ButtRemoveDB.IsEnabled = false;
+            ButtDeleteDB.IsEnabled = false;
             ButtSelect.IsEnabled = false;
 
             Classes.PageHandling.ListViewHandling.ResetListView(ListViewItems);
@@ -78,7 +78,7 @@ namespace App1.Pages
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtEditSelected.IsEnabled = true;
-            ButtRemoveDB.IsEnabled = true;
+            ButtDeleteDB.IsEnabled = true;
             ButtSelect.IsEnabled = true;
 
             ButtAddToDB.Visibility = Visibility.Collapsed;
@@ -105,7 +105,7 @@ namespace App1.Pages
         private void ButtAdd_Click(object sender, RoutedEventArgs e)
         {
             ButtEditSelected.IsEnabled = false;
-            ButtRemoveDB.IsEnabled = false;
+            ButtDeleteDB.IsEnabled = false;
             ButtSelect.IsEnabled = false;
 
             TextBoxID.Text = (DataAccess.GetMaxID(sTableName) + 1).ToString();
@@ -129,7 +129,7 @@ namespace App1.Pages
             EnableEditableElements(true);
         }
 
-        private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
+        private void ButtDeleteDB_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.RemoveItem(tables, "nIDVSTeam", int.Parse(TextBoxID.Text), sTableName, ResetPage);
         }

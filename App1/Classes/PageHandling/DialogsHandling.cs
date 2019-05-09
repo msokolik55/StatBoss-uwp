@@ -13,10 +13,10 @@ namespace App1.Classes.PageHandling
         {
             ContentDialog deleteFileDialog = new ContentDialog
             {
-                Title = "Chcete odstrániť danú položku?",
-                Content = "Tento krok nebudete môcť vrátiť späť.",
-                PrimaryButtonText = "Odstrániť",
-                CloseButtonText = "Zatvoriť"
+                Title = "Delete this item?",
+                Content = "This item will be deleted permanently.",
+                PrimaryButtonText = "Delete",
+                CloseButtonText = "Close"
             };
 
             ContentDialogResult result = await deleteFileDialog.ShowAsync();
@@ -43,7 +43,7 @@ namespace App1.Classes.PageHandling
         {
             ContentDialog noAllFieldsDialog = new ContentDialog
             {
-                Title = "No fiiled fields",
+                Title = "No filled fields",
                 Content = "All fields have to be filled correctly.",
                 CloseButtonText = "OK"
             };
