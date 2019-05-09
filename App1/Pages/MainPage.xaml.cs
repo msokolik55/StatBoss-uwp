@@ -43,20 +43,28 @@ namespace App1
             {
             }
 
-            if (DataAccess.NIDActualSeason != -1)
+            if (DataAccess.NIDActualSeason != 0)
             {
                 SqliteDataReader season = DataAccess.QueryDB("SELECT * FROM tbl_seasons WHERE nID='" + DataAccess.NIDActualSeason + "'");
                 string sSeason = "";
                 while (season.Read()) { sSeason = season.GetString(season.GetOrdinal("sName")); }
                 ActualSeason.Content = "Season: " + sSeason;
             }
+            else
+            {
+                ActualSeason.Content = "Season: Add season";
+            }
 
-            if (DataAccess.NIDActualTeam != -1)
+            if (DataAccess.NIDActualTeam != 0)
             {
                 SqliteDataReader team = DataAccess.QueryDB("SELECT * FROM tbl_teams WHERE nID='" + DataAccess.NIDActualTeam + "'");
                 string sTeam = "";
                 while (team.Read()) { sTeam = team.GetString(team.GetOrdinal("sCategoryName")); }
                 ActualTeam.Content = "Team: " + sTeam;
+            }
+            else
+            {
+                ActualTeam.Content = "Team: Add team";
             }
         }
 

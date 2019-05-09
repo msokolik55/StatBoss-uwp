@@ -12,7 +12,7 @@ namespace App1
 {
     public static class DataAccess
     {
-        private static int nIDActualSeason = -1;
+        private static int nIDActualSeason;
         public static int NIDActualSeason
         {
             get { return nIDActualSeason; }
@@ -20,8 +20,8 @@ namespace App1
             {
                 nIDActualSeason = value;
 
-                string sCommand = "SELECT * FROM tbl_seasons WHERE nID='" + DataAccess.nIDActualSeason + "'";
-                SqliteDataReader query = DataAccess.QueryDB(sCommand);
+                string sCommand = "SELECT * FROM tbl_seasons WHERE nID='" + nIDActualSeason + "'";
+                SqliteDataReader query = QueryDB(sCommand);
 
                 string sName = "";
                 while (query.Read())
@@ -36,7 +36,8 @@ namespace App1
                     Grid grid = mp.Content as Grid;
                     NavigationViewItem nvItem = grid.FindName("ActualSeason") as NavigationViewItem;
 
-                    nvItem.Content = "Season: " + sName;
+                    string content = (sName != "") ? sName : "Add season";
+                    nvItem.Content = "Season: " + content;
                 }
                 catch (Exception)
                 {
@@ -44,7 +45,7 @@ namespace App1
             }
         }
 
-        private static int nIDActualTeam = -1;
+        private static int nIDActualTeam;
         public static int NIDActualTeam
         {
             get { return nIDActualTeam; }
@@ -52,8 +53,8 @@ namespace App1
             {
                 nIDActualTeam = value;
 
-                string sCommand = "SELECT * FROM tbl_teams WHERE nID='" + DataAccess.nIDActualTeam + "'";
-                SqliteDataReader query = DataAccess.QueryDB(sCommand);
+                string sCommand = "SELECT * FROM tbl_teams WHERE nID='" + nIDActualTeam + "'";
+                SqliteDataReader query = QueryDB(sCommand);
 
                 string sName = "";
                 while (query.Read())
@@ -68,7 +69,8 @@ namespace App1
                     Grid grid = mp.Content as Grid;
                     NavigationViewItem nvItem = grid.FindName("ActualTeam") as NavigationViewItem;
 
-                    nvItem.Content = "Team: " + sName;
+                    string content = (sName != "") ? sName : "Add team";
+                    nvItem.Content = "Team: " + content;
                 }
                 catch (Exception)
                 {
@@ -236,9 +238,9 @@ namespace App1
             int nMaxID = 0;
 
             string sCommand = "SELECT MAX(nID) FROM " + sTableName;
-            if(bSeason) { sCommand += " WHERE nIDSeason='" + DataAccess.nIDActualSeason + "'"; }
+            if(bSeason) { sCommand += " WHERE nIDSeason='" + nIDActualSeason + "'"; }
 
-            SqliteDataReader query = DataAccess.QueryDB(sCommand);
+            SqliteDataReader query = QueryDB(sCommand);
 
             while (query.Read())
             {
@@ -257,8 +259,8 @@ namespace App1
 
         public static string GetOpponent(int nID)
         {
-            string sCommand = "SELECT * FROM tbl_opponents WHERE nID='" + nID + "' AND nIDSeason='" + DataAccess.NIDActualSeason + "'";
-            SqliteDataReader query = DataAccess.QueryDB(sCommand);
+            string sCommand = "SELECT * FROM tbl_opponents WHERE nID='" + nID + "' AND nIDSeason='" + NIDActualSeason + "'";
+            SqliteDataReader query = QueryDB(sCommand);
 
             string sOpponent = "";
             while (query.Read())
@@ -271,8 +273,8 @@ namespace App1
 
         public static string GetPlayer(int nID)
         {
-            string sCommand = "SELECT * FROM tbl_players WHERE nID='" + nID + "' AND nIDSeason='" + DataAccess.NIDActualSeason + "'";
-            SqliteDataReader query = DataAccess.QueryDB(sCommand);
+            string sCommand = "SELECT * FROM tbl_players WHERE nID='" + nID + "' AND nIDSeason='" + NIDActualSeason + "'";
+            SqliteDataReader query = QueryDB(sCommand);
 
             string sPlayer = "";
             while (query.Read())
