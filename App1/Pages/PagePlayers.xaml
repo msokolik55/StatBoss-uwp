@@ -113,7 +113,7 @@
 			<TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxSurname" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="Surname"/>
 
 			<TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Birthday:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<DatePicker Grid.Row="3" Grid.Column="2" x:Name="DatePickerBirthday" HorizontalAlignment="Left" Margin="0,5,0,5" VerticalAlignment="Top" YearFormat="{}{year.full}"/>
+			<CalendarDatePicker Grid.Row="3" Grid.Column="2" x:Name="DatePickerBirthday" HorizontalAlignment="Left" Margin="0,5,0,5" VerticalAlignment="Top" DayOfWeekFormat="{}{dayofweek.abbreviated}" PlaceholderText="select a date" FirstDayOfWeek="Monday" DateFormat="{}{day.integer} {month.full} {year.full}"/>
 
 			<TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Position:" TextWrapping="Wrap" VerticalAlignment="Top"/>
 			<ComboBox Grid.Row="4" Grid.Column="2" x:Name="ComboBoxPosition" HorizontalAlignment="Left" Margin="0,5,0,5" VerticalAlignment="Top" Width="153"/>

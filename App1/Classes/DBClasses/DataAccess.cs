@@ -225,7 +225,7 @@ namespace App1
                 }
                 catch (SqliteException exception)
                 {
-                    DisplayException(exception.ToString());
+                    DisplayException(sCommand + "\n" + exception.ToString());
                 }
                 db.Close();
             }
@@ -303,7 +303,7 @@ namespace App1
             }
             else
             {
-                Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(tableName, id, resetPage, NIDActualSeason);
+                Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(tableName, id, resetPage, isItemSeason);
             }
         }
 

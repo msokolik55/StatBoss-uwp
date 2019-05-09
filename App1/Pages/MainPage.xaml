@@ -10,27 +10,27 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Grid>
-		<NavigationView ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" PaneTitle="StatBoss">
+		<NavigationView x:Name="NavMain" ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" PaneTitle="StatBoss" Header="Instructions">
 		<NavigationView.MenuItems>
 			<NavigationViewItemHeader Content="Main"/>
-			<NavigationViewItem Content="Instructions" Tag="Instructions" Icon="Home"/>
-			<NavigationViewItem Content="Players Stats" Icon="Contact2"/>
+			<NavigationViewItem Content="Instructions" Icon="Home"/>
+			<NavigationViewItem Content="Overall Stats" Icon="Contact2"/>
 			<NavigationViewItemSeparator/>
 
 			<NavigationViewItemHeader Content="Edit"/>
-			<NavigationViewItem Content="Players" Tag="Players" Icon="AddFriend"/>
-			<NavigationViewItem Content="Matches" Tag="Matches" Icon="Paste"/>
-			<NavigationViewItem Content="Stats in Matches" Tag="StatsMatches" Icon="ContactInfo"/>
+			<NavigationViewItem Content="Players" Icon="AddFriend"/>
+			<NavigationViewItem Content="Matches" Icon="Paste"/>
+			<NavigationViewItem Content="Stats in Matches" Icon="ContactInfo"/>
 			<NavigationViewItemSeparator/>
 
 			<NavigationViewItemHeader Content="Administration"/>
-			<NavigationViewItem Content="Seasons" Tag="Seasons" Icon="Calendar"/>
-			<NavigationViewItem Content="Teams" Tag="Teams" Icon="People"/>
-			<NavigationViewItem Content="Opponents" Tag="Opponents" Icon="LikeDislike"/>
-			<NavigationViewItem Content="Positions" Tag="Positions" Icon="ContactPresence"/>
+			<NavigationViewItem Content="Seasons" Icon="Calendar"/>
+			<NavigationViewItem Content="Teams" Icon="People"/>
+			<NavigationViewItem Content="Opponents" Icon="LikeDislike"/>
+			<NavigationViewItem Content="Positions" Icon="ContactPresence"/>
 			<NavigationViewItemSeparator/>
 
-			<NavigationViewItem Content="About" Tag="About" Icon="Link"/>
+			<NavigationViewItem Content="About" Icon="Link"/>
 		</NavigationView.MenuItems>
 		
 			<NavigationView.PaneFooter>

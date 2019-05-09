@@ -141,14 +141,14 @@ namespace App1.Pages
         {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
-                var team = new Classes.DBClasses.Team
+                var opponent = new Classes.DBClasses.Opponent
                 {
                     nID = int.Parse(TextBoxID.Text),
                     nIDSeason = DataAccess.NIDActualSeason,
                     sName = TextBoxName.Text,
                 };
 
-                team.ChangeDB(action);
+                opponent.ChangeDB(action);
                 ResetPage();
             }
             else

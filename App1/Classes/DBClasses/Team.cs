@@ -96,13 +96,13 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_teams (nID, nIDSeason, sCategoryName, sName, nYearFrom, nYearTo)" +
+                    sCommand = "INSERT INTO tbl_teams (nID, nIDSeason, sCategoryName, sName)" +
                               " VALUES('" + nID + "', '" + nIDSeason + "', '" + sShortName + "', '" + sName + "')";
                     break;
 
                 case "edit":
                     sCommand = "UPDATE tbl_teams SET sCategoryName='" + sShortName + "', " +
-                                                    "sName='" + sName + "', " +
+                                                    "sName='" + sName + "' " +
                                 "WHERE nID = '" + nID + "' AND nIDSeason = '" + nIDSeason + "'";
 
                     break;

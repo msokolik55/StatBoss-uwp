@@ -174,15 +174,15 @@ namespace App1.Pages
             DatePicker.Date = DateTime.Now;
             TextBoxPlace.Text = "";
             CheckBoxHome.IsChecked = false;
-            TextBoxGive.Text = "";
-            TextBoxGive1.Text = "";
-            TextBoxGive2.Text = "";
-            TextBoxGive3.Text = "";
-            TextBoxReceived.Text = "";
-            TextBoxReceived1.Text = "";
-            TextBoxReceived2.Text = "";
-            TextBoxReceived3.Text = "";
-            TextBoxDescription.Text = "";
+            TextBoxGive.Text = "0";
+            TextBoxGive1.Text = "0";
+            TextBoxGive2.Text = "0";
+            TextBoxGive3.Text = "0";
+            TextBoxReceived.Text = "0";
+            TextBoxReceived1.Text = "0";
+            TextBoxReceived2.Text = "0";
+            TextBoxReceived3.Text = "0";
+            TextBoxDescription.Text = " ";
 
             ListViewItems.SelectedIndex = -1;
 

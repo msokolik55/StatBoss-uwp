@@ -16,17 +16,12 @@ namespace App1.Classes.DBClasses
         public DateTime dBirthday;
         public int nIDUserTeam;
         public int nIDPosition;
-        //public int nMinutes;
-        //public int nGoals;
-        //public int nAssists;
-        //public int nPenalties;
-        //public int nRedCards;
 
         public Player()
         {
         }
 
-        public Player(int id, string sfirstname, string ssurname, DateTime dbirthday, int niduserteam, int position)//, int nminutes, int ngoals, int nassists, int npenalties, int nredcards)
+        public Player(int id, string sfirstname, string ssurname, DateTime dbirthday, int niduserteam, int position)
         {
             this.nID = id;
             this.sFirstName = sfirstname;
@@ -34,14 +29,9 @@ namespace App1.Classes.DBClasses
             this.dBirthday = dbirthday;
             this.nIDUserTeam = niduserteam;
             this.nIDPosition = position;
-            //this.nMinutes = nminutes;
-            //this.nGoals = ngoals;
-            //this.nAssists = nassists;
-            //this.nPenalties = npenalties;
-            //this.nRedCards = nredcards;
         }
 
-        private void FillList(List<Player> ListAllItems, bool bStatsInfo, string sWhere, string sOrder)
+        private void FillList(List<Player> ListAllItems, string sWhere, string sOrder)
         {
             string sCommand = "SELECT * FROM tbl_players WHERE nIDSeason='" + DataAccess.NIDActualSeason + "' AND nIDVSTeam='" + DataAccess.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
@@ -63,7 +53,7 @@ namespace App1.Classes.DBClasses
 
         public void ShowItemsInListView(ListView ListViewItems, List<Player> ListAllItems, string sWhere = "", string sOrder = "")
         {
-            new Player().FillList(ListAllItems, false, sWhere, sOrder);
+            new Player().FillList(ListAllItems, sWhere, sOrder);
             PageHandling.ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)
@@ -88,7 +78,7 @@ namespace App1.Classes.DBClasses
 
         public void ShowInComboBox(List<Player> ListAllItems, ComboBox comboBox, string toRemove, string sWhere = "", string sOrder = "")
         {
-            FillList(ListAllItems, true, sWhere, sOrder);
+            FillList(ListAllItems, sWhere, sOrder);
             PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
 
             foreach (var iplayer in ListAllItems)
@@ -129,14 +119,15 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_players (nIDSeason, sFirstName, sSurname, dBirthday, nIDVSTeam) " +
-                              " VALUES('" + DataAccess.NIDActualSeason + "', '" + sFirstName + "', '" + sSurname + "', '" + dBirthday.ToString("yyyy-MM-dd") + "', '" + DataAccess.NIDActualTeam + "', ')";
+                    sCommand = "INSERT INTO tbl_players (nID, nIDSeason, sFirstName, sSurname, dBirthday, nIDVSTeam, nIDPosition) " +
+                               "VALUES('" + nID + "', '" + DataAccess.NIDActualSeason + "', '" + sFirstName + "', '" + sSurname + "', '" + dBirthday.ToString("yyyy-MM-dd") + "', '" + DataAccess.NIDActualTeam + "', '" + nIDPosition + "')";
                     break;
 
                 case "edit":
                     sCommand = "UPDATE tbl_players SET sFirstName='" + sFirstName + "', " +
                                                      "sSurname='" + sSurname + "', " +
-                                                     "dBirthday='" + dBirthday + "' " +
+                                                     "dBirthday='" + dBirthday + "', " +
+                                                     "nIDPosition='" + nIDPosition + "' " +
                               "WHERE nID = '" + nID + "' AND nIDSeason = '" + DataAccess.NIDActualSeason + "'";
                     break;
             }

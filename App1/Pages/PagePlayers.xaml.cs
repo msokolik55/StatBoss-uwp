@@ -173,16 +173,16 @@ namespace App1
         {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
-                DateTimeOffset date = DatePickerBirthday.Date;
+                DateTimeOffset date = (DateTimeOffset)DatePickerBirthday.Date;
 
                 var player = new Classes.DBClasses.Player
                 {
                     nID = int.Parse(TextBoxID.Text),
                     sFirstName = TextBoxFirstName.Text,
                     sSurname = TextBoxSurname.Text,
-
                     dBirthday = new DateTime(date.Year, date.Month, date.Day),
-                    nIDUserTeam = DataAccess.NIDActualTeam
+                    nIDUserTeam = DataAccess.NIDActualTeam,
+                    nIDPosition = Classes.PageHandling.ComboBoxHandling.GetIDFromComboBox(ComboBoxPosition.SelectedItem, toRemove)
                 };
 
                 player.ChangeDB(action);

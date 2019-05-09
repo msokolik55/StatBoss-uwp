@@ -9,7 +9,7 @@ namespace App1.Classes.PageHandling
 {
     public static class DialogsHandling
     {
-        public static async void DisplayDeleteItemDialog(string sTableName, int nID, Action action, int nIDSeason = -1)
+        public static async void DisplayDeleteItemDialog(string sTableName, int nID, Action action, bool isItemSeason = false)
         {
             ContentDialog deleteFileDialog = new ContentDialog
             {
@@ -24,8 +24,7 @@ namespace App1.Classes.PageHandling
             if (result == ContentDialogResult.Primary)
             {
                 string sCommand = "DELETE FROM " + sTableName + " WHERE nID = '" + nID + "'";
-
-                if (nIDSeason != -1) { sCommand += " AND nIDSeason = '" + nIDSeason + "'"; }
+                if (!isItemSeason) { sCommand += " AND nIDSeason='" + DataAccess.NIDActualSeason + "'"; }
 
                 DataAccess.ExecDB(sCommand);
 
@@ -44,8 +43,8 @@ namespace App1.Classes.PageHandling
         {
             ContentDialog noAllFieldsDialog = new ContentDialog
             {
-                Title = "Nevyplnené všetky polia.",
-                Content = "Skontrolujte, či máte zadané všetky údaje správne.",
+                Title = "No fiiled fields",
+                Content = "All fields have to be filled correctly.",
                 CloseButtonText = "OK"
             };
 
@@ -56,7 +55,7 @@ namespace App1.Classes.PageHandling
         {
             ContentDialog areAppearancesDialog = new ContentDialog
             {
-                Title = "Can't delete this item.",
+                Title = "Can't delete this item",
                 Content = "Firstly delete all appearances of this item in other tables.",
                 CloseButtonText = "OK"
             };

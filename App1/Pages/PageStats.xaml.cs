@@ -180,8 +180,8 @@ namespace App1.Pages
             ButtRemoveDB.IsEnabled = false;
 
             actualMatch = new Classes.DBClasses.Match().GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
-            ShowItemsInListView();
             ListViewItems.IsEnabled = true;
+            ShowItemsInListView();
         }
 
         // ---------------------------
@@ -221,7 +221,7 @@ namespace App1.Pages
 
         private void ButtRemoveDB_Click(object sender, RoutedEventArgs e)
         {
-            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage, DataAccess.NIDActualSeason);
+            Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(sTableName, int.Parse(TextBoxID.Text), ResetPage, false);
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)

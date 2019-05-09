@@ -68,7 +68,7 @@ namespace App1
                     ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
                     break;
 
-                case "Players Stats":
+                case "Overall Stats":
                     ContentFrame.Navigate(typeof(StatBoss.Pages.PageOverallStats));
                     break;
 
@@ -103,7 +103,9 @@ namespace App1
                 case "About":
                     Classes.PageHandling.DialogsHandling.DisplayAbout();
                     break;
-            }            
+            }
+
+            if (!args.InvokedItem.Equals("About")) { NavMain.Header = args.InvokedItem; }
         }
     }
 }

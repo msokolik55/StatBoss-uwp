@@ -11,6 +11,7 @@ namespace App1.Classes.DBClasses
     public class Opponent
     {
         public int nID;
+        public int nIDSeason;
         public string sName;
         public DateTime dInserted;
         public DateTime dUpdated;
@@ -19,9 +20,10 @@ namespace App1.Classes.DBClasses
         {
         }
 
-        public Opponent(int id, string sname, DateTime dinserted, DateTime dupdated)
+        public Opponent(int id, int nidseason, string sname, DateTime dinserted, DateTime dupdated)
         {
             this.nID = id;
+            this.nIDSeason = nidseason;
             this.sName = sname;
             this.dInserted = dinserted;
             this.dUpdated = dupdated;
@@ -99,7 +101,7 @@ namespace App1.Classes.DBClasses
                     break;
 
                 case "edit":
-                    sCommand = "UPDATE tbl_opponents SET sName='" + sName + "', dUpdated=datetime('now') WHERE nID = " + nID + "AND nIDSeason = " + DataAccess.NIDActualSeason;
+                    sCommand = "UPDATE tbl_opponents SET sName='" + sName + "', dUpdated=datetime('now') WHERE nID = " + nID + " AND nIDSeason = " + DataAccess.NIDActualSeason;
                     break;
             }
 
