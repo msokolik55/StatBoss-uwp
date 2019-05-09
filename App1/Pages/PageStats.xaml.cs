@@ -195,12 +195,12 @@ namespace App1.Pages
             TextBoxID.Text = (DataAccess.GetMaxID(sTableName) + 1).ToString();
             ComboBoxPlayer.SelectedIndex = -1;
             ComboBoxPosition.SelectedIndex = -1;
-            TextBoxNumber.Text = "";
-            TextBoxMinutes.Text = "";
-            TextBoxGoals.Text = "";
-            TextBoxAssists.Text = "";
-            TextBoxPenalties.Text = "";
-            TextBoxRedCards.Text = "";
+            TextBoxNumber.Text = "0";
+            TextBoxMinutes.Text = "0";
+            TextBoxGoals.Text = "0";
+            TextBoxAssists.Text = "0";
+            TextBoxPenalties.Text = "0";
+            TextBoxRedCards.Text = "0";
 
             ListViewItems.SelectedIndex = -1;
 

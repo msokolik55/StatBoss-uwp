@@ -119,7 +119,7 @@ namespace App1.Pages
 
         private void ButtDeleteDB_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.RemoveItem(tables, "nIDPosition", int.Parse(TextBoxID.Text), sTableName, ResetPage);
+            DataAccess.RemoveItem(tables, "nIDPosition", int.Parse(TextBoxID.Text), sTableName, ResetPage, false);
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)

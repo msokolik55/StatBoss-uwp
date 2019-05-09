@@ -48,7 +48,7 @@ namespace App1.Pages
         // ---------------------------
         private void ResetPage()
         {
-            ButtAdd.IsEnabled = true;
+            ButtAdd.IsEnabled = (DataAccess.NIDActualSeason > 0 && DataAccess.NIDActualTeam > 0) ? true : false;
             ButtEditSelected.IsEnabled = false;
             ButtDeleteDB.IsEnabled = false;
 

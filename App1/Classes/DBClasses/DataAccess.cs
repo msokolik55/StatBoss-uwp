@@ -295,25 +295,25 @@ namespace App1
             ContentDialogResult result = await dialogException.ShowAsync();
         }
 
-        public static void RemoveItem(string[] tables, string columnNameInDB, int id, string tableName, Action resetPage, bool isItemSeason=false)
+        public static void RemoveItem(string[] tables, string columnNameInDB, int id, string tableName, Action resetPage, bool seasonInTable = true)
         {
-            if (IsAppearance(tables, columnNameInDB, id, isItemSeason))
+            if (IsAppearance(tables, columnNameInDB, id, seasonInTable))
             {
                 Classes.PageHandling.DialogsHandling.DisplayAreAppearances();
             }
             else
             {
-                Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(tableName, id, resetPage, isItemSeason);
+                Classes.PageHandling.DialogsHandling.DisplayDeleteItemDialog(tableName, id, resetPage, seasonInTable);
             }
         }
 
-        private static bool IsAppearance(string[] tables, string columnNameInDB, int id, bool isItemSeason = false)
+        private static bool IsAppearance(string[] tables, string columnNameInDB, int id, bool seasonInTable=true)
         {
             bool appearance = false;
             foreach (string table in tables)
             {
                 string sCommand = "SELECT * FROM " + table + " WHERE " + columnNameInDB + "='" + id + "'";
-                if (!isItemSeason) { sCommand += " AND nIDSeason='" + NIDActualSeason + "'"; }
+                if (seasonInTable) { sCommand += " AND nIDSeason='" + NIDActualSeason + "'"; }
 
                 SqliteDataReader query = QueryDB(sCommand);
                 if (query.HasRows) { appearance = true; };
