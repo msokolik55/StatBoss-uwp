@@ -14,21 +14,17 @@ namespace App1.Classes.DBClasses
         public int nIDSeason;
         public string sShortName;
         public string sName;
-        public int nYearFrom;
-        public int nYearTo;
 
         public Team()
         {
         }
 
-        public Team(int id, int nidseason, string sshortname, string sname, int nyearfrom, int nyearto)
+        public Team(int id, int nidseason, string sshortname, string sname)
         {
             this.nID = id;
             this.nIDSeason = nidseason;
             this.sShortName = sname;
             this.sName = sname;
-            this.nYearFrom = nyearfrom;
-            this.nYearTo = nyearto;
         }
 
         private void FillList(List<Team> ListAllItems, string sWhere, string sOrder)
@@ -42,9 +38,7 @@ namespace App1.Classes.DBClasses
                 {
                     nID = query.GetInt32(query.GetOrdinal("nID")),
                     sShortName = query.GetString(query.GetOrdinal("sCategoryName")),
-                    sName = query.GetString(query.GetOrdinal("sName")),
-                    nYearFrom = query.GetInt32(query.GetOrdinal("nYearFrom")),
-                    nYearTo = query.GetInt32(query.GetOrdinal("nYearTo"))
+                    sName = query.GetString(query.GetOrdinal("sName"))
                 };
 
                 ListAllItems.Add(item);
@@ -103,14 +97,12 @@ namespace App1.Classes.DBClasses
             {
                 case "add":
                     sCommand = "INSERT INTO tbl_teams (nID, nIDSeason, sCategoryName, sName, nYearFrom, nYearTo)" +
-                              " VALUES('" + nID + "', '" + nIDSeason + "', '" + sShortName + "', '" + sName + "', '" + nYearFrom + "', '" + nYearTo + "')";
+                              " VALUES('" + nID + "', '" + nIDSeason + "', '" + sShortName + "', '" + sName + "')";
                     break;
 
                 case "edit":
                     sCommand = "UPDATE tbl_teams SET sCategoryName='" + sShortName + "', " +
                                                     "sName='" + sName + "', " +
-                                                    "nYearFrom='" + nYearFrom + "', " +
-                                                    "nYearTo='" + nYearTo + "' " +
                                 "WHERE nID = '" + nID + "' AND nIDSeason = '" + nIDSeason + "'";
 
                     break;

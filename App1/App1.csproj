@@ -149,8 +149,8 @@
     <Compile Include="Pages\PageMatches.xaml.cs">
       <DependentUpon>PageMatches.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PagePlayersStats.xaml.cs">
-      <DependentUpon>PagePlayersStats.xaml</DependentUpon>
+    <Compile Include="Pages\PageOverallStats.xaml.cs">
+      <DependentUpon>PageOverallStats.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageStats.xaml.cs">
       <DependentUpon>PageStats.xaml</DependentUpon>
@@ -160,9 +160,6 @@
     </Compile>
     <Compile Include="Pages\PagePositions.xaml.cs">
       <DependentUpon>PagePositions.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PageTest.xaml.cs">
-      <DependentUpon>PageTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PagePlayers.xaml.cs">
       <DependentUpon>PagePlayers.xaml</DependentUpon>
@@ -247,7 +244,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PagePlayersStats.xaml">
+    <Page Include="Pages\PageOverallStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,10 +257,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PagePositions.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PageTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

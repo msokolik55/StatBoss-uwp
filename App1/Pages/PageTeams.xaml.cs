@@ -55,8 +55,6 @@ namespace App1.Pages
             TextBoxID.Text = "";
             TextBoxShortName.Text = "";
             TextBoxName.Text = "";
-            TextBoxYearFrom.Text = "";
-            TextBoxYearTo.Text = "";
 
             ButtAddToDB.Visibility = Visibility.Collapsed;
             ButtEditDB.Visibility = Visibility.Collapsed;
@@ -66,8 +64,6 @@ namespace App1.Pages
         {
             TextBoxShortName.IsEnabled = enabled;
             TextBoxName.IsEnabled = enabled;
-            TextBoxYearFrom.IsEnabled = enabled;
-            TextBoxYearTo.IsEnabled = enabled;
         }
 
         // ---------------------------
@@ -97,8 +93,6 @@ namespace App1.Pages
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxShortName.Text = selectedItem.sShortName;
                 TextBoxName.Text = selectedItem.sName;
-                TextBoxYearFrom.Text = selectedItem.nYearFrom.ToString();
-                TextBoxYearTo.Text = selectedItem.nYearTo.ToString();
             }
             catch (Exception)
             {
@@ -117,8 +111,6 @@ namespace App1.Pages
             TextBoxID.Text = (DataAccess.GetMaxID(sTableName) + 1).ToString();
             TextBoxShortName.Text = "";
             TextBoxName.Text = "";
-            TextBoxYearFrom.Text = "";
-            TextBoxYearTo.Text = "";
 
             ListViewItems.SelectedIndex = -1;
 
@@ -166,9 +158,7 @@ namespace App1.Pages
                     nID = int.Parse(TextBoxID.Text),
                     nIDSeason = DataAccess.NIDActualSeason,
                     sShortName = TextBoxShortName.Text,
-                    sName = TextBoxName.Text,
-                    nYearFrom = int.Parse(TextBoxYearFrom.Text),
-                    nYearTo = int.Parse(TextBoxYearTo.Text)
+                    sName = TextBoxName.Text
                 };
 
                 team.ChangeDB(action);

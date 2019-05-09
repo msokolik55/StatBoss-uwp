@@ -95,40 +95,31 @@
 				<ColumnDefinition Width="10"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
 
-			<TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5"/>
-			<TextBox Grid.Row="1" Grid.Column="2" x:Name="TextBoxID" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" IsReadOnly="True" PlaceholderText="0-..." Height="29" AutomationProperties.HelpText="nID" Margin="0,5,0,5" FontFamily="Segoe UI" Tag="number"/>
+			<TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5"/>
+			<TextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxID" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" IsReadOnly="True" PlaceholderText="0-..." Height="29" AutomationProperties.HelpText="nID" Margin="0,5,0,5" FontFamily="Segoe UI" Tag="number"/>
 
-			<TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="First name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxFirstName" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="First name"/>
+			<TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="First name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="1" Grid.Column="2" x:Name="TextBoxFirstName" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="First name"/>
 
-			<TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Surname:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="3" Grid.Column="2" x:Name="TextBoxSurname" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="Surname"/>
+			<TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Surname:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxSurname" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" PlaceholderText="Surname"/>
 
-			<TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Birthday:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<DatePicker Grid.Row="4" Grid.Column="2" x:Name="DatePickerBirthday" HorizontalAlignment="Left" Margin="0,5,0,5" VerticalAlignment="Top" YearFormat="{}{year.full}"/>
+			<TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Birthday:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<DatePicker Grid.Row="3" Grid.Column="2" x:Name="DatePickerBirthday" HorizontalAlignment="Left" Margin="0,5,0,5" VerticalAlignment="Top" YearFormat="{}{year.full}"/>
 
-			<TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Position:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<ComboBox Grid.Row="5" Grid.Column="2" x:Name="ComboBoxPosition" HorizontalAlignment="Left" Margin="0,5,0,5" VerticalAlignment="Top" Width="153"/>
+			<TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Position:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<ComboBox Grid.Row="4" Grid.Column="2" x:Name="ComboBoxPosition" HorizontalAlignment="Left" Margin="0,5,0,5" VerticalAlignment="Top" Width="153"/>
 
-			<Button Grid.Row="6" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
-			<Button Grid.Row="6" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
-
-			<TextBox Grid.Row="7" Grid.Column="1" x:Name="testText" HorizontalAlignment="Left" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Center" Height="29"/>
+			<Button Grid.Row="5" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
+			<Button Grid.Row="5" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
 		</Grid>
 	</Grid>
 

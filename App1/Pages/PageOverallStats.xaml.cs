@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,19 +15,19 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace App1.Pages
+namespace StatBoss.Pages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PagePlayersStats : Page
+    public sealed partial class PageOverallStats : Page
     {
-        List<Classes.DBClasses.OverallStat> ListAllItems;
+        List<App1.Classes.DBClasses.OverallStat> ListAllItems;
 
         private bool bSortGoalsASC = true;
         private bool bSortAssistsASC = true;
 
-        public PagePlayersStats()
+        public PageOverallStats()
         {
             this.InitializeComponent();
 
@@ -40,11 +39,11 @@ namespace App1.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.OverallStat>();
+            ListAllItems = new List<App1.Classes.DBClasses.OverallStat>();
 
             try
             {
-                new Classes.DBClasses.OverallStat().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                new App1.Classes.DBClasses.OverallStat().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -55,10 +54,11 @@ namespace App1.Pages
         {
             try
             {
-                Classes.DBClasses.OverallStat selectedItem = new Classes.DBClasses.OverallStat().GetSelectedOverallStat(e, ListAllItems);
-                
+                App1.Classes.DBClasses.OverallStat selectedItem = new App1.Classes.DBClasses.OverallStat().GetSelectedOverallStat(e, ListAllItems);
+
                 TextBoxFirstName.Text = selectedItem.sFirstName;
                 TextBoxSurname.Text = selectedItem.sSurname;
+                TextBoxMatches.Text = selectedItem.nMatches.ToString();
                 TextBoxMinutes.Text = selectedItem.nMinutes.ToString();
                 TextBoxGoals.Text = selectedItem.nGoals.ToString();
                 TextBoxAssists.Text = selectedItem.nAssists.ToString();
@@ -100,4 +100,5 @@ namespace App1.Pages
             bSortAssistsASC = !bSortAssistsASC;
         }
     }
+
 }

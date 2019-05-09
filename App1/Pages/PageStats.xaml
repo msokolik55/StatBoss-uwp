@@ -113,68 +113,63 @@
 				<ColumnDefinition Width="10"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
 
-			<TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5"/>
-			<TextBox Grid.Row="1" Grid.Column="2" x:Name="TextBoxID" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" IsReadOnly="True" PlaceholderText="0-..." Height="29" AutomationProperties.HelpText="nID" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5"/>
+			<TextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxID" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" IsReadOnly="True" PlaceholderText="0-..." Height="29" AutomationProperties.HelpText="nID" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 
-			<TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Text="Player:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<ComboBox Grid.Row="2" Grid.Column="2" x:Name="ComboBoxPlayer" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="Player:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<ComboBox Grid.Row="1" Grid.Column="2" x:Name="ComboBoxPlayer" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 
-			<TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Text="Position:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<ComboBox Grid.Row="3" Grid.Column="2" x:Name="ComboBoxPosition" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Text="Position:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<ComboBox Grid.Row="2" Grid.Column="2" x:Name="ComboBoxPosition" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 
-			<TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Text="Number:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<TextBox Grid.Row="4" Grid.Column="2" x:Name="TextBoxNumber" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="29" Tag="number" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Text="Number:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<TextBox Grid.Row="3" Grid.Column="2" x:Name="TextBoxNumber" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="29" Tag="number" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 
-			<TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Text="Minutes:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<TextBox Grid.Row="5" Grid.Column="2" x:Name="TextBoxMinutes" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="24" Tag="number" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Text="Minutes:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<TextBox Grid.Row="4" Grid.Column="2" x:Name="TextBoxMinutes" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="24" Tag="number" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 
-			<TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Text="Goals:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<StackPanel Grid.Row="6" Grid.Column="2" Orientation="Horizontal">
+			<TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Text="Goals:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<StackPanel Grid.Row="5" Grid.Column="2" Orientation="Horizontal">
 				<TextBox x:Name="TextBoxGoals" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="2" Tag="number" Height="30" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 				<Button x:Name="ButtGoalsPlus" Content="+" Width="32" Margin="10,0,0,0" Click="ButtGoalsPlus_Click"/>
 				<Button x:Name="ButtGoalsMinus" Content="-" Width="32" Margin="10,0,0,0" Click="ButtGoalsMinus_Click"/>
 			</StackPanel>
 				
-			<TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Text="Assists:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<StackPanel Grid.Row="7" Grid.Column="2" Orientation="Horizontal">
+			<TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Text="Assists:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<StackPanel Grid.Row="6" Grid.Column="2" Orientation="Horizontal">
 				<TextBox x:Name="TextBoxAssists" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="1" Tag="number" Height="30" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 				<Button x:Name="ButtAssistsPlus" Content="+" Width="32" Margin="10,0,0,0" Click="ButtAssistsPlus_Click"/>
 				<Button x:Name="ButtAssistsMinus" Content="-" Width="32" Margin="10,0,0,0" Click="ButtAssistsMinus_Click"/>
 			</StackPanel>
 			
-			<TextBlock Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Text="Penalties:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<StackPanel Grid.Row="8" Grid.Column="2" Orientation="Horizontal">
+			<TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Text="Penalties:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<StackPanel Grid.Row="7" Grid.Column="2" Orientation="Horizontal">
 				<TextBox x:Name="TextBoxPenalties" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="5" Tag="number" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 				<Button x:Name="ButtPenaltiesPlus" Content="+" Width="32" Margin="10,0,0,0" Click="ButtPenaltiesPlus_Click"/>
 				<Button x:Name="ButtPenaltiesMinus" Content="-" Width="32" Margin="10,0,0,0" Click="ButtPenaltiesMinus_Click"/>
 			</StackPanel>
 			
-			<TextBlock Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" Text="Red Cards:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<StackPanel Grid.Row="9" Grid.Column="2" Orientation="Horizontal">
+			<TextBlock Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Text="Red Cards:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<StackPanel Grid.Row="8" Grid.Column="2" Orientation="Horizontal">
 				<TextBox x:Name="TextBoxRedCards" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="1" Tag="number" Height="30" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 				<Button x:Name="ButtRedCardsPlus" Content="+" Width="32" Margin="10,0,0,0" Click="ButtRedCardsPlus_Click"/>
 				<Button x:Name="ButtRedCardsMinus" Content="-" Width="32" Margin="10,0,0,0" Click="ButtRedCardsMinus_Click"/>
 			</StackPanel>
 			
-			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
-			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
-
-			<TextBox Grid.Row="11" Grid.Column="1" x:Name="testText" HorizontalAlignment="Left" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Center" Height="29"/>
+			<Button Grid.Row="9" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
+			<Button Grid.Row="9" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
 		</Grid>
 	</Grid>
 </Page>

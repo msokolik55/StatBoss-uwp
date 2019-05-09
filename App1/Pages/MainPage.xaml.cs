@@ -62,56 +62,48 @@ namespace App1
 
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            if (args.IsSettingsInvoked)
+            switch (args.InvokedItem)
             {
-                ContentFrame.Navigate(typeof(Pages.Page1));
-            }
-            else
-            {
-                switch (args.InvokedItem)
-                {
-                    case "Instructions":
-                        ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
-                        break;
+                case "Instructions":
+                    ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
+                    break;
 
-                    case "Players Stats":
-                        ContentFrame.Navigate(typeof(Pages.PagePlayersStats));
-                        break;
+                case "Players Stats":
+                    ContentFrame.Navigate(typeof(StatBoss.Pages.PageOverallStats));
+                    break;
 
-                    case "Players":
-                        ContentFrame.Navigate(typeof(PagePlayers));
-                        break;
+                case "Players":
+                    ContentFrame.Navigate(typeof(PagePlayers));
+                    break;
 
-                    case "Matches":
-                        ContentFrame.Navigate(typeof(Pages.PageMatches));
-                        break;
+                case "Matches":
+                    ContentFrame.Navigate(typeof(Pages.PageMatches));
+                    break;
 
-                    case "Stats in Matches":
-                        ContentFrame.Navigate(typeof(Pages.PageMatchesEdit));
-                        break;
+                case "Stats in Matches":
+                    ContentFrame.Navigate(typeof(Pages.PageMatchesEdit));
+                    break;
 
-                    case "Seasons":
-                        ContentFrame.Navigate(typeof(Pages.PageSeasons), ContentFrame);
-                        break;
+                case "Seasons":
+                    ContentFrame.Navigate(typeof(Pages.PageSeasons), ContentFrame);
+                    break;
 
-                    case "Teams":
-                        ContentFrame.Navigate(typeof(Pages.PageTeams));
-                        break;
+                case "Teams":
+                    ContentFrame.Navigate(typeof(Pages.PageTeams));
+                    break;
 
-                    case "Positions":
-                        ContentFrame.Navigate(typeof(Pages.PagePositions));
-                        break;
+                case "Positions":
+                    ContentFrame.Navigate(typeof(Pages.PagePositions));
+                    break;
 
-                    case "Opponents":
-                        ContentFrame.Navigate(typeof(Pages.PageOpponents));
-                        break;
+                case "Opponents":
+                    ContentFrame.Navigate(typeof(Pages.PageOpponents));
+                    break;
 
-                    case "About":
-                        Classes.PageHandling.DialogsHandling.DisplayAbout();
-                        break;
-                }
-            }
+                case "About":
+                    Classes.PageHandling.DialogsHandling.DisplayAbout();
+                    break;
+            }            
         }
     }
-
 }

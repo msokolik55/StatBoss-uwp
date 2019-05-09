@@ -84,9 +84,6 @@ namespace App1
 
                 List<string> sCreateTables = new List<string>
                 {
-                    "CREATE TABLE IF NOT EXISTS MyTable (Primary_Key INTEGER PRIMARY KEY, " +
-                                                                      "Text_Entry NVARCHAR(2048) NULL)",
-
                     "CREATE TABLE IF NOT EXISTS tbl_users ( " +
                                     "nID	INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                     "sLogin	VARCHAR(20) NOT NULL, " +
@@ -113,12 +110,6 @@ namespace App1
                                     "sSurname	VARCHAR(100) NOT NULL, " +
                                     "dBirthday	DATE NOT NULL, " +
                                     "nIDUserTeam	SMALLINT(6) NOT NULL, " +
-                                    "nMatches	SMALLINT(6) DEFAULT 0, " +
-                                    "nMinutes	SMALLINT(6) DEFAULT 0, " +
-                                    "nGoals	SMALLINT(6) DEFAULT 0, " +
-                                    "nAssistance	SMALLINT(6) DEFAULT 0, " +
-                                    "nPenalties	SMALLINT(6) DEFAULT 0, " +
-                                    "nRedCards	TINYINT(4) DEFAULT 0, " +
                                     "nIDPosition	TINYINT(1) NOT NULL, " +
                                     "dInserted	DATETIME, " +
                                     "nIDInserted	SMALLINT(6), " +
@@ -173,6 +164,7 @@ namespace App1
                                     "nNumber	TINYINT(4), " +
                                     "nIDPlayer	SMALLINT(4) NOT NULL, " +
                                     "nIDUserTeam	SMALLINT(6) NOT NULL, " +
+                                    "nMatches	TINYINT(4), " +
                                     "nMinutes	TINYINT(4), " +
                                     "nGoals	TINYINT(4), " +
                                     "nAssistance	TINYINT(4), " +
@@ -188,8 +180,6 @@ namespace App1
                                     "nIDSeason	SMALLINT(6) NOT NULL, " +
                                     "sCategoryName	VARCHAR(10) NOT NULL, " +
                                     "sName	VARCHAR(100) NOT NULL, " +
-                                    "nYearFrom	SMALLINT(6) DEFAULT 0, " +
-                                    "nYearTo	SMALLINT(6) DEFAULT 0, " +
                                     "dInserted	DATETIME, " +
                                     "nIDInserted	SMALLINT(6), " +
                                     "dUpdated	DATETIME, " +
