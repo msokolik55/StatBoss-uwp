@@ -33,7 +33,7 @@ namespace App1.Classes.DBClasses
 
         private void FillList(List<Player> ListAllItems, string sWhere, string sOrder)
         {
-            string sCommand = "SELECT * FROM tbl_players WHERE nIDSeason='" + DataAccess.NIDActualSeason + "' AND nIDVSTeam='" + DataAccess.NIDActualTeam + "'" + sWhere + sOrder;
+            string sCommand = "SELECT * FROM tbl_players WHERE nIDSeason='" + DataAccess.NIDActualSeason + "' AND nIDUserTeam='" + DataAccess.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
@@ -119,7 +119,7 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_players (nID, nIDSeason, sFirstName, sSurname, dBirthday, nIDVSTeam, nIDPosition) " +
+                    sCommand = "INSERT INTO tbl_players (nID, nIDSeason, sFirstName, sSurname, dBirthday, nIDUserTeam, nIDPosition) " +
                                "VALUES('" + nID + "', '" + DataAccess.NIDActualSeason + "', '" + sFirstName + "', '" + sSurname + "', '" + dBirthday.ToString("yyyy-MM-dd") + "', '" + DataAccess.NIDActualTeam + "', '" + nIDPosition + "')";
                     break;
 

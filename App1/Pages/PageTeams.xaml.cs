@@ -131,7 +131,7 @@ namespace App1.Pages
 
         private void ButtDeleteDB_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.RemoveItem(tables, "nIDVSTeam", int.Parse(TextBoxID.Text), sTableName, ResetPage);
+            DataAccess.RemoveItem(tables, "nIDUserTeam", int.Parse(TextBoxID.Text), sTableName, ResetPage);
         }
 
         private void ButtSelect_Click(object sender, RoutedEventArgs e)

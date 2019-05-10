@@ -67,7 +67,7 @@ namespace App1.Classes.DBClasses
                         nIDPosition = query.GetInt32(query.GetOrdinal("nIDPosition")),
                         nNumber = query.GetInt32(query.GetOrdinal("nNumber")),
                         nIDPlayer = query.GetInt32(query.GetOrdinal("nIDPlayer")),
-                        nIDUserTeam = query.GetInt32(query.GetOrdinal("nIDVSTeam")),
+                        nIDUserTeam = query.GetInt32(query.GetOrdinal("nIDUserTeam")),
                         nMinutes = query.GetInt32(query.GetOrdinal("nMinutes")),
                         nGoals = query.GetInt32(query.GetOrdinal("nGoals")),
                         nAssists = query.GetInt32(query.GetOrdinal("nAssistance")),
@@ -139,7 +139,7 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_stats (nID, nIDSeason, nIDMatch, nIDPosition, nNumber, nIDPlayer, nIDVSTeam, nMinutes, nGoals, nAssistance, nPenalties, nRedCards, dInserted, dUpdated)" +
+                    sCommand = "INSERT INTO tbl_stats (nID, nIDSeason, nIDMatch, nIDPosition, nNumber, nIDPlayer, nIDUserTeam, nMinutes, nGoals, nAssistance, nPenalties, nRedCards, dInserted, dUpdated)" +
                                         " VALUES('" + nID + "', " +
                                         "'" + nIDSeason + "', " +
                                         "'" + nIDMatch + "', " +

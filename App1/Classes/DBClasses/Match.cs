@@ -60,7 +60,7 @@ namespace App1.Classes.DBClasses
 
         private void FillList(List<Match> ListAllItems, string sWhere, string sOrder)
         {
-            string sCommand = "SELECT * FROM tbl_matches WHERE nIDSeason='" + DataAccess.NIDActualSeason + "' AND nIDVSTeam='" + DataAccess.NIDActualTeam + "'" + sWhere + sOrder;
+            string sCommand = "SELECT * FROM tbl_matches WHERE nIDSeason='" + DataAccess.NIDActualSeason + "' AND nIDUserTeam='" + DataAccess.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
@@ -69,8 +69,8 @@ namespace App1.Classes.DBClasses
                 {
                     nID = query.GetInt32(query.GetOrdinal("nID")),
                     nIDSeason = query.GetInt32(query.GetOrdinal("nIDSeason")),
-                    bPlayed = query.GetBoolean(query.GetOrdinal("bPlayed")), //TODO: useles -> delete
-                    nIDUserTeam = query.GetInt32(query.GetOrdinal("nIDVSTeam")),
+                    bPlayed = query.GetBoolean(query.GetOrdinal("bPlayed")),
+                    nIDUserTeam = query.GetInt32(query.GetOrdinal("nIDUserTeam")),
                     nIDOpponent = query.GetInt32(query.GetOrdinal("nIDOpponent")),
 
                     dDateTime = query.GetDateTime(query.GetOrdinal("dDatetime")),
@@ -148,7 +148,7 @@ namespace App1.Classes.DBClasses
                 case "add":
                     int played = bPlayed == true ? 1 : 0;
                     int home = bHome == true ? 1 : 0;
-                    sCommand = "INSERT INTO tbl_matches (nID, nIDSeason, bPlayed, nIDVSTeam, nIDOpponent, dDatetime, sMatchPlace, bHome, nGive, nReceived, nGive1, nReceived1, nGive2, nReceived2, nGive3, nReceived3, sMatchDescription, dInserted, dUpdated)" +
+                    sCommand = "INSERT INTO tbl_matches (nID, nIDSeason, bPlayed, nIDUserTeam, nIDOpponent, dDatetime, sMatchPlace, bHome, nGive, nReceived, nGive1, nReceived1, nGive2, nReceived2, nGive3, nReceived3, sMatchDescription, dInserted, dUpdated)" +
                                                 " VALUES('" + nID + "', " +
                                                 "'" + nIDSeason + "', " +
                                                 "'" + played + "', " +

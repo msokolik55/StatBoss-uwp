@@ -12,6 +12,9 @@ namespace App1
 {
     public static class DataAccess
     {
+        //static readonly string sDBName = "sqliteSample.db";
+        static readonly string sDBName = "toDelete.db";
+
         private static int nIDActualSeason;
         public static int NIDActualSeason
         {
@@ -80,7 +83,7 @@ namespace App1
 
         public static void InitializeDatabase()
         {
-            using (SqliteConnection db = new SqliteConnection("Filename=sqliteSample.db"))
+            using (SqliteConnection db = new SqliteConnection("Filename=" + sDBName))
             {
                 db.Open();
 
@@ -200,7 +203,7 @@ namespace App1
 
         public static SqliteDataReader QueryDB(string sCommand)
         {
-            using (SqliteConnection db = new SqliteConnection("Filename=sqliteSample.db"))
+            using (SqliteConnection db = new SqliteConnection("Filename=" + sDBName))
             {
                 db.Open();
 
@@ -215,7 +218,7 @@ namespace App1
 
         public static void ExecDB(string sCommand)
         {
-            using (SqliteConnection db = new SqliteConnection("Filename=sqliteSample.db"))
+            using (SqliteConnection db = new SqliteConnection("Filename=" + sDBName))
             {
                 db.Open();
 
