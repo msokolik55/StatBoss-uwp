@@ -12,8 +12,7 @@ namespace App1
 {
     public static class DataAccess
     {
-        //static readonly string sDBName = "sqliteSample.db";
-        static readonly string sDBName = "toDelete.db";
+        static readonly string sDBName = "sqliteSample.db";
 
         private static int nIDActualSeason;
         public static int NIDActualSeason
