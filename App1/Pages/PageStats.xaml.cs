@@ -47,7 +47,6 @@ namespace App1.Pages
             ResetPage();
 
             ShowMatches();
-            ShowPlayers();
             ShowPositions();
 
             TextBoxID.IsEnabled = false;
@@ -71,7 +70,8 @@ namespace App1.Pages
 
             Classes.PageHandling.ListViewHandling.ResetListView(ListViewItems);
             ShowItemsInListView();
-            
+            ShowPlayers();
+
             EnableEditableElements(false, true);
             TextBoxID.Text = "";
             ComboBoxPlayer.SelectedIndex = -1;
@@ -138,7 +138,7 @@ namespace App1.Pages
                 Classes.DBClasses.Stat selectedItem = new Classes.DBClasses.Stat().GetSelectedStat(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
-                ComboBoxPlayer.SelectedIndex = Classes.PageHandling.ComboBoxHandling.GetIDIntoComboBox(ComboBoxPlayer, selectedItem.nIDPlayer, toRemovePl);
+                new Classes.DBClasses.Player().ShowSpecificPlayerInComboBox(ComboBoxPlayer, selectedItem.nIDPlayer, toRemovePl);
                 ComboBoxPosition.SelectedIndex = Classes.PageHandling.ComboBoxHandling.GetIDIntoComboBox(ComboBoxPosition, selectedItem.nIDPosition, toRemovePos);
                 TextBoxNumber.Text = selectedItem.nNumber.ToString();
                 TextBoxMinutes.Text = selectedItem.nMinutes.ToString();
@@ -164,7 +164,14 @@ namespace App1.Pages
         private void ShowPlayers()
         {
             ListAllPlayers = new List<Classes.DBClasses.Player>();
-            new Classes.DBClasses.Player().ShowInComboBox(ListAllPlayers, ComboBoxPlayer, toRemovePl);
+
+            try
+            { 
+                new Classes.DBClasses.Player().ShowUnusedPLayersInComboBox(ListAllPlayers, ComboBoxPlayer, toRemovePl, actualMatch.nID);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void ShowPositions()
@@ -175,13 +182,13 @@ namespace App1.Pages
 
         private void ComboBoxMatch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ButtAdd.IsEnabled = true;
-            ButtEditSelected.IsEnabled = false;
-            ButtDeleteDB.IsEnabled = false;
+            ResetPage();
 
             actualMatch = new Classes.DBClasses.Match().GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
             ListViewItems.IsEnabled = true;
             ShowItemsInListView();
+
+            ShowPlayers();
         }
 
         // ---------------------------
@@ -192,6 +199,10 @@ namespace App1.Pages
             ButtEditSelected.IsEnabled = false;
             ButtDeleteDB.IsEnabled = false;
 
+            ListViewItems.SelectedIndex = -1;
+            Classes.PageHandling.ComboBoxHandling.ResetComboBox(ComboBoxPlayer);
+            ShowPlayers();
+
             TextBoxID.Text = (DataAccess.GetMaxID(sTableName) + 1).ToString();
             ComboBoxPlayer.SelectedIndex = -1;
             ComboBoxPosition.SelectedIndex = -1;
@@ -201,8 +212,6 @@ namespace App1.Pages
             TextBoxAssists.Text = "0";
             TextBoxPenalties.Text = "0";
             TextBoxRedCards.Text = "0";
-
-            ListViewItems.SelectedIndex = -1;
 
             ButtAddToDB.Visibility = Visibility.Visible;
             ButtEditDB.Visibility = Visibility.Collapsed;

@@ -129,7 +129,7 @@
 			<TextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxID" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" IsReadOnly="True" PlaceholderText="0-..." Height="29" AutomationProperties.HelpText="nID" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 
 			<TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="Player:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5" FontFamily="Segoe UI"/>
-			<ComboBox Grid.Row="1" Grid.Column="2" x:Name="ComboBoxPlayer" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<ComboBox Grid.Row="1" Grid.Column="2" x:Name="ComboBoxPlayer" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI" SelectedIndex="0"/>
 
 			<TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Text="Position:" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
 			<ComboBox Grid.Row="2" Grid.Column="2" x:Name="ComboBoxPosition" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Margin="0,5,0,5" FontFamily="Segoe UI"/>

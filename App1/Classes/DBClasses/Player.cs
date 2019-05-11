@@ -31,7 +31,7 @@ namespace App1.Classes.DBClasses
             this.nIDPosition = position;
         }
 
-        private void FillList(List<Player> ListAllItems, string sWhere, string sOrder)
+        private void FillList(List<Player> ListAllItems, string sWhere="", string sOrder="")
         {
             string sCommand = "SELECT * FROM tbl_players WHERE nIDSeason='" + DataAccess.NIDActualSeason + "' AND nIDUserTeam='" + DataAccess.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
@@ -76,9 +76,14 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public void ShowInComboBox(List<Player> ListAllItems, ComboBox comboBox, string toRemove, string sWhere = "", string sOrder = "")
+        public void ShowUnusedPLayersInComboBox(List<Player> ListAllItems, ComboBox comboBox, string toRemove, int nIDMatch)
         {
-            FillList(ListAllItems, sWhere, sOrder);
+            string sWhere = " AND nID not in (SELECT nIDPlayer FROM tbl_stats " +
+                                             "WHERE nIDSeason = '" + DataAccess.NIDActualSeason + "' AND " +
+                                                   "nIDUserTeam = '" + DataAccess.NIDActualTeam + "' AND " +
+                                                   "nIDMatch = '" + nIDMatch + "')";
+
+            FillList(ListAllItems, sWhere);
             PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
 
             foreach (var iplayer in ListAllItems)
@@ -91,6 +96,18 @@ namespace App1.Classes.DBClasses
 
                 comboBox.Items.Add(block);
             }
+        }
+
+        public void ShowSpecificPlayerInComboBox(ComboBox comboBox, int nIDPlayer, string toRemove)
+        {
+            PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
+            TextBlock block = new TextBlock
+            {
+                Name = toRemove + nIDPlayer.ToString(),
+                Text = DataAccess.GetPlayer(nIDPlayer)
+            };
+            comboBox.Items.Add(block);
+            comboBox.SelectedIndex = 0;
         }
 
         public Player GetSelectedPlayer(SelectionChangedEventArgs e, List<Player> ListAllItems)
