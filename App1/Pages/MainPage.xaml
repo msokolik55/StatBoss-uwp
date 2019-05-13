@@ -34,9 +34,9 @@
 		</NavigationView.MenuItems>
 		
 			<NavigationView.PaneFooter>
-			<StackPanel>
-				<NavigationViewItem x:Name="ActualSeason" Content="Season: " Icon="GoToToday"/>
-				<NavigationViewItem x:Name="ActualTeam" Content="Team: " Icon="WebCam"/>
+			<StackPanel BorderBrush="Black" BorderThickness="3,3,3,3">
+				<NavigationViewItem x:Name="ActualSeason" Content="Season: " Icon="GoToToday" Background="#7F0000FF" Foreground="White" FontWeight="Bold"/>
+					<NavigationViewItem x:Name="ActualTeam" Content="Team: " Icon="WebCam" Background="#7F0000FF" Foreground="White" FontWeight="Bold"/>
 			</StackPanel>
 		</NavigationView.PaneFooter>
 

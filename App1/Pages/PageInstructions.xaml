@@ -10,15 +10,13 @@
 
 	<Grid>
 		<StackPanel Margin="10,0,0,20">
-			<TextBlock Text="Order of adding items" FontWeight="Normal" FontSize="20"/>
-			<ListView>
-				<TextBlock Text="1. Add SEASONS (every items are depended on selected season - only positions not)." TextWrapping="Wrap"/>
-				<TextBlock Text="2. Add TEAMS in the selected season (matches, players, stats are depended on selected season and team)." TextWrapping="Wrap"/>
-				<TextBlock Text="3. Add POSITIONS in your sport (positions are assigned in section players and stats)." TextWrapping="Wrap"/>
-				<TextBlock Text="4. Add OPPONENTS in the selected season and team (opponents are assigned in section matches and stats)." TextWrapping="Wrap"/>
-				<TextBlock Text="5. Add MATCHES, PLAYERS in the selected season and team." TextWrapping="Wrap"/>
-				<TextBlock Text="6. Add STATS in the selected match." TextWrapping="Wrap"/>
-			</ListView>
+			<TextBlock Text="Order of adding items" FontWeight="Normal" FontSize="20" Margin="0,0,0,10"/>
+			<TextBlock Text="1. Add SEASONS (every items are depended on selected season - only positions not)." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="2. Add TEAMS in the selected season (matches, players, stats are depended on selected season and team)." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="3. Add POSITIONS in your sport (positions are assigned in section players and stats)." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="4. Add OPPONENTS in the selected season and team (opponents are assigned in section matches and stats)." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="5. Add MATCHES, PLAYERS in the selected season and team." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="6. Add STATS in the selected match." TextWrapping="Wrap" Margin="0,0,0,5"/>
 
 			<TextBlock Text="Page handling" FontWeight="Normal" FontSize="20" Margin="0,20,0,0"/>
 
