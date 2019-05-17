@@ -29,7 +29,7 @@ namespace App1
             this.InitializeComponent();
 
             InitializeGlobalVariables();
-            ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
+            StatBoss.Classes.PageHandling.NavigationHandling.InitializateNavigation(ContentFrame);
         }
 
         public void InitializeGlobalVariables()
@@ -70,50 +70,7 @@ namespace App1
 
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            switch (args.InvokedItem)
-            {
-                case "Instructions":
-                    ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
-                    break;
-
-                case "Overall Stats":
-                    ContentFrame.Navigate(typeof(StatBoss.Pages.PageOverallStats));
-                    break;
-
-                case "Players":
-                    ContentFrame.Navigate(typeof(PagePlayers));
-                    break;
-
-                case "Matches":
-                    ContentFrame.Navigate(typeof(Pages.PageMatches));
-                    break;
-
-                case "Stats in Matches":
-                    ContentFrame.Navigate(typeof(Pages.PageMatchesEdit));
-                    break;
-
-                case "Seasons":
-                    ContentFrame.Navigate(typeof(Pages.PageSeasons), ContentFrame);
-                    break;
-
-                case "Teams":
-                    ContentFrame.Navigate(typeof(Pages.PageTeams));
-                    break;
-
-                case "Positions":
-                    ContentFrame.Navigate(typeof(Pages.PagePositions));
-                    break;
-
-                case "Opponents":
-                    ContentFrame.Navigate(typeof(Pages.PageOpponents));
-                    break;
-
-                case "About":
-                    Classes.PageHandling.DialogsHandling.DisplayAbout();
-                    break;
-            }
-
-            if (!args.InvokedItem.Equals("About")) { NavMain.Header = args.InvokedItem; }
+            StatBoss.Classes.PageHandling.NavigationHandling.NavigateTo(args, ContentFrame, NavMain);
         }
     }
 }

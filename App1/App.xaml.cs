@@ -32,6 +32,7 @@ namespace App1
             this.Suspending += OnSuspending;
 
             DataAccess.InitializeDatabase();
+            //ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
         }
 
         /// <summary>

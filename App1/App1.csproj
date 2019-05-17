@@ -140,6 +140,7 @@
     <Compile Include="Classes\PageHandling\DialogsHandling.cs" />
     <Compile Include="Classes\PageHandling\FieldsChecking.cs" />
     <Compile Include="Classes\PageHandling\ListViewHandling.cs" />
+    <Compile Include="Classes\PageHandling\NavigationHandling.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
