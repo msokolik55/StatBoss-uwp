@@ -49,7 +49,7 @@ namespace App1
         // ---------------------------
         private void ResetPage()
         {
-            ButtAdd.IsEnabled = (DataAccess.NIDActualSeason > 0 && DataAccess.NIDActualTeam > 0) ? true : false;
+            ButtAdd.IsEnabled = (StatBoss.Classes.MainVariables.NIDActualSeason > 0 && StatBoss.Classes.MainVariables.NIDActualTeam > 0) ? true : false;
             ButtEditSelected.IsEnabled = false;
             ButtDeleteDB.IsEnabled = false;
 
@@ -182,7 +182,7 @@ namespace App1
                     sFirstName = TextBoxFirstName.Text,
                     sSurname = TextBoxSurname.Text,
                     dBirthday = new DateTime(date.Year, date.Month, date.Day),
-                    nIDUserTeam = DataAccess.NIDActualTeam,
+                    nIDUserTeam = StatBoss.Classes.MainVariables.NIDActualTeam,
                     nIDPosition = Classes.PageHandling.ComboBoxHandling.GetIDFromComboBox(ComboBoxPosition.SelectedItem, toRemove)
                 };
 

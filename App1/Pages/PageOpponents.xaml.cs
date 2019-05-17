@@ -43,7 +43,7 @@ namespace App1.Pages
         // ---------------------------
         private void ResetPage()
         {
-            ButtAdd.IsEnabled = (DataAccess.NIDActualSeason > 0) ? true : false;
+            ButtAdd.IsEnabled = (StatBoss.Classes.MainVariables.NIDActualSeason > 0) ? true : false;
             ButtEditSelected.IsEnabled = false;
             ButtDeleteDB.IsEnabled = false;
 
@@ -144,7 +144,7 @@ namespace App1.Pages
                 var opponent = new Classes.DBClasses.Opponent
                 {
                     nID = int.Parse(TextBoxID.Text),
-                    nIDSeason = DataAccess.NIDActualSeason,
+                    nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,
                     sName = TextBoxName.Text,
                 };
 

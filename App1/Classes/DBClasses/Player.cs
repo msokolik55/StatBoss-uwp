@@ -33,7 +33,7 @@ namespace App1.Classes.DBClasses
 
         private void FillList(List<Player> ListAllItems, string sWhere="", string sOrder="")
         {
-            string sCommand = "SELECT * FROM tbl_players WHERE nIDSeason='" + DataAccess.NIDActualSeason + "' AND nIDUserTeam='" + DataAccess.NIDActualTeam + "'" + sWhere + sOrder;
+            string sCommand = "SELECT * FROM tbl_players WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND nIDUserTeam='" + StatBoss.Classes.MainVariables.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
@@ -79,8 +79,8 @@ namespace App1.Classes.DBClasses
         public void ShowUnusedPLayersInComboBox(List<Player> ListAllItems, ComboBox comboBox, string toRemove, int nIDMatch)
         {
             string sWhere = " AND nID not in (SELECT nIDPlayer FROM tbl_stats " +
-                                             "WHERE nIDSeason = '" + DataAccess.NIDActualSeason + "' AND " +
-                                                   "nIDUserTeam = '" + DataAccess.NIDActualTeam + "' AND " +
+                                             "WHERE nIDSeason = '" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND " +
+                                                   "nIDUserTeam = '" + StatBoss.Classes.MainVariables.NIDActualTeam + "' AND " +
                                                    "nIDMatch = '" + nIDMatch + "')";
 
             FillList(ListAllItems, sWhere);
@@ -137,7 +137,7 @@ namespace App1.Classes.DBClasses
             {
                 case "add":
                     sCommand = "INSERT INTO tbl_players (nID, nIDSeason, sFirstName, sSurname, dBirthday, nIDUserTeam, nIDPosition) " +
-                               "VALUES('" + nID + "', '" + DataAccess.NIDActualSeason + "', '" + sFirstName + "', '" + sSurname + "', '" + dBirthday.ToString("yyyy-MM-dd") + "', '" + DataAccess.NIDActualTeam + "', '" + nIDPosition + "')";
+                               "VALUES('" + nID + "', '" + StatBoss.Classes.MainVariables.NIDActualSeason + "', '" + sFirstName + "', '" + sSurname + "', '" + dBirthday.ToString("yyyy-MM-dd") + "', '" + StatBoss.Classes.MainVariables.NIDActualTeam + "', '" + nIDPosition + "')";
                     break;
 
                 case "edit":
@@ -145,7 +145,7 @@ namespace App1.Classes.DBClasses
                                                      "sSurname='" + sSurname + "', " +
                                                      "dBirthday='" + dBirthday + "', " +
                                                      "nIDPosition='" + nIDPosition + "' " +
-                              "WHERE nID = '" + nID + "' AND nIDSeason = '" + DataAccess.NIDActualSeason + "'";
+                              "WHERE nID = '" + nID + "' AND nIDSeason = '" + StatBoss.Classes.MainVariables.NIDActualSeason + "'";
                     break;
             }
 

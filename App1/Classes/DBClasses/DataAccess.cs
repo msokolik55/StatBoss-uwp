@@ -13,73 +13,7 @@ namespace App1
     public static class DataAccess
     {
         static readonly string sDBName = "sqliteSample.db";
-
-        private static int nIDActualSeason;
-        public static int NIDActualSeason
-        {
-            get { return nIDActualSeason; }
-            set
-            {
-                nIDActualSeason = value;
-
-                string sCommand = "SELECT * FROM tbl_seasons WHERE nID='" + nIDActualSeason + "'";
-                SqliteDataReader query = QueryDB(sCommand);
-
-                string sName = "";
-                while (query.Read())
-                {
-                    sName = query.GetString(query.GetOrdinal("sName"));
-                }
-
-                try
-                {
-                    Frame contentFrame = Window.Current.Content as Frame;
-                    MainPage mp = contentFrame.Content as MainPage;
-                    Grid grid = mp.Content as Grid;
-                    NavigationViewItem nvItem = grid.FindName("ActualSeason") as NavigationViewItem;
-
-                    string content = (sName != "") ? sName : "Add season";
-                    nvItem.Content = "Season: " + content;
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
-        private static int nIDActualTeam;
-        public static int NIDActualTeam
-        {
-            get { return nIDActualTeam; }
-            set
-            {
-                nIDActualTeam = value;
-
-                string sCommand = "SELECT * FROM tbl_teams WHERE nID='" + nIDActualTeam + "'";
-                SqliteDataReader query = QueryDB(sCommand);
-
-                string sName = "";
-                while (query.Read())
-                {
-                    sName = query.GetString(query.GetOrdinal("sCategoryName"));
-                }
-
-                try
-                {
-                    Frame contentFrame = Window.Current.Content as Frame;
-                    MainPage mp = contentFrame.Content as MainPage;
-                    Grid grid = mp.Content as Grid;
-                    NavigationViewItem nvItem = grid.FindName("ActualTeam") as NavigationViewItem;
-
-                    string content = (sName != "") ? sName : "Add team";
-                    nvItem.Content = "Team: " + content;
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
+        
         public static void InitializeDatabase()
         {
             using (SqliteConnection db = new SqliteConnection("Filename=" + sDBName))
@@ -235,12 +169,27 @@ namespace App1
             }
         }
 
+        public static void RemoveDB(string sTableName, int nID, Action action, bool seasonInTable = true)
+        {
+            string sCommand = "DELETE FROM " + sTableName + " WHERE nID = '" + nID + "'";
+            if (seasonInTable) { sCommand += " AND nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'"; }
+
+            DataAccess.ExecDB(sCommand);
+
+            if (sTableName == "tbl_teams") { StatBoss.Classes.MainVariables.NIDActualTeam = DataAccess.GetMaxID("tbl_teams"); }
+            else if (sTableName == "tbl_seasons")
+            {
+                StatBoss.Classes.MainVariables.NIDActualSeason = DataAccess.GetMaxID("tbl_seasons", false);
+                StatBoss.Classes.MainVariables.NIDActualTeam = DataAccess.GetMaxID("tbl_teams");
+            }
+        }
+
         public static int GetMaxID(string sTableName, bool bSeason = true)
         {
             int nMaxID = 0;
 
             string sCommand = "SELECT MAX(nID) FROM " + sTableName;
-            if(bSeason) { sCommand += " WHERE nIDSeason='" + nIDActualSeason + "'"; }
+            if(bSeason) { sCommand += " WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'"; }
 
             SqliteDataReader query = QueryDB(sCommand);
 
@@ -261,7 +210,7 @@ namespace App1
 
         public static string GetOpponent(int nID)
         {
-            string sCommand = "SELECT * FROM tbl_opponents WHERE nID='" + nID + "' AND nIDSeason='" + NIDActualSeason + "'";
+            string sCommand = "SELECT * FROM tbl_opponents WHERE nID='" + nID + "' AND nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'";
             SqliteDataReader query = QueryDB(sCommand);
 
             string sOpponent = "";
@@ -275,7 +224,7 @@ namespace App1
 
         public static string GetPlayer(int nID)
         {
-            string sCommand = "SELECT * FROM tbl_players WHERE nID='" + nID + "' AND nIDSeason='" + NIDActualSeason + "'";
+            string sCommand = "SELECT * FROM tbl_players WHERE nID='" + nID + "' AND nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'";
             SqliteDataReader query = QueryDB(sCommand);
 
             string sPlayer = "";
@@ -311,13 +260,13 @@ namespace App1
             }
         }
 
-        private static bool IsAppearance(string[] tables, string columnNameInDB, int id, bool seasonInTable=true)
+        private static bool IsAppearance(string[] tables, string columnNameInDB, int id, bool seasonInTable = true)
         {
             bool appearance = false;
             foreach (string table in tables)
             {
                 string sCommand = "SELECT * FROM " + table + " WHERE " + columnNameInDB + "='" + id + "'";
-                if (seasonInTable) { sCommand += " AND nIDSeason='" + NIDActualSeason + "'"; }
+                if (seasonInTable) { sCommand += " AND nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'"; }
 
                 SqliteDataReader query = QueryDB(sCommand);
                 if (query.HasRows) { appearance = true; };

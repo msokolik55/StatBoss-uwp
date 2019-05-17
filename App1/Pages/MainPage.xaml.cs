@@ -13,8 +13,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using Microsoft.Data.Sqlite;
-
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace App1
@@ -28,44 +26,8 @@ namespace App1
         {
             this.InitializeComponent();
 
-            InitializeGlobalVariables();
-            StatBoss.Classes.PageHandling.NavigationHandling.InitializateNavigation(ContentFrame);
-        }
-
-        public void InitializeGlobalVariables()
-        {
-            try
-            {
-                DataAccess.NIDActualSeason = DataAccess.GetMaxID("tbl_seasons", false);
-                DataAccess.NIDActualTeam = DataAccess.GetMaxID("tbl_teams");
-            }
-            catch (Exception)
-            {
-            }
-
-            if (DataAccess.NIDActualSeason != 0)
-            {
-                SqliteDataReader season = DataAccess.QueryDB("SELECT * FROM tbl_seasons WHERE nID='" + DataAccess.NIDActualSeason + "'");
-                string sSeason = "";
-                while (season.Read()) { sSeason = season.GetString(season.GetOrdinal("sName")); }
-                ActualSeason.Content = "Season: " + sSeason;
-            }
-            else
-            {
-                ActualSeason.Content = "Season: Add season";
-            }
-
-            if (DataAccess.NIDActualTeam != 0)
-            {
-                SqliteDataReader team = DataAccess.QueryDB("SELECT * FROM tbl_teams WHERE nID='" + DataAccess.NIDActualTeam + "'");
-                string sTeam = "";
-                while (team.Read()) { sTeam = team.GetString(team.GetOrdinal("sCategoryName")); }
-                ActualTeam.Content = "Team: " + sTeam;
-            }
-            else
-            {
-                ActualTeam.Content = "Team: Add team";
-            }
+            StatBoss.Classes.MainVariables.InitializeMainVariables();
+            StatBoss.Classes.PageHandling.NavigationHandling.InitializateFrame(ContentFrame);
         }
 
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

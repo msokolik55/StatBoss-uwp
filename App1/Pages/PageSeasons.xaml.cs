@@ -131,8 +131,8 @@ namespace App1.Pages
 
         private void ButtSelect_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.NIDActualSeason = int.Parse(TextBoxID.Text);
-            DataAccess.NIDActualTeam = DataAccess.GetMaxID("tbl_teams");
+            StatBoss.Classes.MainVariables.NIDActualSeason = int.Parse(TextBoxID.Text);
+            StatBoss.Classes.MainVariables.NIDActualTeam = DataAccess.GetMaxID("tbl_teams");
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)

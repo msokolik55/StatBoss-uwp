@@ -43,7 +43,7 @@ namespace App1.Pages
         // ---------------------------
         private void ResetPage()
         {
-            ButtAdd.IsEnabled = (DataAccess.NIDActualSeason > 0) ? true : false;
+            ButtAdd.IsEnabled = (StatBoss.Classes.MainVariables.NIDActualSeason > 0) ? true : false;
             ButtEditSelected.IsEnabled = false;
             ButtDeleteDB.IsEnabled = false;
             ButtSelect.IsEnabled = false;
@@ -136,7 +136,7 @@ namespace App1.Pages
 
         private void ButtSelect_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.NIDActualTeam = int.Parse(TextBoxID.Text);
+            StatBoss.Classes.MainVariables.NIDActualTeam = int.Parse(TextBoxID.Text);
         }
 
         private void ButtAddToDB_Click(object sender, RoutedEventArgs e)
@@ -156,7 +156,7 @@ namespace App1.Pages
                 var team = new Classes.DBClasses.Team
                 {
                     nID = int.Parse(TextBoxID.Text),
-                    nIDSeason = DataAccess.NIDActualSeason,
+                    nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,
                     sShortName = TextBoxShortName.Text,
                     sName = TextBoxName.Text
                 };

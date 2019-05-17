@@ -48,7 +48,7 @@ namespace App1.Pages
         // ---------------------------
         private void ResetPage()
         {
-            ButtAdd.IsEnabled = (DataAccess.NIDActualSeason > 0 && DataAccess.NIDActualTeam > 0) ? true : false;
+            ButtAdd.IsEnabled = (StatBoss.Classes.MainVariables.NIDActualSeason > 0 && StatBoss.Classes.MainVariables.NIDActualTeam > 0) ? true : false;
             ButtEditSelected.IsEnabled = false;
             ButtDeleteDB.IsEnabled = false;
 
@@ -227,9 +227,9 @@ namespace App1.Pages
                 var match = new Classes.DBClasses.Match
                 {
                     nID = int.Parse(TextBoxID.Text),
-                    nIDSeason = DataAccess.NIDActualSeason,
+                    nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,
                     bPlayed = (bool)CheckBoxPlayed.IsChecked,
-                    nIDUserTeam = DataAccess.NIDActualTeam,
+                    nIDUserTeam = StatBoss.Classes.MainVariables.NIDActualTeam,
                     nIDOpponent = Classes.PageHandling.ComboBoxHandling.GetIDFromComboBox(ComboBoxOpponent.SelectedItem, toRemove),
                     dDateTime = dDateTime,
 

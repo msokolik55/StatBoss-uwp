@@ -11,7 +11,7 @@ namespace StatBoss.Classes.PageHandling
 {
     public static class NavigationHandling
     {
-        public static void InitializateNavigation(Frame contentFrame)
+        public static void InitializateFrame(Frame contentFrame)
         {
             contentFrame.Navigate(typeof(Pages.PageInstructions));
         }

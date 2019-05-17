@@ -31,7 +31,7 @@ namespace App1.Classes.DBClasses
 
         private void FillList(List<Opponent> ListAllItems, string sWhere, string sOrder)
         {
-            string sCommand = "SELECT * FROM tbl_opponents WHERE nIDSeason='" + DataAccess.NIDActualSeason + "'" + sWhere + sOrder;
+            string sCommand = "SELECT * FROM tbl_opponents WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
@@ -97,11 +97,11 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_opponents (nID, nIDSeason, sName, dInserted) VALUES('" + nID + "', '" + DataAccess.NIDActualSeason + "', '" + sName + "', datetime('now'))";
+                    sCommand = "INSERT INTO tbl_opponents (nID, nIDSeason, sName, dInserted) VALUES('" + nID + "', '" + StatBoss.Classes.MainVariables.NIDActualSeason + "', '" + sName + "', datetime('now'))";
                     break;
 
                 case "edit":
-                    sCommand = "UPDATE tbl_opponents SET sName='" + sName + "', dUpdated=datetime('now') WHERE nID = " + nID + " AND nIDSeason = " + DataAccess.NIDActualSeason;
+                    sCommand = "UPDATE tbl_opponents SET sName='" + sName + "', dUpdated=datetime('now') WHERE nID = " + nID + " AND nIDSeason = " + StatBoss.Classes.MainVariables.NIDActualSeason;
                     break;
             }
 

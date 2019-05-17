@@ -9,7 +9,7 @@ namespace App1.Classes.PageHandling
 {
     public static class DialogsHandling
     {
-        public static async void DisplayDeleteItemDialog(string sTableName, int nID, Action action, bool seasonInTable=true)
+        public static async void DisplayDeleteItemDialog(string sTableName, int nID, Action action, bool seasonInTable = true)
         {
             ContentDialog deleteFileDialog = new ContentDialog
             {
@@ -23,18 +23,7 @@ namespace App1.Classes.PageHandling
 
             if (result == ContentDialogResult.Primary)
             {
-                string sCommand = "DELETE FROM " + sTableName + " WHERE nID = '" + nID + "'";
-                if (seasonInTable) { sCommand += " AND nIDSeason='" + DataAccess.NIDActualSeason + "'"; }
-
-                DataAccess.ExecDB(sCommand);
-
-                if (sTableName == "tbl_teams") { DataAccess.NIDActualTeam = DataAccess.GetMaxID("tbl_teams"); }
-                else if (sTableName == "tbl_seasons")
-                {
-                    DataAccess.NIDActualSeason = DataAccess.GetMaxID("tbl_seasons", false);
-                    DataAccess.NIDActualTeam = DataAccess.GetMaxID("tbl_teams");
-                }
-
+                DataAccess.RemoveDB(sTableName, nID, action, seasonInTable);
                 action.Invoke();
             }
         }

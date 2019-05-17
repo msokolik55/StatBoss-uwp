@@ -250,9 +250,9 @@ namespace App1.Pages
                 var stat = new Classes.DBClasses.Stat
                 {
                     nID = int.Parse(TextBoxID.Text),
-                    nIDSeason = DataAccess.NIDActualSeason,
+                    nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,
                     nIDMatch = actualMatch.nID,
-                    nIDUserTeam = DataAccess.NIDActualTeam,
+                    nIDUserTeam = StatBoss.Classes.MainVariables.NIDActualTeam,
                     nIDPlayer = Classes.PageHandling.ComboBoxHandling.GetIDFromComboBox(ComboBoxPlayer.SelectedItem, toRemovePl),
                     nIDPosition = Classes.PageHandling.ComboBoxHandling.GetIDFromComboBox(ComboBoxPosition.SelectedItem, toRemovePos),
                     nNumber = int.Parse(TextBoxNumber.Text),

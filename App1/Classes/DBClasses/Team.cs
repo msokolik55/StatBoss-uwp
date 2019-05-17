@@ -29,7 +29,7 @@ namespace App1.Classes.DBClasses
 
         private void FillList(List<Team> ListAllItems, string sWhere, string sOrder)
         {
-            string sCommand = "SELECT * FROM tbl_teams WHERE nIDSeason='" + DataAccess.NIDActualSeason + "'" + sWhere + sOrder;
+            string sCommand = "SELECT * FROM tbl_teams WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())

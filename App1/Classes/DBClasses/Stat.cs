@@ -54,7 +54,7 @@ namespace App1.Classes.DBClasses
             {
                 string sCommand = "SELECT * FROM tbl_stats AS s " +
                                   "JOIN tbl_players AS p ON p.nID = s.nIDPlayer " +
-                                  "WHERE s.nIDSeason='" + DataAccess.NIDActualSeason + "' AND s.nIDMatch='" + nIDMatch + "'" + sWhere + sOrder;
+                                  "WHERE s.nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND s.nIDMatch='" + nIDMatch + "'" + sWhere + sOrder;
                 SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
                 while (query.Read())
@@ -165,7 +165,7 @@ namespace App1.Classes.DBClasses
                                                     "nPenalties='" + nPenalties + "', " +
                                                     "nRedCards='" + nRedCards + "', " +
                                                     "dUpdated=datetime('now')" +
-                                "WHERE nID = '" + nID + "' AND nIDSeason = '" + DataAccess.NIDActualSeason + "'";
+                                "WHERE nID = '" + nID + "' AND nIDSeason = '" + StatBoss.Classes.MainVariables.NIDActualSeason + "'";
                     break;
             }
 

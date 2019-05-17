@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using StatBoss.Classes;
 
 namespace App1
 {
@@ -32,7 +33,6 @@ namespace App1
             this.Suspending += OnSuspending;
 
             DataAccess.InitializeDatabase();
-            //ContentFrame.Navigate(typeof(StatBoss.Pages.PageInstructions));
         }
 
         /// <summary>

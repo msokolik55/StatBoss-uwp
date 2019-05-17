@@ -136,6 +136,7 @@
     <Compile Include="Classes\DBClasses\Season.cs" />
     <Compile Include="Classes\DBClasses\Stat.cs" />
     <Compile Include="Classes\DBClasses\Team.cs" />
+    <Compile Include="Classes\MainVariables.cs" />
     <Compile Include="Classes\PageHandling\ComboBoxHandling.cs" />
     <Compile Include="Classes\PageHandling\DialogsHandling.cs" />
     <Compile Include="Classes\PageHandling\FieldsChecking.cs" />
