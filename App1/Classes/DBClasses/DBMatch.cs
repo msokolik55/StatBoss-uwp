@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace App1.Classes.DBClasses
 {
-    public class Match
+    public class DBMatch
     {
         public int nID;
         public int nIDSeason;
@@ -30,11 +30,11 @@ namespace App1.Classes.DBClasses
         public DateTime dInserted;
         public DateTime dUpdated;
 
-        public Match()
+        public DBMatch()
         {
         }
 
-        public Match(int id, int nidseason, bool bplayed, int niduserteam, int nidopponent, DateTime ddatetime, string smatchplace, bool bhome,
+        public DBMatch(int id, int nidseason, bool bplayed, int niduserteam, int nidopponent, DateTime ddatetime, string smatchplace, bool bhome,
             int ngive, int nreceived, int ngive1, int nreceived1, int ngive2, int nreceived2, int ngive3, int nreceived3, string smatchdescription, DateTime dinserted, DateTime dupdated)
         {
             this.nID = id;
@@ -58,14 +58,14 @@ namespace App1.Classes.DBClasses
             this.dUpdated = dupdated;
         }
 
-        private void FillList(List<Match> ListAllItems, string sWhere, string sOrder)
+        private void FillList(List<DBMatch> ListAllItems, string sWhere, string sOrder)
         {
             string sCommand = "SELECT * FROM tbl_matches WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND nIDUserTeam='" + StatBoss.Classes.MainVariables.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
             {
-                var imatch = new Match
+                var imatch = new DBMatch
                 {
                     nID = query.GetInt32(query.GetOrdinal("nID")),
                     nIDSeason = query.GetInt32(query.GetOrdinal("nIDSeason")),
@@ -95,9 +95,9 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public void ShowItemsInListView(ListView ListViewItems, List<Match> ListAllItems, string sWhere = "", string sOrder = "")
+        public void ShowItemsInListView(ListView ListViewItems, List<DBMatch> ListAllItems, string sWhere = "", string sOrder = "")
         {
-            new Match().FillList(ListAllItems, sWhere, sOrder);
+            new DBMatch().FillList(ListAllItems, sWhere, sOrder);
             PageHandling.ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)
@@ -120,14 +120,14 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public Match GetSelectedMatch(SelectionChangedEventArgs e, List<Match> ListAllItems)
+        public DBMatch GetSelectedMatch(SelectionChangedEventArgs e, List<DBMatch> ListAllItems)
         {
             var listViewItem = e.AddedItems;
 
             TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
             int id = int.Parse(block.Name);
 
-            var selectedItem = new Match();
+            var selectedItem = new DBMatch();
             foreach (var listItem in ListAllItems)
             {
                 if (listItem.nID == id)
@@ -195,7 +195,7 @@ namespace App1.Classes.DBClasses
             DataAccess.ExecDB(sCommand);
         }
 
-        public void ShowInComboBox(List<Match> ListAllItems, ComboBox comboBox, string toRemove)
+        public void ShowInComboBox(List<DBMatch> ListAllItems, ComboBox comboBox, string toRemove)
         {
             FillList(ListAllItems, " AND bPlayed = '1'", "");
             PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
@@ -212,9 +212,9 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public Match GetSelectedMatchFromComboBox(SelectionChangedEventArgs e, List<Match> ListAllItems, ComboBox comboBox, string toRemove)
+        public DBMatch GetSelectedMatchFromComboBox(SelectionChangedEventArgs e, List<DBMatch> ListAllItems, ComboBox comboBox, string toRemove)
         {
-            Match actualMatch = new Match();
+            DBMatch actualMatch = new DBMatch();
             var listViewItem = e.AddedItems;
 
             TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];

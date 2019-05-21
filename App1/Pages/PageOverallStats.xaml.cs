@@ -22,7 +22,7 @@ namespace StatBoss.Pages
     /// </summary>
     public sealed partial class PageOverallStats : Page
     {
-        List<App1.Classes.DBClasses.OverallStat> ListAllItems;
+        List<App1.Classes.DBClasses.DBOverallStat> ListAllItems;
 
         private bool bSortGoalsASC = true;
         private bool bSortAssistsASC = true;
@@ -39,11 +39,11 @@ namespace StatBoss.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<App1.Classes.DBClasses.OverallStat>();
+            ListAllItems = new List<App1.Classes.DBClasses.DBOverallStat>();
 
             try
             {
-                new App1.Classes.DBClasses.OverallStat().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                new App1.Classes.DBClasses.DBOverallStat().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -54,7 +54,7 @@ namespace StatBoss.Pages
         {
             try
             {
-                App1.Classes.DBClasses.OverallStat selectedItem = new App1.Classes.DBClasses.OverallStat().GetSelectedOverallStat(e, ListAllItems);
+                App1.Classes.DBClasses.DBOverallStat selectedItem = new App1.Classes.DBClasses.DBOverallStat().GetSelectedOverallStat(e, ListAllItems);
 
                 TextBoxFirstName.Text = selectedItem.sFirstName;
                 TextBoxSurname.Text = selectedItem.sSurname;

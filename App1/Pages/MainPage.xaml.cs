@@ -26,7 +26,8 @@ namespace App1
         {
             this.InitializeComponent();
 
-            StatBoss.Classes.MainVariables.InitializeMainVariables();
+            StatBoss.Classes.MainVariables.ShowActualSeason(ActualSeason);
+            StatBoss.Classes.MainVariables.ShowActualTeam(ActualTeam);
             StatBoss.Classes.PageHandling.NavigationHandling.InitializateFrame(ContentFrame);
         }
 

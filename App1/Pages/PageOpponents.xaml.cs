@@ -24,7 +24,7 @@ namespace App1.Pages
     public sealed partial class PageOpponents : Page
     {
         private string sTableName = "tbl_opponents";
-        List<Classes.DBClasses.Opponent> ListAllItems;
+        List<Classes.DBClasses.DBOpponent> ListAllItems;
 
         string[] tables = { "tbl_matches" };
 
@@ -68,8 +68,8 @@ namespace App1.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.Opponent>();
-            new Classes.DBClasses.Opponent().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            ListAllItems = new List<Classes.DBClasses.DBOpponent>();
+            new Classes.DBClasses.DBOpponent().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,7 +84,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.Opponent selectedItem = new Classes.DBClasses.Opponent().GetSelectedOpponent(e, ListAllItems);
+                Classes.DBClasses.DBOpponent selectedItem = new Classes.DBClasses.DBOpponent().GetSelectedOpponent(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxName.Text = selectedItem.sName;                
@@ -141,11 +141,11 @@ namespace App1.Pages
         {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
-                var opponent = new Classes.DBClasses.Opponent
+                var opponent = new Classes.DBClasses.DBOpponent
                 {
                     nID = int.Parse(TextBoxID.Text),
                     nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,
-                    sName = TextBoxName.Text,
+                    sName = TextBoxName.Text
                 };
 
                 opponent.ChangeDB(action);
@@ -175,5 +175,11 @@ namespace App1.Pages
             string sWhere = " AND sName LIKE '%" + sFindName + "%'";
             ShowItemsInListView(sWhere);
         }
+
+        /*
+        FindName_TextChanged zavola ShowItemsInListView(TextBoxFindName.Text)
+        ShowItemsInListView(TextBoxFindName.Text)
+        FillList vytvori string " AND sName LIKE '%" + sFindName + "%'"
+        */
     }
 }

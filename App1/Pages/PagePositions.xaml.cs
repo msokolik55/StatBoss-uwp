@@ -24,7 +24,7 @@ namespace App1.Pages
     public sealed partial class PagePositions : Page
     {
         private string sTableName = "tbl_positions";
-        List<Classes.DBClasses.Position> ListAllItems;
+        List<Classes.DBClasses.DBPosition> ListAllItems;
 
         string[] tables = { "tbl_players", "tbl_stats" };
 
@@ -66,8 +66,8 @@ namespace App1.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.Position>();
-            new Classes.DBClasses.Position().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            ListAllItems = new List<Classes.DBClasses.DBPosition>();
+            new Classes.DBClasses.DBPosition().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -82,7 +82,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.Position selectedItem = new Classes.DBClasses.Position().GetSelectedPosition(e, ListAllItems);
+                Classes.DBClasses.DBPosition selectedItem = new Classes.DBClasses.DBPosition().GetSelectedPosition(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxName.Text = selectedItem.sName;
@@ -136,7 +136,7 @@ namespace App1.Pages
         {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
-                var position = new Classes.DBClasses.Position
+                var position = new Classes.DBClasses.DBPosition
                 {
                     nID = int.Parse(TextBoxID.Text),
                     sName = TextBoxName.Text

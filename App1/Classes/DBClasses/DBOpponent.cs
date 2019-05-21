@@ -8,36 +8,37 @@ using Windows.UI.Xaml.Controls;
 
 namespace App1.Classes.DBClasses
 {
-    public class Team
+    public class DBOpponent
     {
         public int nID;
         public int nIDSeason;
-        public string sShortName;
         public string sName;
+        public DateTime dInserted;
+        public DateTime dUpdated;
 
-        public Team()
+        public DBOpponent()
         {
         }
 
-        public Team(int id, int nidseason, string sshortname, string sname)
+        public DBOpponent(int id, int nidseason, string sname, DateTime dinserted, DateTime dupdated)
         {
             this.nID = id;
             this.nIDSeason = nidseason;
-            this.sShortName = sname;
             this.sName = sname;
+            this.dInserted = dinserted;
+            this.dUpdated = dupdated;
         }
 
-        private void FillList(List<Team> ListAllItems, string sWhere, string sOrder)
+        private void FillList(List<DBOpponent> ListAllItems, string sWhere, string sOrder)
         {
-            string sCommand = "SELECT * FROM tbl_teams WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
+            string sCommand = "SELECT * FROM tbl_opponents WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
             {
-                var item = new Team
+                var item = new DBOpponent
                 {
                     nID = query.GetInt32(query.GetOrdinal("nID")),
-                    sShortName = query.GetString(query.GetOrdinal("sCategoryName")),
                     sName = query.GetString(query.GetOrdinal("sName"))
                 };
 
@@ -45,9 +46,9 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public void ShowItemsInListView(ListView ListViewItems, List<Team> ListAllItems, string sWhere = "", string sOrder = "")
+        public void ShowItemsInListView(ListView ListViewItems, List<DBOpponent> ListAllItems, string sWhere = "", string sOrder = "")
         {
-            new Team().FillList(ListAllItems, sWhere, sOrder);
+            new DBOpponent().FillList(ListAllItems, sWhere, sOrder);
             PageHandling.ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)
@@ -57,7 +58,7 @@ namespace App1.Classes.DBClasses
                     TextBlock block = new TextBlock
                     {
                         Name = item.nID.ToString(),
-                        Text = item.sShortName + " " + item.sName
+                        Text = item.sName
                     };
 
                     ListViewItems.Items.Add(block);
@@ -70,14 +71,14 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public Team GetSelectedTeam(SelectionChangedEventArgs e, List<Team> ListAllItems)
+        public DBOpponent GetSelectedOpponent(SelectionChangedEventArgs e, List<DBOpponent> ListAllItems)
         {
             var listViewItem = e.AddedItems;
 
             TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
             int id = int.Parse(block.Name);
 
-            var selectedItem = new Team();
+            var selectedItem = new DBOpponent();
             foreach (var listItem in ListAllItems)
             {
                 if (listItem.nID == id)
@@ -96,19 +97,32 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_teams (nID, nIDSeason, sCategoryName, sName)" +
-                              " VALUES('" + nID + "', '" + nIDSeason + "', '" + sShortName + "', '" + sName + "')";
+                    sCommand = "INSERT INTO tbl_opponents (nID, nIDSeason, sName, dInserted) VALUES('" + nID + "', '" + StatBoss.Classes.MainVariables.NIDActualSeason + "', '" + sName + "', datetime('now'))";
                     break;
 
                 case "edit":
-                    sCommand = "UPDATE tbl_teams SET sCategoryName='" + sShortName + "', " +
-                                                    "sName='" + sName + "' " +
-                                "WHERE nID = '" + nID + "' AND nIDSeason = '" + nIDSeason + "'";
-
+                    sCommand = "UPDATE tbl_opponents SET sName='" + sName + "', dUpdated=datetime('now') WHERE nID = " + nID + " AND nIDSeason = " + StatBoss.Classes.MainVariables.NIDActualSeason;
                     break;
             }
 
             DataAccess.ExecDB(sCommand);
+        }
+
+        public void ShowInComboBox(List<DBOpponent> ListAllItems, ComboBox comboBox, string toRemove, string sWhere = "", string sOrder = "")
+        {
+            FillList(ListAllItems, sWhere, sOrder);
+            PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
+
+            foreach (var iopponent in ListAllItems)
+            {
+                TextBlock block = new TextBlock
+                {
+                    Name = toRemove + iopponent.nID.ToString(),
+                    Text = DataAccess.GetOpponent(iopponent.nID)
+                };
+
+                comboBox.Items.Add(block);
+            }
         }
     }
 }

@@ -25,8 +25,8 @@ namespace App1
     public sealed partial class PagePlayers : Page
     {
         private string sTableName = "tbl_players";
-        List<Classes.DBClasses.Player> ListAllItems;
-        List<Classes.DBClasses.Position> ListAllPositions;
+        List<Classes.DBClasses.DBPlayer> ListAllItems;
+        List<Classes.DBClasses.DBPosition> ListAllPositions;
 
         private string toRemove = "position_";
 
@@ -80,11 +80,11 @@ namespace App1
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.Player>();
+            ListAllItems = new List<Classes.DBClasses.DBPlayer>();
 
             try
             {
-                new Classes.DBClasses.Player().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                new Classes.DBClasses.DBPlayer().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -103,7 +103,7 @@ namespace App1
 
             try
             {
-                Classes.DBClasses.Player selectedItem = new Classes.DBClasses.Player().GetSelectedPlayer(e, ListAllItems);
+                Classes.DBClasses.DBPlayer selectedItem = new Classes.DBClasses.DBPlayer().GetSelectedPlayer(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxFirstName.Text = selectedItem.sFirstName;
@@ -121,8 +121,8 @@ namespace App1
         // ---------------------------
         private void ShowPositions()
         {
-            ListAllPositions = new List<Classes.DBClasses.Position>();
-            new Classes.DBClasses.Position().ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemove);
+            ListAllPositions = new List<Classes.DBClasses.DBPosition>();
+            new Classes.DBClasses.DBPosition().ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemove);
         }
 
         // ---------------------------
@@ -176,7 +176,7 @@ namespace App1
             {
                 DateTimeOffset date = (DateTimeOffset)DatePickerBirthday.Date;
 
-                var player = new Classes.DBClasses.Player
+                var player = new Classes.DBClasses.DBPlayer
                 {
                     nID = int.Parse(TextBoxID.Text),
                     sFirstName = TextBoxFirstName.Text,

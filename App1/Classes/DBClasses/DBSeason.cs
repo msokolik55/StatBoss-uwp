@@ -8,18 +8,18 @@ using Windows.UI.Xaml.Controls;
 
 namespace App1.Classes.DBClasses
 {
-    public class Season
+    public class DBSeason
     {
         public int nID;
         public string sName;
         public DateTime dInserted;
         public DateTime dUpdated;
 
-        public Season()
+        public DBSeason()
         {
         }
 
-        public Season(int id, string sname, DateTime dinserted, DateTime dupdated)
+        public DBSeason(int id, string sname, DateTime dinserted, DateTime dupdated)
         {
             this.nID = id;
             this.sName = sname;
@@ -27,14 +27,14 @@ namespace App1.Classes.DBClasses
             this.dUpdated = dupdated;
         }
 
-        private void FillList(List<Season> ListAllItems, string sWhere, string sOrder)
+        private void FillList(List<DBSeason> ListAllItems, string sWhere, string sOrder)
         {
             string sCommand = "SELECT * FROM tbl_seasons" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
             {
-                var item = new Season
+                var item = new DBSeason
                 {
                     nID = query.GetInt32(query.GetOrdinal("nID")),
                     sName = query.GetString(query.GetOrdinal("sName"))
@@ -44,9 +44,9 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public void ShowItemsInListView(ListView ListViewItems, List<Season> ListAllItems, string sWhere = "", string sOrder = "")
+        public void ShowItemsInListView(ListView ListViewItems, List<DBSeason> ListAllItems, string sWhere = "", string sOrder = "")
         {
-            new Season().FillList(ListAllItems, sWhere, sOrder);
+            new DBSeason().FillList(ListAllItems, sWhere, sOrder);
             PageHandling.ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)
@@ -69,14 +69,14 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public Season GetSelectedSeason(SelectionChangedEventArgs e, List<Season> ListAllItems)
+        public DBSeason GetSelectedSeason(SelectionChangedEventArgs e, List<DBSeason> ListAllItems)
         {
             var listViewItem = e.AddedItems;
 
             TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
             int id = int.Parse(block.Name);
 
-            var selectedItem = new Season();
+            var selectedItem = new DBSeason();
             foreach (var listItem in ListAllItems)
             {
                 if (listItem.nID == id)

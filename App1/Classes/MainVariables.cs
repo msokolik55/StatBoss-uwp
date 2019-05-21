@@ -20,29 +20,7 @@ namespace StatBoss.Classes
             set
             {
                 nIDActualSeason = value;
-
-                string sCommand = "SELECT * FROM tbl_seasons WHERE nID='" + nIDActualSeason + "'";
-                SqliteDataReader query = DataAccess.QueryDB(sCommand);
-
-                string sName = "";
-                while (query.Read())
-                {
-                    sName = query.GetString(query.GetOrdinal("sName"));
-                }
-
-                try
-                {
-                    Frame contentFrame = Window.Current.Content as Frame;
-                    MainPage mp = contentFrame.Content as MainPage;
-                    Grid grid = mp.Content as Grid;
-                    NavigationViewItem nvItem = grid.FindName("ActualSeason") as NavigationViewItem;
-
-                    string content = (sName != "") ? sName : "Add season";
-                    nvItem.Content = "Season: " + content;
-                }
-                catch (Exception)
-                {
-                }
+                ShowActualSeason();
             }
         }
 
@@ -53,30 +31,7 @@ namespace StatBoss.Classes
             set
             {
                 nIDActualTeam = value;
-
-                string sCommand = "SELECT * FROM tbl_teams WHERE nID='" + nIDActualTeam + "'";
-                SqliteDataReader query = DataAccess.QueryDB(sCommand);
-
-                string sName = "";
-                while (query.Read())
-                {
-                    sName = query.GetString(query.GetOrdinal("sCategoryName"));
-                }
-
-                try
-                {
-                    Frame contentFrame = Window.Current.Content as Frame;
-                    MainPage mp = contentFrame.Content as MainPage;
-                    Grid grid = mp.Content as Grid;
-                    NavigationViewItem nvItem = grid.FindName("ActualTeam") as NavigationViewItem;
-
-                    string content = (sName != "") ? sName : "Add team";
-                    nvItem.Content = "Team: " + content;
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
+                ShowActualTeam();
             }
         }
 
@@ -89,6 +44,67 @@ namespace StatBoss.Classes
             }
             catch (Exception)
             {
+            }
+        }
+
+        public static void ShowActualSeason(NavigationViewItem nvItem = null)
+        {
+            string sCommand = "SELECT * FROM tbl_seasons WHERE nID='" + nIDActualSeason + "'";
+            SqliteDataReader query = DataAccess.QueryDB(sCommand);
+
+            string sName = "";
+            while (query.Read())
+            {
+                sName = query.GetString(query.GetOrdinal("sName"));
+            }
+
+            try { nvItem.Content = "Season: " + sName; }
+            catch(Exception)
+            {
+                try
+                {
+                    Frame contentFrame = Window.Current.Content as Frame;
+                    MainPage mp = contentFrame.Content as MainPage;
+                    Grid grid = mp.Content as Grid;
+                    nvItem = grid.FindName("ActualSeason") as NavigationViewItem;
+
+                    string content = (sName != "") ? sName : "Add season";
+                    nvItem.Content = "Season: " + content;
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        public static void ShowActualTeam(NavigationViewItem nvItem = null)
+        {
+            string sCommand = "SELECT * FROM tbl_teams WHERE nID='" + nIDActualTeam + "' AND nIDSeason='" + nIDActualSeason + "'";
+            SqliteDataReader query = DataAccess.QueryDB(sCommand);
+
+            string sName = "";
+            while (query.Read())
+            {
+                sName = query.GetString(query.GetOrdinal("sCategoryName"));
+            }
+
+            try { nvItem.Content = "Team: " + sName; }
+            catch (Exception)
+            {
+                try
+                {
+                    Frame contentFrame = Window.Current.Content as Frame;
+                    MainPage mp = contentFrame.Content as MainPage;
+                    Grid grid = mp.Content as Grid;
+                    nvItem = grid.FindName("ActualTeam") as NavigationViewItem;
+
+                    string content = (sName != "") ? sName : "Add team";
+                    nvItem.Content = "Team: " + content;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
             }
         }
     }

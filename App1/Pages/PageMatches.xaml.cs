@@ -24,10 +24,10 @@ namespace App1.Pages
     public sealed partial class PageMatches : Page
     {
         private string sTableName = "tbl_matches";
-        List<Classes.DBClasses.Match> ListAllItems;
+        List<Classes.DBClasses.DBMatch> ListAllItems;
 
         private string toRemove = "opponent_";
-        List<Classes.DBClasses.Opponent> ListAllOpponents;
+        List<Classes.DBClasses.DBOpponent> ListAllOpponents;
 
         string[] tables = { "tbl_stats" };
 
@@ -101,11 +101,11 @@ namespace App1.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.Match>();
+            ListAllItems = new List<Classes.DBClasses.DBMatch>();
 
             try
             {
-                new Classes.DBClasses.Match().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                new Classes.DBClasses.DBMatch().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -124,7 +124,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.Match selectedItem = new Classes.DBClasses.Match().GetSelectedMatch(e, ListAllItems);
+                Classes.DBClasses.DBMatch selectedItem = new Classes.DBClasses.DBMatch().GetSelectedMatch(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 CheckBoxPlayed.IsChecked = selectedItem.bPlayed;
@@ -155,8 +155,8 @@ namespace App1.Pages
         // ---------------------------
         private void ShowOpponents()
         {
-            ListAllOpponents = new List<Classes.DBClasses.Opponent>();
-            new Classes.DBClasses.Opponent().ShowInComboBox(ListAllOpponents, ComboBoxOpponent, toRemove);
+            ListAllOpponents = new List<Classes.DBClasses.DBOpponent>();
+            new Classes.DBClasses.DBOpponent().ShowInComboBox(ListAllOpponents, ComboBoxOpponent, toRemove);
         }
 
         // ---------------------------
@@ -196,7 +196,6 @@ namespace App1.Pages
         {
             ButtAddToDB.Visibility = Visibility.Collapsed;
             ButtEditDB.Visibility = Visibility.Visible;
-            ButtEditDB.IsEnabled = true;
 
             EnableEditableElements(true);
         }
@@ -224,7 +223,7 @@ namespace App1.Pages
                 DateTimeOffset dDateTimeOff = (DateTimeOffset)DatePicker.Date;
                 DateTime dDateTime = new DateTime(dDateTimeOff.Year, dDateTimeOff.Month, dDateTimeOff.Day, time.Hours, time.Minutes, time.Seconds);
 
-                var match = new Classes.DBClasses.Match
+                var match = new Classes.DBClasses.DBMatch
                 {
                     nID = int.Parse(TextBoxID.Text),
                     nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,
@@ -245,7 +244,7 @@ namespace App1.Pages
                     nGive3 = int.Parse(TextBoxGive3.Text),
                     nReceived3 = int.Parse(TextBoxReceived3.Text),
                     sMatchDescription = TextBoxDescription.Text
-            };
+                };
 
                 match.ChangeDB(action);
                 ResetPage();

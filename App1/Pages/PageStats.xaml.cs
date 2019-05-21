@@ -23,18 +23,18 @@ namespace App1.Pages
     /// </summary>
     public sealed partial class PageMatchesEdit : Page
     {
-        private Classes.DBClasses.Match actualMatch;
+        private Classes.DBClasses.DBMatch actualMatch;
 
         private string sTableName = "tbl_stats";
-        List<Classes.DBClasses.Stat> ListAllItems;
+        List<Classes.DBClasses.DBStat> ListAllItems;
 
         private string toRemoveMatch = "match_";
         private string toRemovePos = "position_";
         private string toRemovePl = "player_";
 
-        List<Classes.DBClasses.Match> ListAllMatches;
-        List<Classes.DBClasses.Position> ListAllPositions;
-        List<Classes.DBClasses.Player> ListAllPlayers;
+        List<Classes.DBClasses.DBMatch> ListAllMatches;
+        List<Classes.DBClasses.DBPosition> ListAllPositions;
+        List<Classes.DBClasses.DBPlayer> ListAllPlayers;
 
         private bool bSortNumberASC = true;
         private bool bSortGoalsASC = true;
@@ -112,11 +112,11 @@ namespace App1.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.Stat>();
+            ListAllItems = new List<Classes.DBClasses.DBStat>();
 
             try
             {
-                new Classes.DBClasses.Stat().ShowItemsInListView(ListViewItems, ListAllItems, actualMatch.nID, sWhere, sOrder);
+                new Classes.DBClasses.DBStat().ShowItemsInListView(ListViewItems, ListAllItems, actualMatch.nID, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -135,10 +135,10 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.Stat selectedItem = new Classes.DBClasses.Stat().GetSelectedStat(e, ListAllItems);
+                Classes.DBClasses.DBStat selectedItem = new Classes.DBClasses.DBStat().GetSelectedStat(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
-                new Classes.DBClasses.Player().ShowSpecificPlayerInComboBox(ComboBoxPlayer, selectedItem.nIDPlayer, toRemovePl);
+                new Classes.DBClasses.DBPlayer().ShowSpecificPlayerInComboBox(ComboBoxPlayer, selectedItem.nIDPlayer, toRemovePl);
                 ComboBoxPosition.SelectedIndex = Classes.PageHandling.ComboBoxHandling.GetIDIntoComboBox(ComboBoxPosition, selectedItem.nIDPosition, toRemovePos);
                 TextBoxNumber.Text = selectedItem.nNumber.ToString();
                 TextBoxMinutes.Text = selectedItem.nMinutes.ToString();
@@ -157,17 +157,17 @@ namespace App1.Pages
         // ---------------------------
         private void ShowMatches()
         {
-            ListAllMatches = new List<Classes.DBClasses.Match>();
-            new Classes.DBClasses.Match().ShowInComboBox(ListAllMatches, ComboBoxMatch, toRemoveMatch);
+            ListAllMatches = new List<Classes.DBClasses.DBMatch>();
+            new Classes.DBClasses.DBMatch().ShowInComboBox(ListAllMatches, ComboBoxMatch, toRemoveMatch);
         }
 
         private void ShowPlayers()
         {
-            ListAllPlayers = new List<Classes.DBClasses.Player>();
+            ListAllPlayers = new List<Classes.DBClasses.DBPlayer>();
 
             try
             { 
-                new Classes.DBClasses.Player().ShowUnusedPLayersInComboBox(ListAllPlayers, ComboBoxPlayer, toRemovePl, actualMatch.nID);
+                new Classes.DBClasses.DBPlayer().ShowUnusedPLayersInComboBox(ListAllPlayers, ComboBoxPlayer, toRemovePl, actualMatch.nID);
             }
             catch (Exception)
             {
@@ -176,15 +176,15 @@ namespace App1.Pages
 
         private void ShowPositions()
         {
-            ListAllPositions = new List<Classes.DBClasses.Position>();
-            new Classes.DBClasses.Position().ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemovePos);
+            ListAllPositions = new List<Classes.DBClasses.DBPosition>();
+            new Classes.DBClasses.DBPosition().ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemovePos);
         }
 
         private void ComboBoxMatch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ResetPage();
 
-            actualMatch = new Classes.DBClasses.Match().GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
+            actualMatch = new Classes.DBClasses.DBMatch().GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
             ListViewItems.IsEnabled = true;
             ShowItemsInListView();
 
@@ -247,7 +247,7 @@ namespace App1.Pages
         {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
-                var stat = new Classes.DBClasses.Stat
+                var stat = new Classes.DBClasses.DBStat
                 {
                     nID = int.Parse(TextBoxID.Text),
                     nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,

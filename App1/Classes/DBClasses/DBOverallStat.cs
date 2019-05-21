@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace App1.Classes.DBClasses
 {
-    public class OverallStat
+    public class DBOverallStat
     {
         public int nID;
         public int nIDSeason;
@@ -23,11 +23,11 @@ namespace App1.Classes.DBClasses
         public int nPenalties;
         public int nRedCards;
 
-        public OverallStat()
+        public DBOverallStat()
         {
         }
 
-        public OverallStat(int nid, int nidseason, int nnumber, int niduserteam, string sfirstname, string ssurname,
+        public DBOverallStat(int nid, int nidseason, int nnumber, int niduserteam, string sfirstname, string ssurname,
             int nmatches, int nminutes, int ngoals, int nassists, int npenalties, int nredcards)
         {
             this.nID = nid;
@@ -43,7 +43,7 @@ namespace App1.Classes.DBClasses
             this.nRedCards = nredcards;
         }
 
-        private void FillList(List<OverallStat> ListAllItems, string sWhere, string sOrder)
+        private void FillList(List<DBOverallStat> ListAllItems, string sWhere, string sOrder)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace App1.Classes.DBClasses
                 int id = 0;
                 while (query.Read())
                 {
-                    var item = new OverallStat
+                    var item = new DBOverallStat
                     {
                         nID = id,
                         sFirstName = query.GetString(query.GetOrdinal("sFirstName")),
@@ -82,9 +82,9 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public void ShowItemsInListView(ListView ListViewItems, List<OverallStat> ListAllItems, string sWhere = "", string sOrder = "")
+        public void ShowItemsInListView(ListView ListViewItems, List<DBOverallStat> ListAllItems, string sWhere = "", string sOrder = "")
         {
-            new OverallStat().FillList(ListAllItems, sWhere, sOrder);
+            new DBOverallStat().FillList(ListAllItems, sWhere, sOrder);
 
             PageHandling.ListViewHandling.ResetListView(ListViewItems);
 
@@ -109,14 +109,14 @@ namespace App1.Classes.DBClasses
 
         }
 
-        public OverallStat GetSelectedOverallStat(SelectionChangedEventArgs e, List<OverallStat> ListAllItems)
+        public DBOverallStat GetSelectedOverallStat(SelectionChangedEventArgs e, List<DBOverallStat> ListAllItems)
         {
             var listViewItem = e.AddedItems;
 
             TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
             int id = int.Parse(block.Name);
 
-            var selectedItem = new OverallStat();
+            var selectedItem = new DBOverallStat();
             foreach (var listItem in ListAllItems)
             {
                 if (listItem.nID == id)

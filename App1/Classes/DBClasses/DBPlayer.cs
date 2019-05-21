@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace App1.Classes.DBClasses
 {
-    public class Player
+    public class DBPlayer
     {
         public int nID;
         public string sFirstName;
@@ -17,11 +17,11 @@ namespace App1.Classes.DBClasses
         public int nIDUserTeam;
         public int nIDPosition;
 
-        public Player()
+        public DBPlayer()
         {
         }
 
-        public Player(int id, string sfirstname, string ssurname, DateTime dbirthday, int niduserteam, int position)
+        public DBPlayer(int id, string sfirstname, string ssurname, DateTime dbirthday, int niduserteam, int position)
         {
             this.nID = id;
             this.sFirstName = sfirstname;
@@ -31,14 +31,14 @@ namespace App1.Classes.DBClasses
             this.nIDPosition = position;
         }
 
-        private void FillList(List<Player> ListAllItems, string sWhere="", string sOrder="")
+        private void FillList(List<DBPlayer> ListAllItems, string sWhere="", string sOrder="")
         {
             string sCommand = "SELECT * FROM tbl_players WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND nIDUserTeam='" + StatBoss.Classes.MainVariables.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
             {
-                var iplayer = new Player
+                var iplayer = new DBPlayer
                 {
                     nID = query.GetInt32(query.GetOrdinal("nID")),
                     sFirstName = query.GetString(query.GetOrdinal("sFirstName")),
@@ -51,9 +51,9 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public void ShowItemsInListView(ListView ListViewItems, List<Player> ListAllItems, string sWhere = "", string sOrder = "")
+        public void ShowItemsInListView(ListView ListViewItems, List<DBPlayer> ListAllItems, string sWhere = "", string sOrder = "")
         {
-            new Player().FillList(ListAllItems, sWhere, sOrder);
+            new DBPlayer().FillList(ListAllItems, sWhere, sOrder);
             PageHandling.ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)
@@ -76,7 +76,7 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public void ShowUnusedPLayersInComboBox(List<Player> ListAllItems, ComboBox comboBox, string toRemove, int nIDMatch)
+        public void ShowUnusedPLayersInComboBox(List<DBPlayer> ListAllItems, ComboBox comboBox, string toRemove, int nIDMatch)
         {
             string sWhere = " AND nID not in (SELECT nIDPlayer FROM tbl_stats " +
                                              "WHERE nIDSeason = '" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND " +
@@ -110,14 +110,14 @@ namespace App1.Classes.DBClasses
             comboBox.SelectedIndex = 0;
         }
 
-        public Player GetSelectedPlayer(SelectionChangedEventArgs e, List<Player> ListAllItems)
+        public DBPlayer GetSelectedPlayer(SelectionChangedEventArgs e, List<DBPlayer> ListAllItems)
         {
             var listViewItem = e.AddedItems;
 
             TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
             int id = int.Parse(block.Name);
 
-            var selectedItem = new Player();
+            var selectedItem = new DBPlayer();
             foreach (var listItem in ListAllItems)
             {
                 if (listItem.nID == id)

@@ -8,47 +8,45 @@ using Windows.UI.Xaml.Controls;
 
 namespace App1.Classes.DBClasses
 {
-    public class Opponent
+    public class DBPosition
     {
         public int nID;
-        public int nIDSeason;
         public string sName;
         public DateTime dInserted;
         public DateTime dUpdated;
 
-        public Opponent()
+        public DBPosition()
         {
         }
 
-        public Opponent(int id, int nidseason, string sname, DateTime dinserted, DateTime dupdated)
+        public DBPosition(int id, string sname, DateTime dinserted, DateTime dupdated)
         {
             this.nID = id;
-            this.nIDSeason = nidseason;
             this.sName = sname;
             this.dInserted = dinserted;
             this.dUpdated = dupdated;
         }
 
-        private void FillList(List<Opponent> ListAllItems, string sWhere, string sOrder)
+        private void FillList(List<DBPosition> ListAllItems, string sWhere, string sOrder)
         {
-            string sCommand = "SELECT * FROM tbl_opponents WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
+            string sCommand = "SELECT * FROM tbl_positions" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
             while (query.Read())
             {
-                var item = new Opponent
+                var iposition = new DBPosition
                 {
                     nID = query.GetInt32(query.GetOrdinal("nID")),
                     sName = query.GetString(query.GetOrdinal("sName"))
                 };
 
-                ListAllItems.Add(item);
+                ListAllItems.Add(iposition);
             }
         }
 
-        public void ShowItemsInListView(ListView ListViewItems, List<Opponent> ListAllItems, string sWhere = "", string sOrder = "")
+        public void ShowItemsInListView(ListView ListViewItems, List<DBPosition> ListAllItems, string sWhere = "", string sOrder = "")
         {
-            new Opponent().FillList(ListAllItems, sWhere, sOrder);
+            new DBPosition().FillList(ListAllItems, sWhere, sOrder);
             PageHandling.ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)
@@ -71,14 +69,31 @@ namespace App1.Classes.DBClasses
             }
         }
 
-        public Opponent GetSelectedOpponent(SelectionChangedEventArgs e, List<Opponent> ListAllItems)
+        public void ShowInComboBox(List<DBPosition> ListAllItems, ComboBox comboBox, string toRemove, string sWhere = "", string sOrder = "")
+        {
+            FillList(ListAllItems, sWhere, sOrder);
+            PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
+
+            foreach (var iposition in ListAllItems)
+            {
+                TextBlock block = new TextBlock
+                {
+                    Name = toRemove + iposition.nID.ToString(),
+                    Text = iposition.sName
+                };
+
+                comboBox.Items.Add(block);
+            }
+        }
+
+        public DBPosition GetSelectedPosition(SelectionChangedEventArgs e, List<DBPosition> ListAllItems)
         {
             var listViewItem = e.AddedItems;
 
             TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
             int id = int.Parse(block.Name);
 
-            var selectedItem = new Opponent();
+            var selectedItem = new DBPosition();
             foreach (var listItem in ListAllItems)
             {
                 if (listItem.nID == id)
@@ -97,34 +112,15 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_opponents (nID, nIDSeason, sName, dInserted) VALUES('" + nID + "', '" + StatBoss.Classes.MainVariables.NIDActualSeason + "', '" + sName + "', datetime('now'))";
+                    sCommand = "INSERT INTO tbl_positions (nID, sName, dInserted) VALUES('" + nID + "', '" + sName + "', datetime('now'))";
                     break;
 
                 case "edit":
-                    sCommand = "UPDATE tbl_opponents SET sName='" + sName + "', dUpdated=datetime('now') WHERE nID = " + nID + " AND nIDSeason = " + StatBoss.Classes.MainVariables.NIDActualSeason;
+                    sCommand = "UPDATE tbl_positions SET sName='" + sName + "', dUpdated=datetime('now') WHERE nID = " + nID;
                     break;
             }
 
             DataAccess.ExecDB(sCommand);
         }
-
-        public void ShowInComboBox(List<Opponent> ListAllItems, ComboBox comboBox, string toRemove, string sWhere = "", string sOrder = "")
-        {
-            FillList(ListAllItems, sWhere, sOrder);
-            PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
-
-            foreach (var iopponent in ListAllItems)
-            {
-                TextBlock block = new TextBlock
-                {
-                    Name = toRemove + iopponent.nID.ToString(),
-                    Text = DataAccess.GetOpponent(iopponent.nID)
-                };
-
-                comboBox.Items.Add(block);
-            }
-        }
-
-
     }
 }

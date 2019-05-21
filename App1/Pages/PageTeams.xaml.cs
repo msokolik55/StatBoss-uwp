@@ -24,7 +24,7 @@ namespace App1.Pages
     public sealed partial class PageTeams : Page
     {
         private string sTableName = "tbl_teams";
-        List<Classes.DBClasses.Team> ListAllItems;
+        List<Classes.DBClasses.DBTeam> ListAllItems;
 
         string[] tables = { "tbl_matches", "tbl_players", "tbl_stats" };
 
@@ -71,8 +71,8 @@ namespace App1.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.Team>();
-            new Classes.DBClasses.Team().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            ListAllItems = new List<Classes.DBClasses.DBTeam>();
+            new Classes.DBClasses.DBTeam().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -88,7 +88,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.Team selectedItem = new Classes.DBClasses.Team().GetSelectedTeam(e, ListAllItems);
+                Classes.DBClasses.DBTeam selectedItem = new Classes.DBClasses.DBTeam().GetSelectedTeam(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxShortName.Text = selectedItem.sShortName;
@@ -153,7 +153,7 @@ namespace App1.Pages
         {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
-                var team = new Classes.DBClasses.Team
+                var team = new Classes.DBClasses.DBTeam
                 {
                     nID = int.Parse(TextBoxID.Text),
                     nIDSeason = StatBoss.Classes.MainVariables.NIDActualSeason,

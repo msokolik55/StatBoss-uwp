@@ -23,7 +23,7 @@ namespace App1.Pages
     public sealed partial class PageSeasons : Page
     {
         private string sTableName = "tbl_seasons";
-        List<Classes.DBClasses.Season> ListAllItems;
+        List<Classes.DBClasses.DBSeason> ListAllItems;
 
         string[] tables = { "tbl_matches", "tbl_opponents", "tbl_players", "tbl_stats", "tbl_teams" };
 
@@ -68,8 +68,8 @@ namespace App1.Pages
         // ---------------------------
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
-            ListAllItems = new List<Classes.DBClasses.Season>();
-            new Classes.DBClasses.Season().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            ListAllItems = new List<Classes.DBClasses.DBSeason>();
+            new Classes.DBClasses.DBSeason().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -85,7 +85,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.Season selectedItem = new Classes.DBClasses.Season().GetSelectedSeason(e, ListAllItems);
+                Classes.DBClasses.DBSeason selectedItem = new Classes.DBClasses.DBSeason().GetSelectedSeason(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxName.Text = selectedItem.sName;
@@ -149,7 +149,7 @@ namespace App1.Pages
         {
             if (Classes.PageHandling.FieldsChecking.AreElementsCorrect(GridEditableElements.Children))
             {
-                var season = new Classes.DBClasses.Season
+                var season = new Classes.DBClasses.DBSeason
                 {
                     nID = int.Parse(TextBoxID.Text),
                     sName = TextBoxName.Text

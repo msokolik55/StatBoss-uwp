@@ -128,14 +128,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\DBClasses\DataAccess.cs" />
-    <Compile Include="Classes\DBClasses\Match.cs" />
-    <Compile Include="Classes\DBClasses\Opponent.cs" />
-    <Compile Include="Classes\DBClasses\OverallStat.cs" />
-    <Compile Include="Classes\DBClasses\Player.cs" />
-    <Compile Include="Classes\DBClasses\Position.cs" />
-    <Compile Include="Classes\DBClasses\Season.cs" />
-    <Compile Include="Classes\DBClasses\Stat.cs" />
-    <Compile Include="Classes\DBClasses\Team.cs" />
+    <Compile Include="Classes\DBClasses\DBMatch.cs" />
+    <Compile Include="Classes\DBClasses\DBOpponent.cs" />
+    <Compile Include="Classes\DBClasses\DBOverallStat.cs" />
+    <Compile Include="Classes\DBClasses\DBPlayer.cs" />
+    <Compile Include="Classes\DBClasses\DBPosition.cs" />
+    <Compile Include="Classes\DBClasses\DBSeason.cs" />
+    <Compile Include="Classes\DBClasses\DBStat.cs" />
+    <Compile Include="Classes\DBClasses\DBTeam.cs" />
     <Compile Include="Classes\MainVariables.cs" />
     <Compile Include="Classes\PageHandling\ComboBoxHandling.cs" />
     <Compile Include="Classes\PageHandling\DialogsHandling.cs" />

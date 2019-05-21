@@ -33,6 +33,7 @@ namespace App1
             this.Suspending += OnSuspending;
 
             DataAccess.InitializeDatabase();
+            MainVariables.InitializeMainVariables();
         }
 
         /// <summary>
