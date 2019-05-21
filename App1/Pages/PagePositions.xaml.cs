@@ -67,7 +67,7 @@ namespace App1.Pages
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
             ListAllItems = new List<Classes.DBClasses.DBPosition>();
-            new Classes.DBClasses.DBPosition().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            StatBoss.Classes.UIClasses.UIPosition.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -82,7 +82,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.DBPosition selectedItem = new Classes.DBClasses.DBPosition().GetSelectedPosition(e, ListAllItems);
+                Classes.DBClasses.DBPosition selectedItem = StatBoss.Classes.UIClasses.UIPosition.GetSelectedPosition(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxName.Text = selectedItem.sName;

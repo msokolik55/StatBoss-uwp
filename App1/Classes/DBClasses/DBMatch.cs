@@ -58,7 +58,7 @@ namespace App1.Classes.DBClasses
             this.dUpdated = dupdated;
         }
 
-        private void FillList(List<DBMatch> ListAllItems, string sWhere, string sOrder)
+        public void FillList(List<DBMatch> ListAllItems, string sWhere, string sOrder)
         {
             string sCommand = "SELECT * FROM tbl_matches WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND nIDUserTeam='" + StatBoss.Classes.MainVariables.NIDActualTeam + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
@@ -93,50 +93,6 @@ namespace App1.Classes.DBClasses
 
                 ListAllItems.Add(imatch);
             }
-        }
-
-        public void ShowItemsInListView(ListView ListViewItems, List<DBMatch> ListAllItems, string sWhere = "", string sOrder = "")
-        {
-            new DBMatch().FillList(ListAllItems, sWhere, sOrder);
-            PageHandling.ListViewHandling.ResetListView(ListViewItems);
-
-            if (ListAllItems.Count > 0)
-            {
-                foreach (var item in ListAllItems)
-                {
-                    TextBlock block = new TextBlock
-                    {
-                        Name = item.nID.ToString(),
-                        Text = item.dDateTime.ToString("dd.MM.yyyy HH:mm") + " " + DataAccess.GetOpponent(item.nIDOpponent)
-                    };
-
-                    ListViewItems.Items.Add(block);
-                }
-                ListViewItems.IsEnabled = true;
-            }
-            else
-            {
-                PageHandling.ListViewHandling.NoItemsToShow(ListViewItems);
-            }
-        }
-
-        public DBMatch GetSelectedMatch(SelectionChangedEventArgs e, List<DBMatch> ListAllItems)
-        {
-            var listViewItem = e.AddedItems;
-
-            TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
-            int id = int.Parse(block.Name);
-
-            var selectedItem = new DBMatch();
-            foreach (var listItem in ListAllItems)
-            {
-                if (listItem.nID == id)
-                {
-                    selectedItem = listItem;
-                }
-            }
-
-            return selectedItem;
         }
 
         public void ChangeDB(string action)
@@ -193,43 +149,6 @@ namespace App1.Classes.DBClasses
             }
 
             DataAccess.ExecDB(sCommand);
-        }
-
-        public void ShowInComboBox(List<DBMatch> ListAllItems, ComboBox comboBox, string toRemove)
-        {
-            FillList(ListAllItems, " AND bPlayed = '1'", "");
-            PageHandling.ComboBoxHandling.ResetComboBox(comboBox);
-
-            foreach (var imatch in ListAllItems)
-            {
-                TextBlock block = new TextBlock
-                {
-                    Name = toRemove + imatch.nID.ToString(),
-                    Text = imatch.dDateTime.ToString("dd.MM.yyyy HH:mm") + " " + DataAccess.GetOpponent(imatch.nIDOpponent)
-                };
-
-                comboBox.Items.Add(block);
-            }
-        }
-
-        public DBMatch GetSelectedMatchFromComboBox(SelectionChangedEventArgs e, List<DBMatch> ListAllItems, ComboBox comboBox, string toRemove)
-        {
-            DBMatch actualMatch = new DBMatch();
-            var listViewItem = e.AddedItems;
-
-            TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
-            int id = int.Parse(block.Name.Substring(toRemove.Length));
-
-            for (int i = 0; i < comboBox.Items.Count; i++)
-            {
-                TextBlock iblock = comboBox.Items[i] as TextBlock;
-                if (id == int.Parse(iblock.Name.Substring(toRemove.Length)))
-                {
-                    actualMatch = ListAllItems[i];
-                }
-            }
-
-            return actualMatch;
         }
     }
 }

@@ -105,7 +105,7 @@ namespace App1.Pages
 
             try
             {
-                new Classes.DBClasses.DBMatch().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                StatBoss.Classes.UIClasses.UIMatch.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -124,7 +124,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.DBMatch selectedItem = new Classes.DBClasses.DBMatch().GetSelectedMatch(e, ListAllItems);
+                Classes.DBClasses.DBMatch selectedItem = StatBoss.Classes.UIClasses.UIMatch.GetSelectedMatch(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 CheckBoxPlayed.IsChecked = selectedItem.bPlayed;
@@ -156,7 +156,7 @@ namespace App1.Pages
         private void ShowOpponents()
         {
             ListAllOpponents = new List<Classes.DBClasses.DBOpponent>();
-            new Classes.DBClasses.DBOpponent().ShowInComboBox(ListAllOpponents, ComboBoxOpponent, toRemove);
+            StatBoss.Classes.UIClasses.UIOpponent.ShowInComboBox(ListAllOpponents, ComboBoxOpponent, toRemove);
         }
 
         // ---------------------------

@@ -69,7 +69,7 @@ namespace App1.Pages
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
             ListAllItems = new List<Classes.DBClasses.DBSeason>();
-            new Classes.DBClasses.DBSeason().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            StatBoss.Classes.UIClasses.UISeason.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -85,7 +85,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.DBSeason selectedItem = new Classes.DBClasses.DBSeason().GetSelectedSeason(e, ListAllItems);
+                Classes.DBClasses.DBSeason selectedItem = StatBoss.Classes.UIClasses.UISeason.GetSelectedSeason(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxName.Text = selectedItem.sName;

@@ -142,6 +142,14 @@
     <Compile Include="Classes\PageHandling\FieldsChecking.cs" />
     <Compile Include="Classes\PageHandling\ListViewHandling.cs" />
     <Compile Include="Classes\PageHandling\NavigationHandling.cs" />
+    <Compile Include="Classes\UIClasses\UIMatch.cs" />
+    <Compile Include="Classes\UIClasses\UIOpponent.cs" />
+    <Compile Include="Classes\UIClasses\UIOverallStat.cs" />
+    <Compile Include="Classes\UIClasses\UIPlayer.cs" />
+    <Compile Include="Classes\UIClasses\UIPosition.cs" />
+    <Compile Include="Classes\UIClasses\UISeason.cs" />
+    <Compile Include="Classes\UIClasses\UIStat.cs" />
+    <Compile Include="Classes\UIClasses\UITeam.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

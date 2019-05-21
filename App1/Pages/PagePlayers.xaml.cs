@@ -84,7 +84,7 @@ namespace App1
 
             try
             {
-                new Classes.DBClasses.DBPlayer().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                StatBoss.Classes.UIClasses.UIPlayer.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -103,7 +103,7 @@ namespace App1
 
             try
             {
-                Classes.DBClasses.DBPlayer selectedItem = new Classes.DBClasses.DBPlayer().GetSelectedPlayer(e, ListAllItems);
+                Classes.DBClasses.DBPlayer selectedItem = StatBoss.Classes.UIClasses.UIPlayer.GetSelectedPlayer(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxFirstName.Text = selectedItem.sFirstName;
@@ -122,7 +122,7 @@ namespace App1
         private void ShowPositions()
         {
             ListAllPositions = new List<Classes.DBClasses.DBPosition>();
-            new Classes.DBClasses.DBPosition().ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemove);
+            StatBoss.Classes.UIClasses.UIPosition.ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemove);
         }
 
         // ---------------------------

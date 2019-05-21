@@ -116,7 +116,7 @@ namespace App1.Pages
 
             try
             {
-                new Classes.DBClasses.DBStat().ShowItemsInListView(ListViewItems, ListAllItems, actualMatch.nID, sWhere, sOrder);
+                StatBoss.Classes.UIClasses.UIStat.ShowItemsInListView(ListViewItems, ListAllItems, actualMatch.nID, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -135,10 +135,10 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.DBStat selectedItem = new Classes.DBClasses.DBStat().GetSelectedStat(e, ListAllItems);
+                Classes.DBClasses.DBStat selectedItem = StatBoss.Classes.UIClasses.UIStat.GetSelectedStat(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
-                new Classes.DBClasses.DBPlayer().ShowSpecificPlayerInComboBox(ComboBoxPlayer, selectedItem.nIDPlayer, toRemovePl);
+                StatBoss.Classes.UIClasses.UIPlayer.ShowSpecificPlayerInComboBox(ComboBoxPlayer, selectedItem.nIDPlayer, toRemovePl);
                 ComboBoxPosition.SelectedIndex = Classes.PageHandling.ComboBoxHandling.GetIDIntoComboBox(ComboBoxPosition, selectedItem.nIDPosition, toRemovePos);
                 TextBoxNumber.Text = selectedItem.nNumber.ToString();
                 TextBoxMinutes.Text = selectedItem.nMinutes.ToString();
@@ -158,7 +158,7 @@ namespace App1.Pages
         private void ShowMatches()
         {
             ListAllMatches = new List<Classes.DBClasses.DBMatch>();
-            new Classes.DBClasses.DBMatch().ShowInComboBox(ListAllMatches, ComboBoxMatch, toRemoveMatch);
+            StatBoss.Classes.UIClasses.UIMatch.ShowInComboBox(ListAllMatches, ComboBoxMatch, toRemoveMatch);
         }
 
         private void ShowPlayers()
@@ -167,7 +167,7 @@ namespace App1.Pages
 
             try
             { 
-                new Classes.DBClasses.DBPlayer().ShowUnusedPLayersInComboBox(ListAllPlayers, ComboBoxPlayer, toRemovePl, actualMatch.nID);
+                StatBoss.Classes.UIClasses.UIPlayer.ShowUnusedPLayersInComboBox(ListAllPlayers, ComboBoxPlayer, toRemovePl, actualMatch.nID);
             }
             catch (Exception)
             {
@@ -177,14 +177,14 @@ namespace App1.Pages
         private void ShowPositions()
         {
             ListAllPositions = new List<Classes.DBClasses.DBPosition>();
-            new Classes.DBClasses.DBPosition().ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemovePos);
+            StatBoss.Classes.UIClasses.UIPosition.ShowInComboBox(ListAllPositions, ComboBoxPosition, toRemovePos);
         }
 
         private void ComboBoxMatch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ResetPage();
 
-            actualMatch = new Classes.DBClasses.DBMatch().GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
+            actualMatch = StatBoss.Classes.UIClasses.UIMatch.GetSelectedMatchFromComboBox(e, ListAllMatches, ComboBoxMatch, toRemoveMatch);
             ListViewItems.IsEnabled = true;
             ShowItemsInListView();
 

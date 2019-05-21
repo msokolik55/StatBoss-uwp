@@ -48,7 +48,7 @@ namespace App1.Classes.DBClasses
             this.dUpdated = dupdated;
         }
 
-        private void FillList(List<DBStat> ListAllItems, int nIDMatch, string sWhere, string sOrder)
+        public void FillList(List<DBStat> ListAllItems, int nIDMatch, string sWhere, string sOrder)
         {
             try
             {
@@ -84,52 +84,6 @@ namespace App1.Classes.DBClasses
             catch (Exception)
             {
             }
-        }
-
-        public void ShowItemsInListView(ListView ListViewItems, List<DBStat> ListAllItems, int nIDMatch, string sWhere = "", string sOrder = "")
-        {
-            new DBStat().FillList(ListAllItems, nIDMatch, sWhere, sOrder);
-
-            PageHandling.ListViewHandling.ResetListView(ListViewItems);
-
-            if (ListAllItems.Count > 0)
-            {
-                foreach (var item in ListAllItems)
-                {
-                    TextBlock block = new TextBlock
-                    {
-                        Name = item.nID.ToString(),
-                        Text = item.nNumber.ToString() + "\t" + DataAccess.GetPlayer(item.nIDPlayer) + " (" + item.nGoals + " + " + item.nAssists + ")"
-                    };
-
-                    ListViewItems.Items.Add(block);
-                }
-                ListViewItems.IsEnabled = true;
-            }
-            else
-            {
-                PageHandling.ListViewHandling.NoItemsToShow(ListViewItems);
-            }
-
-        }
-
-        public DBStat GetSelectedStat(SelectionChangedEventArgs e, List<DBStat> ListAllItems)
-        {
-            var listViewItem = e.AddedItems;
-
-            TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
-            int id = int.Parse(block.Name);
-
-            var selectedItem = new DBStat();
-            foreach (var listItem in ListAllItems)
-            {
-                if (listItem.nID == id)
-                {
-                    selectedItem = listItem;
-                }
-            }
-
-            return selectedItem;
         }
 
         public void ChangeDB(string action)

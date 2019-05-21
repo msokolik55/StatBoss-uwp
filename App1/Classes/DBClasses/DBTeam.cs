@@ -27,7 +27,7 @@ namespace App1.Classes.DBClasses
             this.sName = sname;
         }
 
-        private void FillList(List<DBTeam> ListAllItems, string sWhere, string sOrder)
+        public void FillList(List<DBTeam> ListAllItems, string sWhere, string sOrder)
         {
             string sCommand = "SELECT * FROM tbl_teams WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
@@ -43,50 +43,6 @@ namespace App1.Classes.DBClasses
 
                 ListAllItems.Add(item);
             }
-        }
-
-        public void ShowItemsInListView(ListView ListViewItems, List<DBTeam> ListAllItems, string sWhere = "", string sOrder = "")
-        {
-            new DBTeam().FillList(ListAllItems, sWhere, sOrder);
-            PageHandling.ListViewHandling.ResetListView(ListViewItems);
-
-            if (ListAllItems.Count > 0)
-            {
-                foreach (var item in ListAllItems)
-                {
-                    TextBlock block = new TextBlock
-                    {
-                        Name = item.nID.ToString(),
-                        Text = item.sShortName + " " + item.sName
-                    };
-
-                    ListViewItems.Items.Add(block);
-                }
-                ListViewItems.IsEnabled = true;
-            }
-            else
-            {
-                PageHandling.ListViewHandling.NoItemsToShow(ListViewItems);
-            }
-        }
-
-        public DBTeam GetSelectedTeam(SelectionChangedEventArgs e, List<DBTeam> ListAllItems)
-        {
-            var listViewItem = e.AddedItems;
-
-            TextBlock block = (TextBlock)listViewItem[listViewItem.Count - 1];
-            int id = int.Parse(block.Name);
-
-            var selectedItem = new DBTeam();
-            foreach (var listItem in ListAllItems)
-            {
-                if (listItem.nID == id)
-                {
-                    selectedItem = listItem;
-                }
-            }
-
-            return selectedItem;
         }
 
         public void ChangeDB(string action)

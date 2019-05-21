@@ -69,7 +69,7 @@ namespace App1.Pages
         private void ShowItemsInListView(string sWhere = "", string sOrder = "")
         {
             ListAllItems = new List<Classes.DBClasses.DBOpponent>();
-            new Classes.DBClasses.DBOpponent().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            StatBoss.Classes.UIClasses.UIOpponent.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,7 +84,7 @@ namespace App1.Pages
 
             try
             {
-                Classes.DBClasses.DBOpponent selectedItem = new Classes.DBClasses.DBOpponent().GetSelectedOpponent(e, ListAllItems);
+                Classes.DBClasses.DBOpponent selectedItem = StatBoss.Classes.UIClasses.UIOpponent.GetSelectedOpponent(e, ListAllItems);
 
                 TextBoxID.Text = selectedItem.nID.ToString();
                 TextBoxName.Text = selectedItem.sName;                

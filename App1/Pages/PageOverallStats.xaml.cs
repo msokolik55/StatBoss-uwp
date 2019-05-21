@@ -43,7 +43,7 @@ namespace StatBoss.Pages
 
             try
             {
-                new App1.Classes.DBClasses.DBOverallStat().ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                Classes.UIClasses.UIOverallStat.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
             }
             catch (Exception)
             {
@@ -54,7 +54,7 @@ namespace StatBoss.Pages
         {
             try
             {
-                App1.Classes.DBClasses.DBOverallStat selectedItem = new App1.Classes.DBClasses.DBOverallStat().GetSelectedOverallStat(e, ListAllItems);
+                App1.Classes.DBClasses.DBOverallStat selectedItem = Classes.UIClasses.UIOverallStat.GetSelectedOverallStat(e, ListAllItems);
 
                 TextBoxFirstName.Text = selectedItem.sFirstName;
                 TextBoxSurname.Text = selectedItem.sSurname;
