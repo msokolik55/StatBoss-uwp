@@ -61,6 +61,7 @@ namespace App1.Classes.DBClasses
         public void FillList(List<DBMatch> ListAllItems, string sWhere, string sOrder, bool bFindName = true, bool bASC = true)
         {
             if (bFindName) { sWhere = " AND o.sName LIKE '%" + sWhere + "%'"; }
+            if (int.TryParse(sWhere, out int code)) { sWhere = " AND bPlayed = '" + int.Parse(sWhere) + "'"; }
             if (sOrder != "")
             {
                 sOrder = " ORDER BY " + sOrder;

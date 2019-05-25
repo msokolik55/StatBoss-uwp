@@ -272,14 +272,12 @@ namespace App1.Pages
 
         private void CheckBoxFilterPlayed_Checked(object sender, RoutedEventArgs e)
         {
-            string sWhere = " AND bPlayed = '1'";
-            ShowItemsInListView(sWhere);
+            ShowItemsInListView("1");
         }
 
         private void CheckBoxFilterPlayed_Unchecked(object sender, RoutedEventArgs e)
         {
-            string sWhere = " AND bPlayed = '0'";
-            ShowItemsInListView(sWhere);
+            ShowItemsInListView("0");
         }
     }
 }
