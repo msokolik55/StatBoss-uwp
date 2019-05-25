@@ -27,9 +27,14 @@ namespace App1.Classes.DBClasses
             this.dUpdated = dupdated;
         }
 
-        public void FillList(List<DBSeason> ListAllItems, string sWhere, string sOrder)
+        public void FillList(List<DBSeason> ListAllItems, string sWhere, string sOrder, bool bASC = true)
         {
             if (sWhere != "") { sWhere = " WHERE sName LIKE '%" + sWhere + "%'"; }
+            if (sOrder != "")
+            {
+                sOrder = " ORDER BY " + sOrder;
+                sOrder += bASC == true ? " ASC" : " DESC";
+            }
 
             string sCommand = "SELECT * FROM tbl_seasons" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);

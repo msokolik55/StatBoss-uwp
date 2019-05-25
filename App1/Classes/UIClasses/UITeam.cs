@@ -11,9 +11,9 @@ namespace StatBoss.Classes.UIClasses
 {
     public static class UITeam
     {
-        public static void ShowItemsInListView(ListView ListViewItems, List<DBTeam> ListAllItems, string sWhere = "", string sOrder = "")
+        public static void ShowItemsInListView(ListView ListViewItems, List<DBTeam> ListAllItems, string sWhere = "", string sOrder = "", bool bASC = true)
         {
-            new DBTeam().FillList(ListAllItems, sWhere, sOrder);
+            new DBTeam().FillList(ListAllItems, sWhere, sOrder, bASC);
             ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)

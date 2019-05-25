@@ -11,9 +11,9 @@ namespace StatBoss.Classes.UIClasses
 {
     public static class UIOverallStat
     {
-        public static void ShowItemsInListView(ListView ListViewItems, List<DBOverallStat> ListAllItems, string sWhere = "", string sOrder = "")
+        public static void ShowItemsInListView(ListView ListViewItems, List<DBOverallStat> ListAllItems, string sWhere = "", string sOrder = "", bool bASC = true)
         {
-            new DBOverallStat().FillList(ListAllItems, sWhere, sOrder);
+            new DBOverallStat().FillList(ListAllItems, sWhere, sOrder, bASC);
 
             ListViewHandling.ResetListView(ListViewItems);
 

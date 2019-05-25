@@ -48,11 +48,16 @@ namespace App1.Classes.DBClasses
             this.dUpdated = dupdated;
         }
 
-        public void FillList(List<DBStat> ListAllItems, int nIDMatch, string sWhere, string sOrder)
+        public void FillList(List<DBStat> ListAllItems, int nIDMatch, string sWhere, string sOrder, bool bASC = true)
         {
             try
             {
                 if(sWhere != "") { sWhere = " AND (p.sSurname || ' ' || p.sFirstName LIKE '%" + sWhere + "%')"; }
+                if (sOrder != "")
+                {
+                    sOrder = " ORDER BY " + sOrder;
+                    sOrder += bASC == true ? " ASC" : " DESC";
+                }
 
                 string sCommand = "SELECT * FROM tbl_stats AS s " +
                                   "JOIN tbl_players AS p ON p.nID = s.nIDPlayer " +

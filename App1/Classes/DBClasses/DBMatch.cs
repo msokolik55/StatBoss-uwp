@@ -58,11 +58,15 @@ namespace App1.Classes.DBClasses
             this.dUpdated = dupdated;
         }
 
-        public void FillList(List<DBMatch> ListAllItems, string sWhere, string sOrder, bool bFindName = true)
+        public void FillList(List<DBMatch> ListAllItems, string sWhere, string sOrder, bool bFindName = true, bool bASC = true)
         {
             if (bFindName) { sWhere = " AND o.sName LIKE '%" + sWhere + "%'"; }
+            if (sOrder != "")
+            {
+                sOrder = " ORDER BY " + sOrder;
+                sOrder += bASC == true ? " ASC" : " DESC";
+            }
 
-            //string sCommand = "SELECT * FROM tbl_matches WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND nIDUserTeam='" + StatBoss.Classes.MainVariables.NIDActualTeam + "'" + sWhere + sOrder;
             string sCommand = "SELECT * FROM tbl_matches AS m " +
                               "JOIN tbl_opponents AS o ON o.nID = m.nIDOpponent " +
                               "WHERE m.nIDSeason = '" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND m.nIDUserTeam = '" + StatBoss.Classes.MainVariables.NIDActualTeam + "'" + sWhere + sOrder;

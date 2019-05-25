@@ -31,9 +31,14 @@ namespace App1.Classes.DBClasses
             this.nIDPosition = position;
         }
 
-        public void FillList(List<DBPlayer> ListAllItems, string sWhere="", string sOrder="", bool bUnusedPlayers = false, int nIDMatch = 0)
+        public void FillList(List<DBPlayer> ListAllItems, string sWhere="", string sOrder="", bool bASC = true, bool bUnusedPlayers = false, int nIDMatch = 0)
         {
             if (sWhere != "") { sWhere = " AND (sSurname || ' ' || sFirstName LIKE '%" + sWhere + "%')"; }
+            if (sOrder != "")
+            {
+                sOrder = " ORDER BY " + sOrder;
+                sOrder += bASC == true ? " ASC" : " DESC";
+            }
 
             if (bUnusedPlayers)
             {

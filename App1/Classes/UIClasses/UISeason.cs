@@ -11,9 +11,9 @@ namespace StatBoss.Classes.UIClasses
 {
     public static class UISeason
     {
-        public static void ShowItemsInListView(ListView ListViewItems, List<DBSeason> ListAllItems, string sWhere = "", string sOrder = "")
+        public static void ShowItemsInListView(ListView ListViewItems, List<DBSeason> ListAllItems, string sWhere = "", string sOrder = "", bool bASC = true)
         {
-            new DBSeason().FillList(ListAllItems, sWhere, sOrder);
+            new DBSeason().FillList(ListAllItems, sWhere, sOrder, bASC);
             ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)

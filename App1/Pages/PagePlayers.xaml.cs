@@ -78,13 +78,13 @@ namespace App1
         // ---------------------------
         // ListView Section
         // ---------------------------
-        private void ShowItemsInListView(string sWhere = "", string sOrder = "")
+        private void ShowItemsInListView(string sWhere = "", string sOrder = "", bool bASC = true)
         {
             ListAllItems = new List<Classes.DBClasses.DBPlayer>();
 
             try
             {
-                StatBoss.Classes.UIClasses.UIPlayer.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                StatBoss.Classes.UIClasses.UIPlayer.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder, bASC);
             }
             catch (Exception)
             {
@@ -200,9 +200,7 @@ namespace App1
         // ---------------------------
         private void ButtSortBirthday_Click(object sender, RoutedEventArgs e)
         {
-            string sOrder = " ORDER BY dBirthday";
-            sOrder += bSortBirthdayASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
+            ShowItemsInListView("", "dBirthday", bSortBirthdayASC);
 
             bSortBirthdayASC = !bSortBirthdayASC;
         }

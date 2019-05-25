@@ -11,9 +11,9 @@ namespace StatBoss.Classes.UIClasses
 {
     public static class UIPlayer
     {
-        public static void ShowItemsInListView(ListView ListViewItems, List<DBPlayer> ListAllItems, string sWhere = "", string sOrder = "")
+        public static void ShowItemsInListView(ListView ListViewItems, List<DBPlayer> ListAllItems, string sWhere = "", string sOrder = "", bool bASC = true)
         {
-            new DBPlayer().FillList(ListAllItems, sWhere, sOrder);
+            new DBPlayer().FillList(ListAllItems, sWhere, sOrder, bASC);
             ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)
@@ -69,7 +69,7 @@ namespace StatBoss.Classes.UIClasses
 
         public static void ShowUnusedPLayersInComboBox(List<DBPlayer> ListAllItems, ComboBox comboBox, string toRemove, int nIDMatch)
         {
-            new DBPlayer().FillList(ListAllItems, "", "", true, nIDMatch);
+            new DBPlayer().FillList(ListAllItems, "", "", true, true, nIDMatch);
             ComboBoxHandling.ResetComboBox(comboBox);
 
             foreach (var iplayer in ListAllItems)

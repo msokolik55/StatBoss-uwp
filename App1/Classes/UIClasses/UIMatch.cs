@@ -11,9 +11,9 @@ namespace StatBoss.Classes.UIClasses
 {
     public static class UIMatch
     {
-        public static void ShowItemsInListView(ListView ListViewItems, List<DBMatch> ListAllItems, string sWhere = "", string sOrder = "")
+        public static void ShowItemsInListView(ListView ListViewItems, List<DBMatch> ListAllItems, string sWhere = "", string sOrder = "", bool bASC = true)
         {
-            new DBMatch().FillList(ListAllItems, sWhere, sOrder);
+            new DBMatch().FillList(ListAllItems, sWhere, sOrder, false, bASC);
             ListViewHandling.ResetListView(ListViewItems);
 
             if (ListAllItems.Count > 0)

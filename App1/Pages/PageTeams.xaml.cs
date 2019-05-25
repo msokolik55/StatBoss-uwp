@@ -69,10 +69,10 @@ namespace App1.Pages
         // ---------------------------
         // ListView Section
         // ---------------------------
-        private void ShowItemsInListView(string sWhere = "", string sOrder = "")
+        private void ShowItemsInListView(string sWhere = "", string sOrder = "", bool bASC = true)
         {
             ListAllItems = new List<Classes.DBClasses.DBTeam>();
-            StatBoss.Classes.UIClasses.UITeam.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+            StatBoss.Classes.UIClasses.UITeam.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder, bASC);
         }
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -175,9 +175,7 @@ namespace App1.Pages
         // ---------------------------
         private void ButtSortShortName_Click(object sender, RoutedEventArgs e)
         {
-            string sOrder = " ORDER BY sCategoryName";
-            sOrder += bSortShortNameASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
+            ShowItemsInListView("", "sCategoryName", bSortShortNameASC);
 
             bSortShortNameASC = !bSortShortNameASC;
         }

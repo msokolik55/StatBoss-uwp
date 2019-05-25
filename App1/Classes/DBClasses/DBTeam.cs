@@ -27,9 +27,14 @@ namespace App1.Classes.DBClasses
             this.sName = sname;
         }
 
-        public void FillList(List<DBTeam> ListAllItems, string sWhere, string sOrder)
+        public void FillList(List<DBTeam> ListAllItems, string sWhere, string sOrder, bool bASC)
         {
             if (sWhere != "") { sWhere = " AND sName LIKE '%" + sWhere + "%'"; }
+            if (sOrder != "")
+            {
+                sOrder = " ORDER BY " + sOrder;
+                sOrder += bASC == true ? " ASC" : " DESC";
+            }
 
             string sCommand = "SELECT * FROM tbl_teams WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);

@@ -37,13 +37,13 @@ namespace StatBoss.Pages
         // ---------------------------
         // ListView Section
         // ---------------------------
-        private void ShowItemsInListView(string sWhere = "", string sOrder = "")
+        private void ShowItemsInListView(string sWhere = "", string sOrder = "", bool bASC = true)
         {
             ListAllItems = new List<App1.Classes.DBClasses.DBOverallStat>();
 
             try
             {
-                Classes.UIClasses.UIOverallStat.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder);
+                Classes.UIClasses.UIOverallStat.ShowItemsInListView(ListViewItems, ListAllItems, sWhere, sOrder, bASC);
             }
             catch (Exception)
             {
@@ -80,9 +80,7 @@ namespace StatBoss.Pages
 
         private void ButtSortGoals_Click(object sender, RoutedEventArgs e)
         {
-            string sOrder = " ORDER BY nGoals";
-            sOrder += bSortGoalsASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
+            ShowItemsInListView("", "nGoals", bSortGoalsASC);
 
             bSortGoalsASC = !bSortGoalsASC;
             bSortAssistsASC = true;
@@ -90,13 +88,10 @@ namespace StatBoss.Pages
 
         private void ButtSortAssists_Click(object sender, RoutedEventArgs e)
         {
-            string sOrder = " ORDER BY nAssists";
-            sOrder += bSortAssistsASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
+            ShowItemsInListView("", "nAssists", bSortAssistsASC);
 
             bSortGoalsASC = true;
             bSortAssistsASC = !bSortAssistsASC;
         }
     }
-
 }

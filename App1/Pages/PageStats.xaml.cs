@@ -110,13 +110,13 @@ namespace App1.Pages
         // ---------------------------
         // ListView Section
         // ---------------------------
-        private void ShowItemsInListView(string sWhere = "", string sOrder = "")
+        private void ShowItemsInListView(string sWhere = "", string sOrder = "", bool bASC = true)
         {
             ListAllItems = new List<Classes.DBClasses.DBStat>();
 
             try
             {
-                StatBoss.Classes.UIClasses.UIStat.ShowItemsInListView(ListViewItems, ListAllItems, actualMatch.nID, sWhere, sOrder);
+                StatBoss.Classes.UIClasses.UIStat.ShowItemsInListView(ListViewItems, ListAllItems, actualMatch.nID, sWhere, sOrder, bASC);
             }
             catch (Exception)
             {
@@ -329,9 +329,7 @@ namespace App1.Pages
         // ---------------------------
         private void ButtSortNumber_Click(object sender, RoutedEventArgs e)
         {
-            string sOrder = " ORDER BY s.nNumber";
-            sOrder +=  bSortNumberASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
+            ShowItemsInListView("", "s.nNumber", bSortNumberASC);
 
             bSortNumberASC = !bSortNumberASC;
             bSortGoalsASC = true;
@@ -340,9 +338,7 @@ namespace App1.Pages
 
         private void ButtSortGoals_Click(object sender, RoutedEventArgs e)
         {
-            string sOrder = " ORDER BY s.nGoals";
-            sOrder += bSortGoalsASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
+            ShowItemsInListView("", "s.nGoals", bSortGoalsASC);
 
             bSortNumberASC = true;
             bSortGoalsASC = !bSortGoalsASC;
@@ -351,9 +347,7 @@ namespace App1.Pages
 
         private void ButtSortAssists_Click(object sender, RoutedEventArgs e)
         {
-            string sOrder = " ORDER BY s.nAssistance";
-            sOrder += bSortAssistsASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
+            ShowItemsInListView("", "s.nAssistance", bSortAssistsASC);
 
             bSortNumberASC = true;
             bSortGoalsASC = true;
