@@ -184,9 +184,7 @@ namespace App1.Pages
 
         private void TextBoxFindName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string sFindName = TextBoxFindName.Text;
-            string sWhere = " AND sName LIKE '%" + sFindName + "%'";
-            ShowItemsInListView(sWhere);
+            ShowItemsInListView(TextBoxFindName.Text);
         }
     }
 }

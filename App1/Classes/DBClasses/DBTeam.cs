@@ -29,6 +29,8 @@ namespace App1.Classes.DBClasses
 
         public void FillList(List<DBTeam> ListAllItems, string sWhere, string sOrder)
         {
+            if (sWhere != "") { sWhere = " AND sName LIKE '%" + sWhere + "%'"; }
+
             string sCommand = "SELECT * FROM tbl_teams WHERE nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "'" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 

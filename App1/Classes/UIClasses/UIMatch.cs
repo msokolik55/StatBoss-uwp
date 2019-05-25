@@ -57,7 +57,7 @@ namespace StatBoss.Classes.UIClasses
 
         public static void ShowInComboBox(List<DBMatch> ListAllItems, ComboBox comboBox, string toRemove)
         {
-            new DBMatch().FillList(ListAllItems, " AND bPlayed = '1'", "");
+            new DBMatch().FillList(ListAllItems, " AND bPlayed = '1'", "", false);
             ComboBoxHandling.ResetComboBox(comboBox);
 
             foreach (var imatch in ListAllItems)

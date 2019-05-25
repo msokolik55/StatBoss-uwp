@@ -52,6 +52,8 @@ namespace App1.Classes.DBClasses
         {
             try
             {
+                if(sWhere != "") { sWhere = " AND (p.sSurname || ' ' || p.sFirstName LIKE '%" + sWhere + "%')"; }
+
                 string sCommand = "SELECT * FROM tbl_stats AS s " +
                                   "JOIN tbl_players AS p ON p.nID = s.nIDPlayer " +
                                   "WHERE s.nIDSeason='" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND s.nIDMatch='" + nIDMatch + "'" + sWhere + sOrder;

@@ -47,6 +47,8 @@ namespace App1.Classes.DBClasses
         {
             try
             {
+                if (sWhere != "") { sWhere = " AND (p.sSurname || ' ' || p.sFirstName LIKE '%" + sWhere + "%')"; }
+
                 string sCommand = "SELECT p.sFirstName AS sFirstName, p.sSurname AS sSurname, COUNT(s.nIDPlayer) AS nMatches, SUM(s.nMinutes) AS nMinutes, SUM(s.nGoals) AS nGoals, SUM(s.nAssistance) AS nAssists, SUM(s.nPenalties) AS nPenalties, SUM(s.nRedCards) AS nRedCards " +
                                   "FROM tbl_stats AS s " +
                                   "JOIN tbl_players AS p " +

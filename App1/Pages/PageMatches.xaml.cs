@@ -269,6 +269,7 @@ namespace App1.Pages
 
         private void TextBoxFindName_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ShowItemsInListView(TextBoxFindName.Text);
         }
 
         private void CheckBoxFilterPlayed_Checked(object sender, RoutedEventArgs e)

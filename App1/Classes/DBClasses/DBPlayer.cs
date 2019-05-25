@@ -33,7 +33,9 @@ namespace App1.Classes.DBClasses
 
         public void FillList(List<DBPlayer> ListAllItems, string sWhere="", string sOrder="", bool bUnusedPlayers = false, int nIDMatch = 0)
         {
-            if(bUnusedPlayers)
+            if (sWhere != "") { sWhere = " AND (sSurname || ' ' || sFirstName LIKE '%" + sWhere + "%')"; }
+
+            if (bUnusedPlayers)
             {
                 sWhere = " AND nID not in (SELECT nIDPlayer FROM tbl_stats " +
                                              "WHERE nIDSeason = '" + StatBoss.Classes.MainVariables.NIDActualSeason + "' AND " +

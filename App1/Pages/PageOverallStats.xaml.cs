@@ -75,9 +75,7 @@ namespace StatBoss.Pages
         // ---------------------------
         private void TextBoxFindName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string sFindName = TextBoxFindName.Text;
-            string sWhere = " AND (p.sSurname || ' ' || p.sFirstName LIKE '%" + sFindName + "%')";
-            ShowItemsInListView(sWhere);
+            ShowItemsInListView(TextBoxFindName.Text);
         }
 
         private void ButtSortGoals_Click(object sender, RoutedEventArgs e)

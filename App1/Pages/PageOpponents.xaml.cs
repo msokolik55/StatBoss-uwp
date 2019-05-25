@@ -28,8 +28,6 @@ namespace App1.Pages
 
         string[] tables = { "tbl_matches" };
 
-        bool bSortNameASC;
-
         public PageOpponents()
         {
             this.InitializeComponent();
@@ -160,26 +158,9 @@ namespace App1.Pages
         // ---------------------------
         // Filters and Sorts Section
         // ---------------------------
-        private void ButtSortName_Click(object sender, RoutedEventArgs e)
-        {
-            string sOrder = " ORDER BY sName";
-            sOrder += bSortNameASC == true ? " ASC" : " DESC";
-            ShowItemsInListView("", sOrder);
-
-            bSortNameASC = !bSortNameASC;
-        }
-
         private void TextBoxFindName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string sFindName = TextBoxFindName.Text;
-            string sWhere = " AND sName LIKE '%" + sFindName + "%'";
-            ShowItemsInListView(sWhere);
+            ShowItemsInListView(TextBoxFindName.Text);
         }
-
-        /*
-        FindName_TextChanged zavola ShowItemsInListView(TextBoxFindName.Text)
-        ShowItemsInListView(TextBoxFindName.Text)
-        FillList vytvori string " AND sName LIKE '%" + sFindName + "%'"
-        */
     }
 }

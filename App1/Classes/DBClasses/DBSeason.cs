@@ -29,6 +29,8 @@ namespace App1.Classes.DBClasses
 
         public void FillList(List<DBSeason> ListAllItems, string sWhere, string sOrder)
         {
+            if (sWhere != "") { sWhere = " WHERE sName LIKE '%" + sWhere + "%'"; }
+
             string sCommand = "SELECT * FROM tbl_seasons" + sWhere + sOrder;
             SqliteDataReader query = DataAccess.QueryDB(sCommand);
 
