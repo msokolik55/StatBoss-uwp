@@ -13,7 +13,7 @@ namespace App1
     public static class DataAccess
     {
         static readonly string sDBName = "sqliteSample.db";
-        
+
         public static void InitializeDatabase()
         {
             using (SqliteConnection db = new SqliteConnection("Filename=" + sDBName))
