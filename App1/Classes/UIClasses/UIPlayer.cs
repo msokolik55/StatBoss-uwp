@@ -83,7 +83,5 @@ namespace StatBoss.Classes.UIClasses
                 comboBox.Items.Add(block);
             }
         }
-
-
     }
 }
