@@ -82,6 +82,7 @@ namespace App1.Pages
             TextBoxAssists.Text = "";
             TextBoxPenalties.Text = "";
             TextBoxRedCards.Text = "";
+            TextBoxPlusMinus.Text = "";
 
             ButtAddToDB.Visibility = Visibility.Collapsed;
             ButtEditDB.Visibility = Visibility.Collapsed;
@@ -97,6 +98,7 @@ namespace App1.Pages
             TextBoxAssists.IsEnabled = enabled;
             TextBoxPenalties.IsEnabled = enabled;
             TextBoxRedCards.IsEnabled = enabled;
+            TextBoxPlusMinus.IsEnabled = enabled;
             ButtGoalsPlus.IsEnabled = enabled;
             ButtGoalsMinus.IsEnabled = enabled;
             ButtAssistsPlus.IsEnabled = enabled;
@@ -145,7 +147,8 @@ namespace App1.Pages
                 TextBoxGoals.Text = selectedItem.nGoals.ToString();
                 TextBoxAssists.Text = selectedItem.nAssists.ToString();
                 TextBoxPenalties.Text = selectedItem.nPenalties.ToString();
-                TextBoxRedCards.Text = selectedItem.nRedCards.ToString();                
+                TextBoxRedCards.Text = selectedItem.nRedCards.ToString();
+                TextBoxPlusMinus.Text = selectedItem.nPlusMinus.ToString();
             }
             catch (Exception)
             {
@@ -212,6 +215,7 @@ namespace App1.Pages
             TextBoxAssists.Text = "0";
             TextBoxPenalties.Text = "0";
             TextBoxRedCards.Text = "0";
+            TextBoxPlusMinus.Text = "0";
 
             ButtAddToDB.Visibility = Visibility.Visible;
             ButtEditDB.Visibility = Visibility.Collapsed;
@@ -260,7 +264,8 @@ namespace App1.Pages
                     nGoals = int.Parse(TextBoxGoals.Text),
                     nAssists = int.Parse(TextBoxAssists.Text),
                     nPenalties = int.Parse(TextBoxPenalties.Text),
-                    nRedCards = int.Parse(TextBoxRedCards.Text)
+                    nRedCards = int.Parse(TextBoxRedCards.Text),
+                    nPlusMinus = int.Parse(TextBoxPlusMinus.Text)
                 };
 
                 stat.ChangeDB(action);
@@ -312,13 +317,23 @@ namespace App1.Pages
             UpdateNumberValue(TextBoxRedCards, false);
         }
 
-        private void UpdateNumberValue(TextBox box, bool bPlus)
+        private void ButtPlusMinusPlus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxPlusMinus, true, true);
+        }
+
+        private void ButtPlusMinusMinus_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNumberValue(TextBoxPlusMinus, false, true);
+        }
+
+        private void UpdateNumberValue(TextBox box, bool bPlus, bool bNegative = false)
         {
             if (int.TryParse(box.Text, out int code))
             {
                 int number = int.Parse(box.Text);
                 number = bPlus ? number + 1 : number - 1;
-                number = (number < 0) ? 0 : number;
+                if (!bNegative) { number = (number < 0) ? 0 : number; }
 
                 box.Text = number.ToString();
             }

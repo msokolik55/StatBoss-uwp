@@ -22,13 +22,14 @@ namespace App1.Classes.DBClasses
         public int nAssists;
         public int nPenalties;
         public int nRedCards;
+        public int nPlusMinus;
 
         public DBOverallStat()
         {
         }
 
         public DBOverallStat(int nid, int nidseason, int nnumber, int niduserteam, string sfirstname, string ssurname,
-            int nmatches, int nminutes, int ngoals, int nassists, int npenalties, int nredcards)
+            int nmatches, int nminutes, int ngoals, int nassists, int npenalties, int nredcards, int nplusminus)
         {
             this.nID = nid;
             this.nIDSeason = nidseason;
@@ -41,6 +42,7 @@ namespace App1.Classes.DBClasses
             this.nAssists = nassists;
             this.nPenalties = npenalties;
             this.nRedCards = nredcards;
+            this.nPlusMinus = nplusminus;
         }
 
         public void FillList(List<DBOverallStat> ListAllItems, string sWhere, string sOrder, bool bASC = true)
@@ -54,7 +56,7 @@ namespace App1.Classes.DBClasses
                     sOrder += bASC == true ? " ASC" : " DESC";
                 }
 
-                string sCommand = "SELECT p.sFirstName AS sFirstName, p.sSurname AS sSurname, COUNT(s.nIDPlayer) AS nMatches, SUM(s.nMinutes) AS nMinutes, SUM(s.nGoals) AS nGoals, SUM(s.nAssistance) AS nAssists, SUM(s.nPenalties) AS nPenalties, SUM(s.nRedCards) AS nRedCards " +
+                string sCommand = "SELECT p.sFirstName AS sFirstName, p.sSurname AS sSurname, COUNT(s.nIDPlayer) AS nMatches, SUM(s.nMinutes) AS nMinutes, SUM(s.nGoals) AS nGoals, SUM(s.nAssistance) AS nAssists, SUM(s.nPenalties) AS nPenalties, SUM(s.nRedCards) AS nRedCards, SUM(s.nPlusMinus) AS nPlusMinus " +
                                   "FROM tbl_stats AS s " +
                                   "JOIN tbl_players AS p " +
                                   "ON p.nID = s.nIDPlayer " +
@@ -77,7 +79,8 @@ namespace App1.Classes.DBClasses
                         nGoals = query.GetInt32(query.GetOrdinal("nGoals")),
                         nAssists = query.GetInt32(query.GetOrdinal("nAssists")),
                         nPenalties = query.GetInt32(query.GetOrdinal("nPenalties")),
-                        nRedCards = query.GetInt32(query.GetOrdinal("nRedCards"))
+                        nRedCards = query.GetInt32(query.GetOrdinal("nRedCards")),
+                        nPlusMinus = query.GetInt32(query.GetOrdinal("nPlusMinus"))
                     };
 
                     ListAllItems.Add(item);

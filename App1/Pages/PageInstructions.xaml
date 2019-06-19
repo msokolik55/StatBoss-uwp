@@ -11,7 +11,7 @@
 	<Grid>
 		<StackPanel Margin="10,0,0,20">
 			<TextBlock Text="Order of adding items" FontWeight="Normal" FontSize="20" Margin="0,0,0,10"/>
-			<TextBlock Text="1. Add SEASONS (every items are depended on selected season - only positions not)." TextWrapping="Wrap" Margin="0,0,0,5"/>
+			<TextBlock Text="1. Add SEASONS (all items are depended on selected season - only positions not)." TextWrapping="Wrap" Margin="0,0,0,5"/>
 			<TextBlock Text="2. Add TEAMS in the selected season (matches, players, stats are depended on selected season and team)." TextWrapping="Wrap" Margin="0,0,0,5"/>
 			<TextBlock Text="3. Add POSITIONS in your sport (positions are assigned in section players and stats)." TextWrapping="Wrap" Margin="0,0,0,5"/>
 			<TextBlock Text="4. Add OPPONENTS in the selected season and team (opponents are assigned in section matches and stats)." TextWrapping="Wrap" Margin="0,0,0,5"/>

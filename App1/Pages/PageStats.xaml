@@ -123,6 +123,7 @@
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
 
 			<TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5"/>
@@ -167,9 +168,16 @@
 				<Button x:Name="ButtRedCardsPlus" Content="+" Width="32" Margin="10,0,0,0" Click="ButtRedCardsPlus_Click"/>
 				<Button x:Name="ButtRedCardsMinus" Content="-" Width="32" Margin="10,0,0,0" Click="ButtRedCardsMinus_Click"/>
 			</StackPanel>
-			
-			<Button Grid.Row="9" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
-			<Button Grid.Row="9" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
+
+			<TextBlock Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" Text="+/- :" TextWrapping="Wrap" VerticalAlignment="Center" Height="18" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+			<StackPanel Grid.Row="9" Grid.Column="2" Orientation="Horizontal">
+				<TextBox x:Name="TextBoxPlusMinus" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" PlaceholderText="1" Tag="number" Height="30" Margin="0,5,0,5" FontFamily="Segoe UI"/>
+				<Button x:Name="ButtPlusMinusPlus" Content="+" Width="32" Margin="10,0,0,0" Click="ButtPlusMinusPlus_Click"/>
+				<Button x:Name="ButtPlusMinusMinus" Content="-" Width="32" Margin="10,0,0,0" Click="ButtPlusMinusMinus_Click"/>
+			</StackPanel>
+
+			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
+			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
 		</Grid>
 	</Grid>
 </Page>

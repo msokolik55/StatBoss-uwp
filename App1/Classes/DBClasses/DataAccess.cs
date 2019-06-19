@@ -102,12 +102,12 @@ namespace App1
                                     "nNumber	TINYINT(4), " +
                                     "nIDPlayer	SMALLINT(4) NOT NULL, " +
                                     "nIDUserTeam	SMALLINT(6) NOT NULL, " +
-                                    "nMatches	TINYINT(4), " +
                                     "nMinutes	TINYINT(4), " +
                                     "nGoals	TINYINT(4), " +
                                     "nAssistance	TINYINT(4), " +
                                     "nPenalties	TINYINT(4), " +
                                     "nRedCards	TINYINT(4), " +
+                                    "nPlusMinus	TINYINT(4), " +
                                     "dInserted	DATETIME, " +
                                     "nIDInserted	SMALLINT(6), " +
                                     "dUpdated	DATETIME, " +
