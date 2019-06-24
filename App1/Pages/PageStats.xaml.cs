@@ -83,6 +83,7 @@ namespace App1.Pages
             TextBoxPenalties.Text = "";
             TextBoxRedCards.Text = "";
             TextBoxPlusMinus.Text = "";
+            TextBoxComment.Text = "";
 
             ButtAddToDB.Visibility = Visibility.Collapsed;
             ButtEditDB.Visibility = Visibility.Collapsed;
@@ -99,6 +100,8 @@ namespace App1.Pages
             TextBoxPenalties.IsEnabled = enabled;
             TextBoxRedCards.IsEnabled = enabled;
             TextBoxPlusMinus.IsEnabled = enabled;
+            TextBoxComment.IsEnabled = enabled;
+
             ButtGoalsPlus.IsEnabled = enabled;
             ButtGoalsMinus.IsEnabled = enabled;
             ButtAssistsPlus.IsEnabled = enabled;
@@ -149,6 +152,7 @@ namespace App1.Pages
                 TextBoxPenalties.Text = selectedItem.nPenalties.ToString();
                 TextBoxRedCards.Text = selectedItem.nRedCards.ToString();
                 TextBoxPlusMinus.Text = selectedItem.nPlusMinus.ToString();
+                TextBoxComment.Text = selectedItem.sComment.ToString();
             }
             catch (Exception)
             {
@@ -216,6 +220,7 @@ namespace App1.Pages
             TextBoxPenalties.Text = "0";
             TextBoxRedCards.Text = "0";
             TextBoxPlusMinus.Text = "0";
+            TextBoxComment.Text = " ";
 
             ButtAddToDB.Visibility = Visibility.Visible;
             ButtEditDB.Visibility = Visibility.Collapsed;
@@ -265,7 +270,8 @@ namespace App1.Pages
                     nAssists = int.Parse(TextBoxAssists.Text),
                     nPenalties = int.Parse(TextBoxPenalties.Text),
                     nRedCards = int.Parse(TextBoxRedCards.Text),
-                    nPlusMinus = int.Parse(TextBoxPlusMinus.Text)
+                    nPlusMinus = int.Parse(TextBoxPlusMinus.Text),
+                    sComment = TextBoxComment.Text
                 };
 
                 stat.ChangeDB(action);

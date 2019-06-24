@@ -159,7 +159,7 @@
 			</StackPanel>
 
 			<TextBlock Grid.Row="11" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Description:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-			<TextBox Grid.Row="11" Grid.Column="2" x:Name="TextBoxDescription" HorizontalAlignment="Left" Margin="0,5,0,5" Text="TextBox" VerticalAlignment="Top" TextWrapping="NoWrap"/>
+			<TextBox Grid.Row="11" Grid.Column="2" x:Name="TextBoxDescription" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
 
 			<Button Grid.Row="12" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
 			<Button Grid.Row="12" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>

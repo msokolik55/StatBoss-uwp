@@ -23,6 +23,7 @@ namespace App1.Classes.DBClasses
         public int nPenalties;
         public int nRedCards;
         public int nPlusMinus;
+        public string sComment;
         public DateTime dInserted;
         public DateTime dUpdated;
 
@@ -31,7 +32,7 @@ namespace App1.Classes.DBClasses
         }
 
         public DBStat(int id, int nidseason, int nidmatch, int nidposition, int nnumber, int nidplayer, int niduserteam,
-            int nminutes, int ngoals, int nassists, int npenalties, int nredcards, int nplusminus, DateTime dinserted, DateTime dupdated)
+            int nminutes, int ngoals, int nassists, int npenalties, int nredcards, int nplusminus, string scomment, DateTime dinserted, DateTime dupdated)
         {
             this.nID = id;
             this.nIDSeason = nidseason;
@@ -46,6 +47,7 @@ namespace App1.Classes.DBClasses
             this.nPenalties = npenalties;
             this.nRedCards = nredcards;
             this.nPlusMinus = nplusminus;
+            this.sComment = scomment;
             this.dInserted = dinserted;
             this.dUpdated = dupdated;
         }
@@ -83,8 +85,9 @@ namespace App1.Classes.DBClasses
                         nPenalties = query.GetInt32(query.GetOrdinal("nPenalties")),
                         nRedCards = query.GetInt32(query.GetOrdinal("nRedCards")),
                         nPlusMinus = query.GetInt32(query.GetOrdinal("nPlusMinus")),
-                        dInserted = query.GetDateTime(query.GetOrdinal("dInserted")),
+                        sComment = query.GetString(query.GetOrdinal("sComment")),
 
+                        dInserted = query.GetDateTime(query.GetOrdinal("dInserted")),
                         dUpdated = query.GetDateTime(query.GetOrdinal("dUpdated"))
                     };
 
@@ -103,7 +106,7 @@ namespace App1.Classes.DBClasses
             switch (action)
             {
                 case "add":
-                    sCommand = "INSERT INTO tbl_stats (nID, nIDSeason, nIDMatch, nIDPosition, nNumber, nIDPlayer, nIDUserTeam, nMinutes, nGoals, nAssistance, nPenalties, nRedCards, nPlusMinus, dInserted, dUpdated)" +
+                    sCommand = "INSERT INTO tbl_stats (nID, nIDSeason, nIDMatch, nIDPosition, nNumber, nIDPlayer, nIDUserTeam, nMinutes, nGoals, nAssistance, nPenalties, nRedCards, nPlusMinus, sComment, dInserted, dUpdated)" +
                                         " VALUES('" + nID + "', " +
                                         "'" + nIDSeason + "', " +
                                         "'" + nIDMatch + "', " +
@@ -117,6 +120,7 @@ namespace App1.Classes.DBClasses
                                         "'" + nPenalties + "', " +
                                         "'" + nRedCards + "', " +
                                         "'" + nPlusMinus + "', " +
+                                        "'" + sComment + "', " +
                                         "datetime('now'), " +
                                         "datetime('now'))";
                     break;
@@ -130,6 +134,7 @@ namespace App1.Classes.DBClasses
                                                     "nPenalties='" + nPenalties + "', " +
                                                     "nRedCards='" + nRedCards + "', " +
                                                     "nPlusMinus='" + nPlusMinus + "', " +
+                                                    "sComment='" + sComment + "', " +
                                                     "dUpdated=datetime('now')" +
                                 "WHERE nID = '" + nID + "' AND nIDSeason = '" + StatBoss.Classes.MainVariables.NIDActualSeason + "'";
                     break;

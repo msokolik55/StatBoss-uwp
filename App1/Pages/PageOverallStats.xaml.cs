@@ -65,6 +65,7 @@ namespace StatBoss.Pages
                 TextBoxPenalties.Text = selectedItem.nPenalties.ToString();
                 TextBoxRedCards.Text = selectedItem.nRedCards.ToString();
                 TextBoxPlusMinus.Text = selectedItem.nPlusMinus.ToString();
+                TextBoxComment.Text = selectedItem.sComment.ToString();
             }
             catch (Exception)
             {

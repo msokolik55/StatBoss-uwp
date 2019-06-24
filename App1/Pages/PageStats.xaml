@@ -124,6 +124,7 @@
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
 
 			<TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Center" Height="19" Margin="0,5,0,5"/>
@@ -176,8 +177,12 @@
 				<Button x:Name="ButtPlusMinusMinus" Content="-" Width="32" Margin="10,0,0,0" Click="ButtPlusMinusMinus_Click"/>
 			</StackPanel>
 
-			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
-			<Button Grid.Row="10" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
+			<TextBlock Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5" Text="Comment:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+			<TextBox Grid.Row="10" Grid.Column="2" x:Name="TextBoxComment" HorizontalAlignment="Left" Margin="0,5,0,5" Text="" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+
+			<Button Grid.Row="11" Grid.Column="2" x:Name="ButtAddToDB" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtAddToDB_Click" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,5,0,5"/>
+			<Button Grid.Row="11" Grid.Column="2" x:Name="ButtEditDB" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ButtEditDB_Click" Height="29" Margin="0,5,0,5"/>
 		</Grid>
 	</Grid>
 </Page>
