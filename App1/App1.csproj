@@ -156,6 +156,9 @@
     <Compile Include="Pages\PageInstructions.xaml.cs">
       <DependentUpon>PageInstructions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageLogin.xaml.cs">
+      <DependentUpon>PageLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageMatches.xaml.cs">
       <DependentUpon>PageMatches.xaml</DependentUpon>
     </Compile>
@@ -249,6 +252,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\PageInstructions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

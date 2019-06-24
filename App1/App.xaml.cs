@@ -32,8 +32,8 @@ namespace App1
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            DataAccess.InitializeDatabase();
-            MainVariables.InitializeMainVariables();
+            //DataAccess.InitializeDatabase(); //TODO
+            //MainVariables.InitializeMainVariables(); //TODO
         }
 
         /// <summary>
@@ -70,7 +70,9 @@ namespace App1
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    
+                    //rootFrame.Navigate(typeof(MainPage), e.Arguments); //TODO
+                    rootFrame.Navigate(typeof(StatBoss.Pages.PageLogin), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
